@@ -22,14 +22,14 @@ async function loadPeople() {
 // HINT DEFINITIONS
 // ============================================================
 const HINT_DEFS = [
-  { key: "category",    label: "Occupation",   cost: 75,  extract: d => d.category },
-  { key: "nationality", label: "Nationality",      cost: 75,  extract: d => extractNationality(d) },
-  { key: "lifespan",    label: "Lifespan",          cost: 100, extract: d => {
+  { key: "category",    label: "Occupation",   cost: 150,  extract: d => d.category },
+  { key: "nationality", label: "Nationality",      cost: 100,  extract: d => extractNationality(d) },
+  { key: "lifespan",    label: "Lifespan",          cost: 75, extract: d => {
     const born = d.born || "?";
     const died = d.died || (d.alive ? "present" : "?");
     return `${born} – ${died}`;
   }},
-  { key: "summary",     label: "First Sentence",  cost: 200, extract: d => d.firstSentence || "…" },
+  { key: "summary",     label: "First sentence on Wikipedia",  cost: 200, extract: d => d.firstSentence || "…" },
 ];
 
 // ============================================================
