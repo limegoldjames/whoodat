@@ -91,6 +91,7 @@ function startDailyChallenge() {
     results: [],
     isDaily: true,
   };
+  document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
   loadRound();
@@ -262,6 +263,7 @@ function startGame() {
     results: [],
     isDaily: false,
   };
+  document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
   loadRound();
@@ -416,6 +418,7 @@ function nextRound() {
 }
 
 function endGame() {
+  document.body.classList.remove('in-game');
   document.getElementById('scorebar').classList.remove('visible');
   showScreen('screen-end');
 
@@ -553,6 +556,7 @@ function showScreen(id) {
 }
 
 function goHome() {
+  document.body.classList.remove('in-game');
   document.getElementById('scorebar').classList.remove('visible');
   showScreen('screen-welcome');
 }

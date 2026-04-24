@@ -89,8 +89,8 @@ h1 {
   background: var(--blue);
   border: 3px solid var(--gold);
   border-radius: 4px;
-  padding: 10px 20px;
-  margin: 16px 0;
+  padding: 6px 16px;
+  margin: 6px 0;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -292,14 +292,33 @@ h1 {
   margin-top: 2px;
 }
 
+/* ── IN-GAME COMPACT MODE ── */
+body.in-game header,
+body.in-game .ticker { display: none; }
+body.in-game #app { padding-top: 0; padding-bottom: 12px; }
+
+.compact-game-header {
+  display: none;
+}
+body.in-game .compact-game-header {
+  display: block;
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-align: center;
+  padding: 6px 0 2px;
+}
+
 /* ── GAME SCREEN ── */
 #screen-game .card { padding: 0; }
 
 .photo-section {
   position: relative;
   background: #111;
-  min-height: 320px;
-  max-height: 70vh;
+  min-height: 200px;
+  max-height: 38vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -307,7 +326,7 @@ h1 {
 }
 #person-photo {
   max-width: 100%;
-  max-height: 70vh;
+  max-height: 38vh;
   width: auto;
   height: auto;
   object-fit: contain;
@@ -338,28 +357,28 @@ h1 {
   letter-spacing: 1px;
 }
 
-.game-body { padding: 20px 24px 28px; }
+.game-body { padding: 10px 16px 12px; }
 
 /* ── HINTS SECTION ── */
 .hints-label {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--blue);
-  margin-bottom: 10px;
+  margin-bottom: 6px;
 }
 .hints-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-bottom: 22px;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 .hint-chip {
   border: 2px solid;
   border-radius: 4px;
-  padding: 8px 12px;
+  padding: 5px 10px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.9rem;
   font-weight: 600;
@@ -413,7 +432,7 @@ h1 {
   flex: 1;
   font-family: 'Barlow', sans-serif;
   font-size: 1.1rem;
-  padding: 12px 16px;
+  padding: 8px 12px;
   border: 3px solid var(--blue);
   border-radius: 4px;
   outline: none;
@@ -455,7 +474,7 @@ h1 {
 .ac-item mark { background: none; font-weight: 700; color: var(--red); }
 
 .wrong-guesses {
-  margin-top: 14px;
+  margin-top: 6px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.9rem;
   color: var(--red-dark);
