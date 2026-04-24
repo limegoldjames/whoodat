@@ -106,19 +106,21 @@
         <div class="feedback-name" id="feedback-name"></div>
         <button class="btn btn-gold" onclick="nextRound()">Press any key to continue ▶</button>
       </div>
-      <div class="game-body">
+      <div class="hint-section">
         <div class="hints-label">Unlock Hints</div>
         <div class="hints-grid" id="hints-grid"></div>
+      </div>
+      <div class="guess-wrap">
         <div class="guess-area">
           <input type="text" id="guess-input" placeholder="Start typing a name…" autocomplete="off" />
           <button class="btn btn-gold btn-sm" onclick="submitGuess()" style="white-space:nowrap;">Guess!</button>
           <div id="autocomplete-list"></div>
         </div>
         <div class="wrong-guesses" id="wrong-guesses"></div>
-        <div class="round-actions">
-          <button class="skip-link" onclick="skipRound()">⏭ Skip (forfeit round points)</button>
-          <button class="skip-link start-over-link" onclick="goHome()">↺ Start Over</button>
-        </div>
+      </div>
+      <div class="round-actions">
+        <button class="skip-link" onclick="skipRound()">⏭ Skip (forfeit round points)</button>
+        <button class="skip-link start-over-link" onclick="goHome()">↺ Start Over</button>
       </div>
     </div>
   </div>

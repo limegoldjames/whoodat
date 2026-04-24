@@ -357,7 +357,8 @@ body.in-game .compact-game-header {
   letter-spacing: 1px;
 }
 
-.game-body { padding: 10px 16px 12px; }
+.hint-section { padding: 10px 16px 4px; }
+.guess-wrap   { padding: 4px 16px 0; }
 
 /* ── HINTS SECTION ── */
 .hints-label {
@@ -640,6 +641,7 @@ body.in-game .compact-game-header {
   justify-content: space-between;
   gap: 8px;
   margin-top: 8px;
+  padding: 0 16px 10px;
 }
 .start-over-link { color: var(--red-dark); }
 .start-over-link:hover { color: var(--red); }
@@ -661,6 +663,28 @@ body.in-game .compact-game-header {
   text-underline-offset: 3px;
 }
 .skip-link:hover { color: var(--red); }
+
+/* ── MOBILE ── */
+@media (max-width: 600px) {
+  /* Reorder game card: guess above photo */
+  #screen-game .card {
+    display: flex;
+    flex-direction: column;
+  }
+  #screen-game .photo-section  { order: 2; }
+  #screen-game .hint-section   { order: 3; }
+  #screen-game .guess-wrap     { order: 1; }
+  #screen-game .round-actions  { order: 4; }
+
+  /* Smaller photo so hints/actions fit without scrolling */
+  .photo-section { max-height: 26vh; min-height: 140px; }
+  #person-photo  { max-height: 26vh; }
+
+  /* Slightly larger input and tap targets */
+  #guess-input { font-size: 1rem; padding: 10px 12px; }
+  .hint-chip   { padding: 7px 10px; }
+  .ac-item     { padding: 11px 14px; }
+}
 
 /* ── GAME DIFFICULTY BADGE (scorebar) ── */
 .game-diff-badge {
