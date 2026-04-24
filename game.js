@@ -22,7 +22,7 @@ async function loadPeople() {
 // HINT DEFINITIONS
 // ============================================================
 const HINT_DEFS = [
-  { key: "category",    label: "Field / Title",   cost: 75,  extract: d => d.category },
+  { key: "category",    label: "Occupation",   cost: 75,  extract: d => d.category },
   { key: "nationality", label: "Nationality",      cost: 75,  extract: d => extractNationality(d) },
   { key: "born",        label: "Born",             cost: 100, extract: d => d.born || "Unknown" },
   { key: "died",        label: "Died",             cost: 100, extract: d => d.died || (d.alive ? "Still alive" : "Unknown") },
