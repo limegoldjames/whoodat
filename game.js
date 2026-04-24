@@ -24,8 +24,11 @@ async function loadPeople() {
 const HINT_DEFS = [
   { key: "category",    label: "Occupation",   cost: 75,  extract: d => d.category },
   { key: "nationality", label: "Nationality",      cost: 75,  extract: d => extractNationality(d) },
-  { key: "born",        label: "Born",             cost: 100, extract: d => d.born || "Unknown" },
-  { key: "died",        label: "Died",             cost: 100, extract: d => d.died || (d.alive ? "Still alive" : "Unknown") },
+  { key: "lifespan",    label: "Lifespan",          cost: 100, extract: d => {
+    const born = d.born || "?";
+    const died = d.died || (d.alive ? "present" : "?");
+    return `${born} – ${died}`;
+  }},
   { key: "summary",     label: "First Sentence",  cost: 200, extract: d => d.firstSentence || "…" },
 ];
 
