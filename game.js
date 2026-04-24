@@ -33,15 +33,31 @@ const HINT_DEFS = [
 ];
 
 // ============================================================
-// DIFFICULTY
+// DIFFICULTY & SEED
 // ============================================================
 let selectedDifficulty = 'easy';
+let currentSeed = null;
+let pwfSeed = null;
 
-function selectDifficulty(d) {
+function setDifficulty(d) {
   selectedDifficulty = d;
   document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
   document.querySelectorAll('.diff-' + d).forEach(btn => btn.classList.add('active'));
-  startGame();
+}
+
+function selectDifficulty(d) {
+  setDifficulty(d);
+  startGame(currentSeed ? deriveNextSeed(currentSeed) : null);
+}
+
+function generateSeed() {
+  return Math.random().toString(36).slice(2, 8).toUpperCase();
+}
+
+function deriveNextSeed(seed) {
+  const h = hashStr(seed + ':next');
+  const s = h.toString(36).toUpperCase();
+  return s.length >= 6 ? s.slice(0, 6) : s.padStart(6, '0');
 }
 
 // ============================================================
@@ -70,17 +86,16 @@ function getPSTDateString() {
 }
 
 function startDailyChallenge() {
-  selectedDifficulty = 'medium';
-  const rng = mulberry32(hashStr(getPSTDateString()));
+  setDifficulty('medium');
+  const dailySeed = getPSTDateString();
+  currentSeed = dailySeed;
+  const rng = mulberry32(hashStr(dailySeed));
   const pool = PEOPLE;
-  const indices = [...Array(pool.length).keys()];
-  for (let i = indices.length - 1; i > 0; i--) {
-    const j = Math.floor(rng() * (i + 1));
-    [indices[i], indices[j]] = [indices[j], indices[i]];
-  }
+  const indices = seededShuffle([...Array(pool.length).keys()], rng).slice(0, ROUNDS);
   state = {
     pool,
-    queue: indices.slice(0, ROUNDS),
+    queue: indices,
+    seed: dailySeed,
     roundIndex: 0,
     roundPoints: START_POINTS,
     totalScore: 0,
@@ -94,6 +109,7 @@ function startDailyChallenge() {
   document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
+  updateGameDiffBadge();
   loadRound();
 }
 
@@ -245,14 +261,27 @@ function shuffle(arr) {
   return a;
 }
 
-function startGame() {
+function seededShuffle(arr, rng) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startGame(seed = null) {
+  if (!seed) seed = generateSeed();
+  currentSeed = seed;
   const pool = selectedDifficulty === 'easy'
     ? PEOPLE.filter(p => p.difficulty === 'easy')
-    : PEOPLE; // medium includes all 150
-  const indices = shuffle([...Array(pool.length).keys()]).slice(0, ROUNDS);
+    : PEOPLE;
+  const rng = mulberry32(hashStr(seed + selectedDifficulty));
+  const indices = seededShuffle([...Array(pool.length).keys()], rng).slice(0, ROUNDS);
   state = {
     pool,
     queue: indices,
+    seed,
     roundIndex: 0,
     roundPoints: START_POINTS,
     totalScore: 0,
@@ -266,6 +295,7 @@ function startGame() {
   document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
+  updateGameDiffBadge();
   loadRound();
 }
 
@@ -466,6 +496,58 @@ function endGame() {
   document.getElementById('end-daily-share').style.display = state.isDaily ? 'block' : 'none';
 }
 
+// ============================================================
+// PLAY WITH FRIENDS MODAL
+// ============================================================
+let pwfDifficulty = 'easy';
+
+function openPwfModal() {
+  pwfSeed = generateSeed();
+  pwfDifficulty = selectedDifficulty;
+  document.querySelectorAll('.pwf-diff-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.querySelector(`.pwf-diff-btn.diff-${pwfDifficulty}`);
+  if (activeBtn) activeBtn.classList.add('active');
+  updatePwfLink();
+  document.getElementById('pwf-modal').style.display = 'flex';
+}
+
+function closePwfModal() {
+  document.getElementById('pwf-modal').style.display = 'none';
+}
+
+function setPwfDifficulty(d) {
+  pwfDifficulty = d;
+  document.querySelectorAll('.pwf-diff-btn').forEach(btn => btn.classList.remove('active'));
+  const activeBtn = document.querySelector(`.pwf-diff-btn.diff-${d}`);
+  if (activeBtn) activeBtn.classList.add('active');
+  updatePwfLink();
+}
+
+function updatePwfLink() {
+  const base = window.location.href.replace(/[?#].*$/, '');
+  document.getElementById('pwf-link-input').value = `${base}?seed=${pwfSeed}&d=${pwfDifficulty}`;
+}
+
+function copyPwfLink(btn) {
+  const url = document.getElementById('pwf-link-input').value;
+  navigator.clipboard.writeText(url).then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  });
+}
+
+function startPwfGame() {
+  closePwfModal();
+  setDifficulty(pwfDifficulty);
+  startGame(pwfSeed);
+}
+
+function startSeededGameFromRecap(seed, diff) {
+  setDifficulty(diff || 'easy');
+  startGame(seed);
+}
+
 function copyDailyUrl(btn) {
   const base = window.location.href.replace(/[?#].*$/, '');
   navigator.clipboard.writeText(base + '?daily=1').then(() => {
@@ -480,6 +562,7 @@ function buildShareData() {
     s: state.totalScore,
     d: selectedDifficulty,
     dy: state.isDaily ? 1 : 0,
+    seed: state.isDaily ? null : (state.seed || null),
     r: state.results.map(r => ({
       n: r.name,
       c: r.correct ? 1 : 0,
@@ -541,8 +624,13 @@ function renderRecap(data) {
       <div class="r-detail">${r.c ? `+${r.p} pts` : '0 pts'} &nbsp;|&nbsp; ${r.g} guess${r.g!==1?'es':''} &nbsp;|&nbsp; ${r.h} hint${r.h!==1?'s':''}</div>
     </div>`;
   }
+  const recapSeed = data.seed || null;
+  const playAction = isRecapDaily
+    ? 'startDailyChallenge()'
+    : (recapSeed ? `startSeededGameFromRecap('${recapSeed}','${recapDiff}')` : `startGame()`);
+  const playLabel = isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!';
   html += `</div><div style="text-align:center;">
-    <button class="btn btn-gold" onclick="${isRecapDaily ? 'startDailyChallenge()' : 'startGame()'}">▶ ${isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!'}</button>
+    <button class="btn btn-gold" onclick="${playAction}">▶ ${playLabel}</button>
   </div>`;
   body.innerHTML = html;
 }
@@ -556,6 +644,7 @@ function showScreen(id) {
 }
 
 function goHome() {
+  currentSeed = null;
   document.body.classList.remove('in-game');
   document.getElementById('scorebar').classList.remove('visible');
   showScreen('screen-welcome');
@@ -565,6 +654,18 @@ function updateScorebar() {
   document.getElementById('sb-round').textContent = state.roundIndex + 1;
   document.getElementById('sb-pts').textContent = state.roundPoints;
   document.getElementById('sb-total').textContent = state.totalScore;
+}
+
+function updateGameDiffBadge() {
+  const badge = document.getElementById('game-diff-badge');
+  if (!badge) return;
+  if (state.isDaily) {
+    badge.textContent = '⭐ Daily';
+    badge.style.color = '#E6B800';
+  } else {
+    badge.textContent = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
+    badge.style.color = selectedDifficulty === 'easy' ? '#2DC653' : '#E6B800';
+  }
 }
 
 // ============================================================
@@ -653,8 +754,14 @@ window.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('daily-date').textContent = new Intl.DateTimeFormat('en-US', {
     timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric', year: 'numeric',
   }).format(new Date());
-  if (new URLSearchParams(window.location.search).get('daily') === '1') {
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('daily') === '1') {
     startDailyChallenge();
+  } else if (params.get('seed')) {
+    const seed = params.get('seed');
+    const diff = params.get('d') || 'easy';
+    setDifficulty(diff);
+    startGame(seed);
   } else if (!checkSharedResult()) {
     showScreen('screen-welcome');
   }
