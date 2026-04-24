@@ -664,6 +664,23 @@ body.in-game .compact-game-header {
 }
 .skip-link:hover { color: var(--red); }
 
+/* ── NEXT QUESTION BUTTON ── */
+.next-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+.next-btn-sub {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  opacity: 0.75;
+  text-transform: none;
+}
+.next-btn-sub-mobile { display: none; }
+
 /* ── MOBILE ── */
 @media (max-width: 600px) {
   /* Reorder game card: guess above photo */
@@ -684,6 +701,10 @@ body.in-game .compact-game-header {
   #guess-input { font-size: 1rem; padding: 10px 12px; }
   .hint-chip   { padding: 7px 10px; }
   .ac-item     { padding: 11px 14px; }
+
+  /* Next button subtitle */
+  .next-btn-sub-desktop { display: none; }
+  .next-btn-sub-mobile  { display: block; }
 }
 
 /* ── GAME DIFFICULTY BADGE (scorebar) ── */

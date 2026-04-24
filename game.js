@@ -29,7 +29,7 @@ const HINT_DEFS = [
     const died = d.died || (d.alive ? "present" : "?");
     return `${born} – ${died}`;
   }},
-  { key: "summary",     label: "First sentence on Wikipedia",  cost: 200, extract: d => d.firstSentence || "…" },
+  { key: "summary",     label: "First sentence on Wikipedia",  cost: 250, extract: d => d.firstSentence || "…" },
 ];
 
 // ============================================================
@@ -83,6 +83,21 @@ function mulberry32(seed) {
 
 function getPSTDateString() {
   return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date());
+}
+
+function showDailySplash() {
+  document.getElementById('daily-splash-date').textContent = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric', year: 'numeric',
+  }).format(new Date());
+  const friendScore = new URLSearchParams(window.location.search).get('s');
+  const scoreEl = document.getElementById('daily-splash-friend-score');
+  if (friendScore) {
+    scoreEl.textContent = `A friend scored ${Number(friendScore).toLocaleString()} — can you beat them?`;
+    scoreEl.style.display = 'block';
+  } else {
+    scoreEl.style.display = 'none';
+  }
+  showScreen('screen-daily');
 }
 
 function startDailyChallenge() {
@@ -550,7 +565,7 @@ function startSeededGameFromRecap(seed, diff) {
 
 function copyDailyUrl(btn) {
   const base = window.location.href.replace(/[?#].*$/, '');
-  navigator.clipboard.writeText(base + '?daily=1').then(() => {
+  navigator.clipboard.writeText(`${base}?daily=1&s=${state.totalScore}`).then(() => {
     const orig = btn.textContent;
     btn.textContent = '✅ Link copied!';
     setTimeout(() => btn.textContent = orig, 1500);
@@ -777,7 +792,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   }).format(new Date());
   const params = new URLSearchParams(window.location.search);
   if (params.get('daily') === '1') {
-    startDailyChallenge();
+    showDailySplash();
   } else if (params.get('seed')) {
     const seed = params.get('seed');
     const diff = params.get('d') || 'easy';
