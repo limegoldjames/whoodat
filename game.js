@@ -600,6 +600,13 @@ function checkSharedResult() {
   } catch(e) { return false; }
 }
 
+function revealRecapAnswers() {
+  const results = document.getElementById('recap-results');
+  const overlay = document.getElementById('recap-reveal-overlay');
+  if (results) { results.style.filter = 'none'; results.style.pointerEvents = 'auto'; }
+  if (overlay) overlay.style.display = 'none';
+}
+
 function renderRecap(data) {
   showScreen('screen-recap');
   const body = document.getElementById('recap-body');
@@ -610,29 +617,42 @@ function renderRecap(data) {
   const recapDiff = data.d || 'easy';
   const recapBadgeText = isRecapDaily ? '⭐ Daily' : recapDiff.charAt(0).toUpperCase() + recapDiff.slice(1);
   const recapDiffColor = isRecapDaily ? '#E6B800' : (recapDiff === 'easy' ? '#2DC653' : '#457B9D');
-  let html = `
+
+  let resultsHtml = '';
+  for (const r of data.r) {
+    resultsHtml += `<div class="result-row ${r.c ? 'r-correct' : 'r-wrong'}">
+      <div class="r-name">${r.c ? '✅' : (r.sk ? '⏭' : '❌')} ${r.n}</div>
+      <div class="r-detail">${r.c ? `+${r.p} pts` : '0 pts'} &nbsp;|&nbsp; ${r.g} guess${r.g!==1?'es':''} &nbsp;|&nbsp; ${r.h} hint${r.h!==1?'s':''}</div>
+    </div>`;
+  }
+
+  const recapSeed = data.seed || null;
+  const playAction = isRecapDaily
+    ? 'startDailyChallenge()'
+    : (recapSeed ? `startSeededGameFromRecap('${recapSeed}','${recapDiff}')` : `startGame()`);
+  const playLabel = isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!';
+
+  body.innerHTML = `
     <div style="text-align:center;margin-bottom:20px;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:6px;">A friend scored</div>
       <div style="font-family:'Alfa Slab One',serif;font-size:3.5rem;color:var(--text-dark);line-height:1;">${data.s}</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;">${grade}</div>
       <div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid ${recapDiffColor};color:${recapDiffColor};">${recapBadgeText}</div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">`;
-  for (const r of data.r) {
-    html += `<div class="result-row ${r.c ? 'r-correct' : 'r-wrong'}">
-      <div class="r-name">${r.c ? '✅' : (r.sk ? '⏭' : '❌')} ${r.n}</div>
-      <div class="r-detail">${r.c ? `+${r.p} pts` : '0 pts'} &nbsp;|&nbsp; ${r.g} guess${r.g!==1?'es':''} &nbsp;|&nbsp; ${r.h} hint${r.h!==1?'s':''}</div>
+
+    <div style="position:relative;margin-bottom:16px;">
+      <div id="recap-results" style="display:flex;flex-direction:column;gap:8px;filter:blur(6px);pointer-events:none;user-select:none;">
+        ${resultsHtml}
+      </div>
+      <div id="recap-reveal-overlay" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <button class="btn btn-blue btn-sm" onclick="revealRecapAnswers()">👁 Reveal Answers</button>
+      </div>
+    </div>
+
+    <div style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:3px;color:#999;text-transform:uppercase;margin-bottom:14px;">— or —</div>
+    <div style="text-align:center;">
+      <button class="btn btn-gold" style="width:100%;" onclick="${playAction}">▶ ${playLabel}</button>
     </div>`;
-  }
-  const recapSeed = data.seed || null;
-  const playAction = isRecapDaily
-    ? 'startDailyChallenge()'
-    : (recapSeed ? `startSeededGameFromRecap('${recapSeed}','${recapDiff}')` : `startGame()`);
-  const playLabel = isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!';
-  html += `</div><div style="text-align:center;">
-    <button class="btn btn-gold" onclick="${playAction}">▶ ${playLabel}</button>
-  </div>`;
-  body.innerHTML = html;
 }
 
 // ============================================================
