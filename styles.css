@@ -662,15 +662,13 @@ body.in-game .compact-game-header {
 }
 .skip-link:hover { color: var(--red); }
 
-/* ── GAME DIFFICULTY BADGE (compact header) ── */
+/* ── GAME DIFFICULTY BADGE (scorebar) ── */
 .game-diff-badge {
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  vertical-align: middle;
-  margin-left: 8px;
 }
 
 /* ── PLAY WITH FRIENDS HOME BUTTON ── */

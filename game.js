@@ -645,6 +645,7 @@ function showScreen(id) {
 
 function goHome() {
   currentSeed = null;
+  history.replaceState(null, '', window.location.pathname);
   document.body.classList.remove('in-game');
   document.getElementById('scorebar').classList.remove('visible');
   showScreen('screen-welcome');
