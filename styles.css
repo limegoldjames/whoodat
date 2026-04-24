@@ -194,6 +194,53 @@ h1 {
   letter-spacing: 1px;
 }
 
+/* ── DIFFICULTY PICKER ── */
+.difficulty-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin: 20px 0 8px;
+}
+.difficulty-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.diff-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 10px 8px;
+  border-radius: 4px;
+  border: 2px solid;
+  background: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+.diff-btn .diff-name {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.diff-btn .diff-desc {
+  font-size: 0.72rem;
+  opacity: 0.75;
+}
+.diff-btn.diff-easy         { border-color: var(--green); color: #1a5c2a; }
+.diff-btn.diff-easy:hover   { background: rgba(45,198,83,0.1); }
+.diff-btn.diff-easy.active  { background: rgba(45,198,83,0.18); }
+.diff-btn.diff-medium         { border-color: var(--blue-light); color: var(--blue); }
+.diff-btn.diff-medium:hover   { background: rgba(69,123,157,0.1); }
+.diff-btn.diff-medium.active  { background: rgba(69,123,157,0.18); }
+.diff-btn.diff-hard { border-color: #bbb; color: #aaa; cursor: not-allowed; opacity: 0.55; }
+
 /* ── GAME SCREEN ── */
 #screen-game .card { padding: 0; }
 

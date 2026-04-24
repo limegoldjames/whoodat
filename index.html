@@ -51,6 +51,21 @@
             Skip a person at the cost of all remaining points for that round.
           </div>
         </div>
+        <div class="difficulty-label">Choose Difficulty</div>
+        <div class="difficulty-picker">
+          <button class="diff-btn diff-easy active" id="diff-easy" onclick="selectDifficulty('easy')">
+            <span class="diff-name">Easy</span>
+            <span class="diff-desc">50 iconic names</span>
+          </button>
+          <button class="diff-btn diff-medium" id="diff-medium" onclick="selectDifficulty('medium')">
+            <span class="diff-name">Medium</span>
+            <span class="diff-desc">150 people</span>
+          </button>
+          <button class="diff-btn diff-hard" id="diff-hard" disabled>
+            <span class="diff-name">Hard</span>
+            <span class="diff-desc">Coming soon</span>
+          </button>
+        </div>
         <div style="background:var(--cream-dark);border-radius:4px;padding:14px 18px;margin-bottom:20px;font-size:0.95rem;color:#333;">
           <strong style="color:var(--blue);">5 rounds</strong> • Starting points per round: <strong style="color:var(--blue);">1,000</strong> • Max score: <strong style="color:var(--blue);">5,000</strong>
         </div>

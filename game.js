@@ -14,6 +14,7 @@ async function loadPeople() {
     name: p.querySelector('name').textContent,
     wiki: p.querySelector('wiki').textContent,
     category: p.querySelector('category').textContent,
+    difficulty: p.getAttribute('difficulty') || 'easy',
   }));
 }
 
@@ -27,6 +28,17 @@ const HINT_DEFS = [
   { key: "died",        label: "Died",             cost: 100, extract: d => d.died || (d.alive ? "Still alive" : "Unknown") },
   { key: "summary",     label: "First Sentence",  cost: 200, extract: d => d.firstSentence || "…" },
 ];
+
+// ============================================================
+// DIFFICULTY
+// ============================================================
+let selectedDifficulty = 'easy';
+
+function selectDifficulty(d) {
+  selectedDifficulty = d;
+  document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('diff-' + d).classList.add('active');
+}
 
 // ============================================================
 // GAME STATE
@@ -177,8 +189,12 @@ function shuffle(arr) {
 }
 
 function startGame() {
-  const indices = shuffle([...Array(PEOPLE.length).keys()]).slice(0, ROUNDS);
+  const pool = selectedDifficulty === 'easy'
+    ? PEOPLE.filter(p => p.difficulty === 'easy')
+    : PEOPLE; // medium includes all 150
+  const indices = shuffle([...Array(pool.length).keys()]).slice(0, ROUNDS);
   state = {
+    pool,
     queue: indices,
     roundIndex: 0,
     roundPoints: START_POINTS,
@@ -196,7 +212,7 @@ function startGame() {
 
 async function loadRound() {
   const personIdx = state.queue[state.roundIndex];
-  state.currentPerson = PEOPLE[personIdx];
+  state.currentPerson = state.pool[personIdx];
   state.roundPoints = START_POINTS;
   state.unlockedHints = {};
   state.wrongGuesses = [];
@@ -459,7 +475,7 @@ guessInput.addEventListener('input', () => {
   const val = guessInput.value.trim().toLowerCase();
   acSelected = -1;
   if (!val || val.length < 2) { closeAutocomplete(); return; }
-  const matches = PEOPLE.map(p => p.name).filter(n => n.toLowerCase().includes(val)).slice(0, 8);
+  const matches = (state.pool || PEOPLE).map(p => p.name).filter(n => n.toLowerCase().includes(val)).slice(0, 8);
   if (!matches.length) { closeAutocomplete(); return; }
   acList.innerHTML = matches.map((m, i) => {
     const re = new RegExp(`(${val.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
