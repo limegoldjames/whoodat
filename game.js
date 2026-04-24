@@ -357,6 +357,12 @@ function endGame() {
   showScreen('screen-end');
 
   document.getElementById('end-score').textContent = state.totalScore;
+  const badge = document.getElementById('end-difficulty-badge');
+  const diffLabel = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
+  const diffColor = selectedDifficulty === 'easy' ? '#2DC653' : '#457B9D';
+  badge.textContent = diffLabel;
+  badge.style.color = diffColor;
+  badge.style.borderColor = diffColor;
   const maxPossible = ROUNDS * START_POINTS;
   const pct = state.totalScore / maxPossible;
   const grades = [
@@ -388,6 +394,7 @@ function endGame() {
 function buildShareData() {
   const payload = {
     s: state.totalScore,
+    d: selectedDifficulty,
     r: state.results.map(r => ({
       n: r.name,
       c: r.correct ? 1 : 0,
@@ -431,11 +438,14 @@ function renderRecap(data) {
   const pct = data.s / (ROUNDS * START_POINTS);
   const grades = [[0.9,'🌟 Legendary!'],[0.7,'🔥 Outstanding!'],[0.5,'👍 Not Bad!'],[0.3,'😬 Keep Practicing'],[0,'💀 Yikes…']];
   const grade = (grades.find(g => pct >= g[0]) || grades[4])[1];
+  const recapDiff = data.d || 'easy';
+  const recapDiffColor = recapDiff === 'easy' ? '#2DC653' : '#457B9D';
   let html = `
     <div style="text-align:center;margin-bottom:20px;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:6px;">A friend scored</div>
       <div style="font-family:'Alfa Slab One',serif;font-size:3.5rem;color:var(--text-dark);line-height:1;">${data.s}</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;">${grade}</div>
+      <div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid ${recapDiffColor};color:${recapDiffColor};">${recapDiff.charAt(0).toUpperCase() + recapDiff.slice(1)}</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">`;
   for (const r of data.r) {
