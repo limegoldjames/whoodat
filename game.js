@@ -40,7 +40,60 @@ let selectedDifficulty = 'easy';
 function selectDifficulty(d) {
   selectedDifficulty = d;
   document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('diff-' + d).classList.add('active');
+  document.querySelectorAll('.diff-' + d).forEach(btn => btn.classList.add('active'));
+  startGame();
+}
+
+// ============================================================
+// DAILY CHALLENGE
+// ============================================================
+function hashStr(str) {
+  let h = 2166136261 >>> 0;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619) >>> 0;
+  }
+  return h;
+}
+
+function mulberry32(seed) {
+  return function() {
+    seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+    let t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+    t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
+}
+
+function getPSTDateString() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date());
+}
+
+function startDailyChallenge() {
+  selectedDifficulty = 'medium';
+  const rng = mulberry32(hashStr(getPSTDateString()));
+  const pool = PEOPLE;
+  const indices = [...Array(pool.length).keys()];
+  for (let i = indices.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [indices[i], indices[j]] = [indices[j], indices[i]];
+  }
+  state = {
+    pool,
+    queue: indices.slice(0, ROUNDS),
+    roundIndex: 0,
+    roundPoints: START_POINTS,
+    totalScore: 0,
+    currentPerson: null,
+    currentData: null,
+    unlockedHints: {},
+    wrongGuesses: [],
+    results: [],
+    isDaily: true,
+  };
+  showScreen('screen-game');
+  document.getElementById('scorebar').classList.add('visible');
+  loadRound();
 }
 
 // ============================================================
@@ -207,6 +260,7 @@ function startGame() {
     unlockedHints: {},
     wrongGuesses: [],
     results: [],
+    isDaily: false,
   };
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
@@ -335,7 +389,10 @@ function skipRound() {
   showFeedback(false, true);
 }
 
+let feedbackShownAt = 0;
+
 function showFeedback(correct, skipped = false) {
+  feedbackShownAt = Date.now();
   const overlay = document.getElementById('feedback-overlay');
   overlay.classList.add('show');
   document.getElementById('feedback-emoji').textContent = correct ? '🎉' : (skipped ? '⏭' : '😅');
@@ -343,14 +400,17 @@ function showFeedback(correct, skipped = false) {
   ft.textContent = correct ? 'Correct!' : (skipped ? 'Skipped!' : 'Out of points!');
   ft.className = `feedback-text ${correct ? 'correct' : 'wrong'}`;
   document.getElementById('feedback-name').textContent = `It was: ${state.currentPerson.name}`;
+  overlay.querySelector('button').focus();
 }
 
 function nextRound() {
+  const overlay = document.getElementById('feedback-overlay');
+  if (!overlay.classList.contains('show')) return;
+  overlay.classList.remove('show');
   state.roundIndex++;
   if (state.roundIndex >= ROUNDS) {
     endGame();
   } else {
-    document.getElementById('feedback-overlay').classList.remove('show');
     loadRound();
   }
 }
@@ -361,11 +421,17 @@ function endGame() {
 
   document.getElementById('end-score').textContent = state.totalScore;
   const badge = document.getElementById('end-difficulty-badge');
-  const diffLabel = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
-  const diffColor = selectedDifficulty === 'easy' ? '#2DC653' : '#457B9D';
-  badge.textContent = diffLabel;
-  badge.style.color = diffColor;
-  badge.style.borderColor = diffColor;
+  if (state.isDaily) {
+    badge.textContent = '⭐ Daily';
+    badge.style.color = '#E6B800';
+    badge.style.borderColor = '#E6B800';
+  } else {
+    const diffLabel = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
+    const diffColor = selectedDifficulty === 'easy' ? '#2DC653' : '#457B9D';
+    badge.textContent = diffLabel;
+    badge.style.color = diffColor;
+    badge.style.borderColor = diffColor;
+  }
   const maxPossible = ROUNDS * START_POINTS;
   const pct = state.totalScore / maxPossible;
   const grades = [
@@ -392,12 +458,25 @@ function endGame() {
   const shareData = buildShareData();
   const shareUrl = window.location.origin + window.location.pathname + '?r=' + shareData;
   document.getElementById('share-copy-btn').dataset.url = shareUrl;
+
+  // Daily challenge share
+  document.getElementById('end-daily-share').style.display = state.isDaily ? 'block' : 'none';
+}
+
+function copyDailyUrl(btn) {
+  const base = window.location.href.replace(/[?#].*$/, '');
+  navigator.clipboard.writeText(base + '?daily=1').then(() => {
+    const orig = btn.textContent;
+    btn.textContent = '✅ Link copied!';
+    setTimeout(() => btn.textContent = orig, 1500);
+  });
 }
 
 function buildShareData() {
   const payload = {
     s: state.totalScore,
     d: selectedDifficulty,
+    dy: state.isDaily ? 1 : 0,
     r: state.results.map(r => ({
       n: r.name,
       c: r.correct ? 1 : 0,
@@ -441,14 +520,16 @@ function renderRecap(data) {
   const pct = data.s / (ROUNDS * START_POINTS);
   const grades = [[0.9,'🌟 Legendary!'],[0.7,'🔥 Outstanding!'],[0.5,'👍 Not Bad!'],[0.3,'😬 Keep Practicing'],[0,'💀 Yikes…']];
   const grade = (grades.find(g => pct >= g[0]) || grades[4])[1];
+  const isRecapDaily = data.dy === 1;
   const recapDiff = data.d || 'easy';
-  const recapDiffColor = recapDiff === 'easy' ? '#2DC653' : '#457B9D';
+  const recapBadgeText = isRecapDaily ? '⭐ Daily' : recapDiff.charAt(0).toUpperCase() + recapDiff.slice(1);
+  const recapDiffColor = isRecapDaily ? '#E6B800' : (recapDiff === 'easy' ? '#2DC653' : '#457B9D');
   let html = `
     <div style="text-align:center;margin-bottom:20px;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:6px;">A friend scored</div>
       <div style="font-family:'Alfa Slab One',serif;font-size:3.5rem;color:var(--text-dark);line-height:1;">${data.s}</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;">${grade}</div>
-      <div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid ${recapDiffColor};color:${recapDiffColor};">${recapDiff.charAt(0).toUpperCase() + recapDiff.slice(1)}</div>
+      <div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid ${recapDiffColor};color:${recapDiffColor};">${recapBadgeText}</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:20px;">`;
   for (const r of data.r) {
@@ -458,7 +539,7 @@ function renderRecap(data) {
     </div>`;
   }
   html += `</div><div style="text-align:center;">
-    <button class="btn btn-gold" onclick="startGame()">▶ Play &amp; Beat Their Score!</button>
+    <button class="btn btn-gold" onclick="${isRecapDaily ? 'startDailyChallenge()' : 'startGame()'}">▶ ${isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!'}</button>
   </div>`;
   body.innerHTML = html;
 }
@@ -469,6 +550,11 @@ function renderRecap(data) {
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+}
+
+function goHome() {
+  document.getElementById('scorebar').classList.remove('visible');
+  showScreen('screen-welcome');
 }
 
 function updateScorebar() {
@@ -535,6 +621,13 @@ document.addEventListener('click', e => {
   if (!e.target.closest('.guess-area')) closeAutocomplete();
 });
 
+document.addEventListener('keydown', () => {
+  if (document.getElementById('feedback-overlay').classList.contains('show')
+      && Date.now() - feedbackShownAt > 400) {
+    nextRound();
+  }
+});
+
 function closeAutocomplete() {
   acList.innerHTML = '';
   acList.classList.remove('open');
@@ -553,7 +646,12 @@ window.addEventListener('DOMContentLoaded', async () => {
       '<div style="background:#E63946;color:#fff;padding:12px;text-align:center;font-family:sans-serif;">Failed to load people.xml — serve this site over HTTP (e.g. <code>python3 -m http.server</code>) rather than opening the file directly.</div>');
     return;
   }
-  if (!checkSharedResult()) {
+  document.getElementById('daily-date').textContent = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles', month: 'long', day: 'numeric', year: 'numeric',
+  }).format(new Date());
+  if (new URLSearchParams(window.location.search).get('daily') === '1') {
+    startDailyChallenge();
+  } else if (!checkSharedResult()) {
     showScreen('screen-welcome');
   }
 });
