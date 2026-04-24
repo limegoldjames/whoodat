@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+  <!-- Scientists & Inventors -->
+  <person><name>Albert Einstein</name><wiki>Albert_Einstein</wiki><category>Scientist</category></person>
+  <person><name>Marie Curie</name><wiki>Marie_Curie</wiki><category>Scientist</category></person>
+  <person><name>Isaac Newton</name><wiki>Isaac_Newton</wiki><category>Scientist</category></person>
+  <person><name>Charles Darwin</name><wiki>Charles_Darwin</wiki><category>Scientist</category></person>
+  <person><name>Nikola Tesla</name><wiki>Nikola_Tesla</wiki><category>Inventor</category></person>
+  <person><name>Thomas Edison</name><wiki>Thomas_Edison</wiki><category>Inventor</category></person>
+  <person><name>Stephen Hawking</name><wiki>Stephen_Hawking</wiki><category>Scientist</category></person>
+  <person><name>Ada Lovelace</name><wiki>Ada_Lovelace</wiki><category>Scientist</category></person>
+
+  <!-- Historical Figures -->
+  <person><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Historical figure</category></person>
+  <person><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Historical figure</category></person>
+  <person><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Historical figure</category></person>
+  <person><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Historical figure</category></person>
+  <person><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Historical figure</category></person>
+  <person><name>Leonardo da Vinci</name><wiki>Leonardo_da_Vinci</wiki><category>Artist / Inventor</category></person>
+  <person><name>Michelangelo</name><wiki>Michelangelo</wiki><category>Artist</category></person>
+
+  <!-- Artists & Writers -->
+  <person><name>William Shakespeare</name><wiki>William_Shakespeare</wiki><category>Writer</category></person>
+  <person><name>Pablo Picasso</name><wiki>Pablo_Picasso</wiki><category>Artist</category></person>
+  <person><name>Vincent van Gogh</name><wiki>Vincent_van_Gogh</wiki><category>Artist</category></person>
+  <person><name>Frida Kahlo</name><wiki>Frida_Kahlo</wiki><category>Artist</category></person>
+  <person><name>Edgar Allan Poe</name><wiki>Edgar_Allan_Poe</wiki><category>Writer</category></person>
+  <person><name>Mark Twain</name><wiki>Mark_Twain</wiki><category>Writer</category></person>
+  <person><name>Jane Austen</name><wiki>Jane_Austen</wiki><category>Writer</category></person>
+  <person><name>Ernest Hemingway</name><wiki>Ernest_Hemingway</wiki><category>Writer</category></person>
+
+  <!-- Politicians & Leaders -->
+  <person><name>Abraham Lincoln</name><wiki>Abraham_Lincoln</wiki><category>President</category></person>
+  <person><name>Winston Churchill</name><wiki>Winston_Churchill</wiki><category>Prime Minister</category></person>
+  <person><name>Nelson Mandela</name><wiki>Nelson_Mandela</wiki><category>President</category></person>
+  <person><name>Mahatma Gandhi</name><wiki>Mahatma_Gandhi</wiki><category>Political leader</category></person>
+  <person><name>George Washington</name><wiki>George_Washington</wiki><category>President</category></person>
+  <person><name>Queen Victoria</name><wiki>Queen_Victoria</wiki><category>Monarch</category></person>
+  <person><name>Franklin D. Roosevelt</name><wiki>Franklin_D._Roosevelt</wiki><category>President</category></person>
+
+  <!-- Athletes -->
+  <person><name>Muhammad Ali</name><wiki>Muhammad_Ali</wiki><category>Boxer</category></person>
+  <person><name>Pelé</name><wiki>Pelé</wiki><category>Footballer</category></person>
+  <person><name>Serena Williams</name><wiki>Serena_Williams</wiki><category>Tennis player</category></person>
+  <person><name>Michael Jordan</name><wiki>Michael_Jordan</wiki><category>Basketball player</category></person>
+  <person><name>Usain Bolt</name><wiki>Usain_Bolt</wiki><category>Sprinter</category></person>
+  <person><name>Jesse Owens</name><wiki>Jesse_Owens</wiki><category>Sprinter</category></person>
+  <person><name>Babe Ruth</name><wiki>Babe_Ruth</wiki><category>Baseball player</category></person>
+
+  <!-- Entertainers & Musicians -->
+  <person><name>Elvis Presley</name><wiki>Elvis_Presley</wiki><category>Musician</category></person>
+  <person><name>Marilyn Monroe</name><wiki>Marilyn_Monroe</wiki><category>Actress</category></person>
+  <person><name>Charlie Chaplin</name><wiki>Charlie_Chaplin</wiki><category>Actor / Filmmaker</category></person>
+  <person><name>Frank Sinatra</name><wiki>Frank_Sinatra</wiki><category>Singer</category></person>
+  <person><name>Freddie Mercury</name><wiki>Freddie_Mercury</wiki><category>Musician</category></person>
+  <person><name>David Bowie</name><wiki>David_Bowie</wiki><category>Musician</category></person>
+  <person><name>Audrey Hepburn</name><wiki>Audrey_Hepburn</wiki><category>Actress</category></person>
+  <person><name>Alfred Hitchcock</name><wiki>Alfred_Hitchcock</wiki><category>Film director</category></person>
+  <person><name>Walt Disney</name><wiki>Walt_Disney</wiki><category>Animator / Producer</category></person>
+
+  <!-- Mixed additional -->
+  <person><name>Sigmund Freud</name><wiki>Sigmund_Freud</wiki><category>Psychologist</category></person>
+  <person><name>Karl Marx</name><wiki>Karl_Marx</wiki><category>Philosopher</category></person>
+  <person><name>Coco Chanel</name><wiki>Coco_Chanel</wiki><category>Fashion designer</category></person>
+  <person><name>Amelia Earhart</name><wiki>Amelia_Earhart</wiki><category>Aviator</category></person>
+</people>

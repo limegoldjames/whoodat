@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WHOODAT?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="h1-wrap">
+      <h1>WHOODAT?</h1>
+      <div class="subtitle">The Famous Faces Challenge</div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker">★ &nbsp; Guess The Icon &nbsp; ★ &nbsp; Use Clues Wisely &nbsp; ★ &nbsp; Beat Your High Score &nbsp; ★ &nbsp; Share Your Results &nbsp; ★</div>
+
+<div id="app">
+
+  <!-- WELCOME SCREEN -->
+  <div id="screen-welcome" class="screen active">
+    <div class="card mt-16">
+      <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);">
+        <h2 style="font-family:'Alfa Slab One',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;">How To Play</h2>
+      </div>
+      <div style="padding:24px 28px 32px">
+        <p style="color:#333;font-size:1.05rem;line-height:1.7;margin-bottom:18px;">
+          A famous face appears on screen — <strong>who is it?</strong> You start with <strong>1,000 points</strong>. Guess correctly to score big. Buy hints to help — but they'll cost you!
+        </p>
+        <div class="rules-grid">
+          <div class="rule-box">
+            <strong>✅ Correct Guess</strong>
+            Keep remaining points. Bonus for guessing fast!
+          </div>
+          <div class="rule-box">
+            <strong>❌ Wrong Guess</strong>
+            −50 points per wrong answer.
+          </div>
+          <div class="rule-box">
+            <strong>💡 Buy a Hint</strong>
+            Unlock clues: nationality, era, field &amp; more.
+          </div>
+          <div class="rule-box">
+            <strong>⏭ Skip</strong>
+            Skip a person at the cost of all remaining points for that round.
+          </div>
+        </div>
+        <div style="background:var(--cream-dark);border-radius:4px;padding:14px 18px;margin-bottom:20px;font-size:0.95rem;color:#333;">
+          <strong style="color:var(--blue);">5 rounds</strong> • Starting points per round: <strong style="color:var(--blue);">1,000</strong> • Max score: <strong style="color:var(--blue);">5,000</strong>
+        </div>
+        <div class="text-center">
+          <button class="btn btn-gold" onclick="startGame()">▶ Start Game</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GAME SCREEN -->
+  <div id="screen-game" class="screen">
+    <div id="scorebar">
+      <div class="score-item">Round <span id="sb-round">1</span>/5</div>
+      <div class="score-item">Points This Round: <span id="sb-pts">1000</span></div>
+      <div class="score-item">Total: <span id="sb-total">0</span></div>
+    </div>
+
+    <div class="card" style="position:relative;">
+      <div class="photo-section">
+        <div class="photo-loading" id="photo-loading">Loading…</div>
+        <img id="person-photo" src="" alt="Who is this?" style="display:none;" />
+        <div class="round-badge" id="round-badge">Round 1 / 5</div>
+      </div>
+      <div id="feedback-overlay">
+        <div class="feedback-emoji" id="feedback-emoji">🎉</div>
+        <div class="feedback-text" id="feedback-text">Correct!</div>
+        <div class="feedback-name" id="feedback-name"></div>
+        <button class="btn btn-gold" onclick="nextRound()">Next Person ▶</button>
+      </div>
+      <div class="game-body">
+        <div class="hints-label">Unlock Hints</div>
+        <div class="hints-grid" id="hints-grid"></div>
+        <div class="guess-label">Your Guess</div>
+        <div class="guess-area">
+          <input type="text" id="guess-input" placeholder="Start typing a name…" autocomplete="off" />
+          <button class="btn btn-gold btn-sm" onclick="submitGuess()" style="white-space:nowrap;">Guess!</button>
+          <div id="autocomplete-list"></div>
+        </div>
+        <div class="wrong-guesses" id="wrong-guesses"></div>
+        <button class="skip-link" onclick="skipRound()">⏭ Skip this person (forfeit round points)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- END SCREEN -->
+  <div id="screen-end" class="screen">
+    <div class="card mt-16">
+      <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);">
+        <div class="end-title">Game Over!</div>
+      </div>
+      <div style="padding:24px 28px 32px;text-align:center;">
+        <div class="final-score-block">
+          <div class="final-score-label">Final Score</div>
+          <div class="final-score-value" id="end-score">0</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--gold);letter-spacing:2px;" id="end-grade"></div>
+        </div>
+        <div class="results-list" id="results-list"></div>
+        <div class="share-box">
+          <label>🔗 Share Your Score</label>
+          <button class="btn btn-blue btn-sm" id="share-copy-btn" onclick="copyShareUrl()">📋 Copy Share Link</button>
+        </div>
+        <div class="end-actions">
+          <button class="btn btn-gold" onclick="startGame()">▶ Play Again</button>
+          <button class="btn btn-blue" onclick="showScreen('screen-welcome')">🏠 Home</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECAP SCREEN (shared URL) -->
+  <div id="screen-recap" class="screen">
+    <div class="card mt-16">
+      <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);">
+        <h2>Shared Result</h2>
+      </div>
+      <div style="padding:24px 28px 32px;" id="recap-body"></div>
+    </div>
+  </div>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>
