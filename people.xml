@@ -1,66 +1,189 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <people>
+
+  <!-- ═══════════════════════════════════════════ EASY (50) ═══ -->
+
   <!-- Scientists & Inventors -->
-  <person><name>Albert Einstein</name><wiki>Albert_Einstein</wiki><category>Scientist</category></person>
-  <person><name>Marie Curie</name><wiki>Marie_Curie</wiki><category>Scientist</category></person>
-  <person><name>Isaac Newton</name><wiki>Isaac_Newton</wiki><category>Scientist</category></person>
-  <person><name>Charles Darwin</name><wiki>Charles_Darwin</wiki><category>Scientist</category></person>
-  <person><name>Nikola Tesla</name><wiki>Nikola_Tesla</wiki><category>Inventor</category></person>
-  <person><name>Thomas Edison</name><wiki>Thomas_Edison</wiki><category>Inventor</category></person>
-  <person><name>Stephen Hawking</name><wiki>Stephen_Hawking</wiki><category>Scientist</category></person>
-  <person><name>Ada Lovelace</name><wiki>Ada_Lovelace</wiki><category>Scientist</category></person>
+  <person difficulty="easy"><name>Albert Einstein</name><wiki>Albert_Einstein</wiki><category>Physicist</category></person>
+  <person difficulty="easy"><name>Marie Curie</name><wiki>Marie_Curie</wiki><category>Scientist</category></person>
+  <person difficulty="easy"><name>Isaac Newton</name><wiki>Isaac_Newton</wiki><category>Physicist</category></person>
+  <person difficulty="easy"><name>Charles Darwin</name><wiki>Charles_Darwin</wiki><category>Naturalist</category></person>
+  <person difficulty="easy"><name>Nikola Tesla</name><wiki>Nikola_Tesla</wiki><category>Inventor</category></person>
+  <person difficulty="easy"><name>Thomas Edison</name><wiki>Thomas_Edison</wiki><category>Inventor</category></person>
+  <person difficulty="easy"><name>Stephen Hawking</name><wiki>Stephen_Hawking</wiki><category>Physicist</category></person>
+  <person difficulty="easy"><name>Ada Lovelace</name><wiki>Ada_Lovelace</wiki><category>Mathematician</category></person>
 
   <!-- Historical Figures -->
-  <person><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Historical figure</category></person>
-  <person><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Historical figure</category></person>
-  <person><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Historical figure</category></person>
-  <person><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Historical figure</category></person>
-  <person><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Historical figure</category></person>
-  <person><name>Leonardo da Vinci</name><wiki>Leonardo_da_Vinci</wiki><category>Artist / Inventor</category></person>
-  <person><name>Michelangelo</name><wiki>Michelangelo</wiki><category>Artist</category></person>
+  <person difficulty="easy"><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Military leader</category></person>
+  <person difficulty="easy"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
+  <person difficulty="easy"><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Military leader</category></person>
+  <person difficulty="easy"><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Warlord</category></person>
+  <person difficulty="easy"><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Military leader</category></person>
+  <person difficulty="easy"><name>Leonardo da Vinci</name><wiki>Leonardo_da_Vinci</wiki><category>Artist / Inventor</category></person>
+  <person difficulty="easy"><name>Michelangelo</name><wiki>Michelangelo</wiki><category>Artist</category></person>
 
   <!-- Artists & Writers -->
-  <person><name>William Shakespeare</name><wiki>William_Shakespeare</wiki><category>Writer</category></person>
-  <person><name>Pablo Picasso</name><wiki>Pablo_Picasso</wiki><category>Artist</category></person>
-  <person><name>Vincent van Gogh</name><wiki>Vincent_van_Gogh</wiki><category>Artist</category></person>
-  <person><name>Frida Kahlo</name><wiki>Frida_Kahlo</wiki><category>Artist</category></person>
-  <person><name>Edgar Allan Poe</name><wiki>Edgar_Allan_Poe</wiki><category>Writer</category></person>
-  <person><name>Mark Twain</name><wiki>Mark_Twain</wiki><category>Writer</category></person>
-  <person><name>Jane Austen</name><wiki>Jane_Austen</wiki><category>Writer</category></person>
-  <person><name>Ernest Hemingway</name><wiki>Ernest_Hemingway</wiki><category>Writer</category></person>
+  <person difficulty="easy"><name>William Shakespeare</name><wiki>William_Shakespeare</wiki><category>Writer</category></person>
+  <person difficulty="easy"><name>Pablo Picasso</name><wiki>Pablo_Picasso</wiki><category>Artist</category></person>
+  <person difficulty="easy"><name>Vincent van Gogh</name><wiki>Vincent_van_Gogh</wiki><category>Artist</category></person>
+  <person difficulty="easy"><name>Frida Kahlo</name><wiki>Frida_Kahlo</wiki><category>Artist</category></person>
+  <person difficulty="easy"><name>Edgar Allan Poe</name><wiki>Edgar_Allan_Poe</wiki><category>Writer</category></person>
+  <person difficulty="easy"><name>Mark Twain</name><wiki>Mark_Twain</wiki><category>Writer</category></person>
+  <person difficulty="easy"><name>Jane Austen</name><wiki>Jane_Austen</wiki><category>Writer</category></person>
+  <person difficulty="easy"><name>Ernest Hemingway</name><wiki>Ernest_Hemingway</wiki><category>Writer</category></person>
 
   <!-- Politicians & Leaders -->
-  <person><name>Abraham Lincoln</name><wiki>Abraham_Lincoln</wiki><category>President</category></person>
-  <person><name>Winston Churchill</name><wiki>Winston_Churchill</wiki><category>Prime Minister</category></person>
-  <person><name>Nelson Mandela</name><wiki>Nelson_Mandela</wiki><category>President</category></person>
-  <person><name>Mahatma Gandhi</name><wiki>Mahatma_Gandhi</wiki><category>Political leader</category></person>
-  <person><name>George Washington</name><wiki>George_Washington</wiki><category>President</category></person>
-  <person><name>Queen Victoria</name><wiki>Queen_Victoria</wiki><category>Monarch</category></person>
-  <person><name>Franklin D. Roosevelt</name><wiki>Franklin_D._Roosevelt</wiki><category>President</category></person>
+  <person difficulty="easy"><name>Abraham Lincoln</name><wiki>Abraham_Lincoln</wiki><category>President</category></person>
+  <person difficulty="easy"><name>Winston Churchill</name><wiki>Winston_Churchill</wiki><category>Prime Minister</category></person>
+  <person difficulty="easy"><name>Nelson Mandela</name><wiki>Nelson_Mandela</wiki><category>President</category></person>
+  <person difficulty="easy"><name>Mahatma Gandhi</name><wiki>Mahatma_Gandhi</wiki><category>Political leader</category></person>
+  <person difficulty="easy"><name>George Washington</name><wiki>George_Washington</wiki><category>President</category></person>
+  <person difficulty="easy"><name>Queen Victoria</name><wiki>Queen_Victoria</wiki><category>Monarch</category></person>
+  <person difficulty="easy"><name>Franklin D. Roosevelt</name><wiki>Franklin_D._Roosevelt</wiki><category>President</category></person>
 
   <!-- Athletes -->
-  <person><name>Muhammad Ali</name><wiki>Muhammad_Ali</wiki><category>Boxer</category></person>
-  <person><name>Pelé</name><wiki>Pelé</wiki><category>Footballer</category></person>
-  <person><name>Serena Williams</name><wiki>Serena_Williams</wiki><category>Tennis player</category></person>
-  <person><name>Michael Jordan</name><wiki>Michael_Jordan</wiki><category>Basketball player</category></person>
-  <person><name>Usain Bolt</name><wiki>Usain_Bolt</wiki><category>Sprinter</category></person>
-  <person><name>Jesse Owens</name><wiki>Jesse_Owens</wiki><category>Sprinter</category></person>
-  <person><name>Babe Ruth</name><wiki>Babe_Ruth</wiki><category>Baseball player</category></person>
+  <person difficulty="easy"><name>Muhammad Ali</name><wiki>Muhammad_Ali</wiki><category>Boxer</category></person>
+  <person difficulty="easy"><name>Pelé</name><wiki>Pelé</wiki><category>Footballer</category></person>
+  <person difficulty="easy"><name>Serena Williams</name><wiki>Serena_Williams</wiki><category>Tennis player</category></person>
+  <person difficulty="easy"><name>Michael Jordan</name><wiki>Michael_Jordan</wiki><category>Basketball player</category></person>
+  <person difficulty="easy"><name>Usain Bolt</name><wiki>Usain_Bolt</wiki><category>Sprinter</category></person>
+  <person difficulty="easy"><name>Jesse Owens</name><wiki>Jesse_Owens</wiki><category>Sprinter</category></person>
+  <person difficulty="easy"><name>Babe Ruth</name><wiki>Babe_Ruth</wiki><category>Baseball player</category></person>
 
   <!-- Entertainers & Musicians -->
-  <person><name>Elvis Presley</name><wiki>Elvis_Presley</wiki><category>Musician</category></person>
-  <person><name>Marilyn Monroe</name><wiki>Marilyn_Monroe</wiki><category>Actress</category></person>
-  <person><name>Charlie Chaplin</name><wiki>Charlie_Chaplin</wiki><category>Actor / Filmmaker</category></person>
-  <person><name>Frank Sinatra</name><wiki>Frank_Sinatra</wiki><category>Singer</category></person>
-  <person><name>Freddie Mercury</name><wiki>Freddie_Mercury</wiki><category>Musician</category></person>
-  <person><name>David Bowie</name><wiki>David_Bowie</wiki><category>Musician</category></person>
-  <person><name>Audrey Hepburn</name><wiki>Audrey_Hepburn</wiki><category>Actress</category></person>
-  <person><name>Alfred Hitchcock</name><wiki>Alfred_Hitchcock</wiki><category>Film director</category></person>
-  <person><name>Walt Disney</name><wiki>Walt_Disney</wiki><category>Animator / Producer</category></person>
+  <person difficulty="easy"><name>Elvis Presley</name><wiki>Elvis_Presley</wiki><category>Musician</category></person>
+  <person difficulty="easy"><name>Marilyn Monroe</name><wiki>Marilyn_Monroe</wiki><category>Actress</category></person>
+  <person difficulty="easy"><name>Charlie Chaplin</name><wiki>Charlie_Chaplin</wiki><category>Actor / Filmmaker</category></person>
+  <person difficulty="easy"><name>Frank Sinatra</name><wiki>Frank_Sinatra</wiki><category>Singer</category></person>
+  <person difficulty="easy"><name>Freddie Mercury</name><wiki>Freddie_Mercury</wiki><category>Musician</category></person>
+  <person difficulty="easy"><name>David Bowie</name><wiki>David_Bowie</wiki><category>Musician</category></person>
+  <person difficulty="easy"><name>Audrey Hepburn</name><wiki>Audrey_Hepburn</wiki><category>Actress</category></person>
+  <person difficulty="easy"><name>Alfred Hitchcock</name><wiki>Alfred_Hitchcock</wiki><category>Film director</category></person>
+  <person difficulty="easy"><name>Walt Disney</name><wiki>Walt_Disney</wiki><category>Animator / Producer</category></person>
 
-  <!-- Mixed additional -->
-  <person><name>Sigmund Freud</name><wiki>Sigmund_Freud</wiki><category>Psychologist</category></person>
-  <person><name>Karl Marx</name><wiki>Karl_Marx</wiki><category>Philosopher</category></person>
-  <person><name>Coco Chanel</name><wiki>Coco_Chanel</wiki><category>Fashion designer</category></person>
-  <person><name>Amelia Earhart</name><wiki>Amelia_Earhart</wiki><category>Aviator</category></person>
+  <!-- Mixed -->
+  <person difficulty="easy"><name>Sigmund Freud</name><wiki>Sigmund_Freud</wiki><category>Psychologist</category></person>
+  <person difficulty="easy"><name>Karl Marx</name><wiki>Karl_Marx</wiki><category>Philosopher</category></person>
+  <person difficulty="easy"><name>Coco Chanel</name><wiki>Coco_Chanel</wiki><category>Fashion designer</category></person>
+  <person difficulty="easy"><name>Amelia Earhart</name><wiki>Amelia_Earhart</wiki><category>Aviator</category></person>
+
+
+  <!-- ════════════════════════════════════════ MEDIUM (100) ═══ -->
+
+  <!-- Scientists & Inventors -->
+  <person difficulty="medium"><name>Galileo Galilei</name><wiki>Galileo_Galilei</wiki><category>Astronomer</category></person>
+  <person difficulty="medium"><name>Alan Turing</name><wiki>Alan_Turing</wiki><category>Computer scientist</category></person>
+  <person difficulty="medium"><name>Richard Feynman</name><wiki>Richard_Feynman</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Carl Sagan</name><wiki>Carl_Sagan</wiki><category>Astronomer</category></person>
+  <person difficulty="medium"><name>Louis Pasteur</name><wiki>Louis_Pasteur</wiki><category>Scientist</category></person>
+  <person difficulty="medium"><name>Alexander Fleming</name><wiki>Alexander_Fleming</wiki><category>Scientist</category></person>
+  <person difficulty="medium"><name>Rosalind Franklin</name><wiki>Rosalind_Franklin</wiki><category>Chemist</category></person>
+  <person difficulty="medium"><name>Gregor Mendel</name><wiki>Gregor_Mendel</wiki><category>Botanist</category></person>
+  <person difficulty="medium"><name>Edwin Hubble</name><wiki>Edwin_Hubble</wiki><category>Astronomer</category></person>
+  <person difficulty="medium"><name>Niels Bohr</name><wiki>Niels_Bohr</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Archimedes</name><wiki>Archimedes</wiki><category>Mathematician</category></person>
+  <person difficulty="medium"><name>Nicolaus Copernicus</name><wiki>Nicolaus_Copernicus</wiki><category>Astronomer</category></person>
+  <person difficulty="medium"><name>James Watt</name><wiki>James_Watt</wiki><category>Inventor</category></person>
+  <person difficulty="medium"><name>Lise Meitner</name><wiki>Lise_Meitner</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Max Planck</name><wiki>Max_Planck</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Ernest Rutherford</name><wiki>Ernest_Rutherford</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Michael Faraday</name><wiki>Michael_Faraday</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>Neil Armstrong</name><wiki>Neil_Armstrong</wiki><category>Astronaut</category></person>
+  <person difficulty="medium"><name>Werner Heisenberg</name><wiki>Werner_Heisenberg</wiki><category>Physicist</category></person>
+  <person difficulty="medium"><name>James Clerk Maxwell</name><wiki>James_Clerk_Maxwell</wiki><category>Physicist</category></person>
+
+  <!-- Historical Figures & Leaders -->
+  <person difficulty="medium"><name>Alexander the Great</name><wiki>Alexander_the_Great</wiki><category>Military commander</category></person>
+  <person difficulty="medium"><name>Attila the Hun</name><wiki>Attila</wiki><category>Warlord</category></person>
+  <person difficulty="medium"><name>Marco Polo</name><wiki>Marco_Polo</wiki><category>Explorer</category></person>
+  <person difficulty="medium"><name>Christopher Columbus</name><wiki>Christopher_Columbus</wiki><category>Explorer</category></person>
+  <person difficulty="medium"><name>Catherine the Great</name><wiki>Catherine_the_Great</wiki><category>Empress</category></person>
+  <person difficulty="medium"><name>Queen Elizabeth I</name><wiki>Elizabeth_I</wiki><category>Monarch</category></person>
+  <person difficulty="medium"><name>Queen Elizabeth II</name><wiki>Elizabeth_II</wiki><category>Monarch</category></person>
+  <person difficulty="medium"><name>Martin Luther</name><wiki>Martin_Luther</wiki><category>Theologian</category></person>
+  <person difficulty="medium"><name>Che Guevara</name><wiki>Che_Guevara</wiki><category>Revolutionary</category></person>
+  <person difficulty="medium"><name>Margaret Thatcher</name><wiki>Margaret_Thatcher</wiki><category>Prime Minister</category></person>
+  <person difficulty="medium"><name>John F. Kennedy</name><wiki>John_F._Kennedy</wiki><category>President</category></person>
+  <person difficulty="medium"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
+  <person difficulty="medium"><name>Joseph Stalin</name><wiki>Joseph_Stalin</wiki><category>Political leader</category></person>
+  <person difficulty="medium"><name>Thomas Jefferson</name><wiki>Thomas_Jefferson</wiki><category>President</category></person>
+  <person difficulty="medium"><name>Theodore Roosevelt</name><wiki>Theodore_Roosevelt</wiki><category>President</category></person>
+  <person difficulty="medium"><name>Vladimir Lenin</name><wiki>Vladimir_Lenin</wiki><category>Revolutionary</category></person>
+  <person difficulty="medium"><name>Fidel Castro</name><wiki>Fidel_Castro</wiki><category>Political leader</category></person>
+  <person difficulty="medium"><name>Simón Bolívar</name><wiki>Simón_Bolívar</wiki><category>Revolutionary</category></person>
+  <person difficulty="medium"><name>Martin Luther King Jr.</name><wiki>Martin_Luther_King_Jr.</wiki><category>Civil rights leader</category></person>
+  <person difficulty="medium"><name>Harriet Tubman</name><wiki>Harriet_Tubman</wiki><category>Abolitionist</category></person>
+
+  <!-- Musicians -->
+  <person difficulty="medium"><name>John Lennon</name><wiki>John_Lennon</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Paul McCartney</name><wiki>Paul_McCartney</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Michael Jackson</name><wiki>Michael_Jackson</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Bob Dylan</name><wiki>Bob_Dylan</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Jimi Hendrix</name><wiki>Jimi_Hendrix</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Whitney Houston</name><wiki>Whitney_Houston</wiki><category>Singer</category></person>
+  <person difficulty="medium"><name>Madonna</name><wiki>Madonna_(entertainer)</wiki><category>Singer</category></person>
+  <person difficulty="medium"><name>Aretha Franklin</name><wiki>Aretha_Franklin</wiki><category>Singer</category></person>
+  <person difficulty="medium"><name>Bob Marley</name><wiki>Bob_Marley</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Louis Armstrong</name><wiki>Louis_Armstrong</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Miles Davis</name><wiki>Miles_Davis</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Jim Morrison</name><wiki>Jim_Morrison</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Kurt Cobain</name><wiki>Kurt_Cobain</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Elton John</name><wiki>Elton_John</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Prince</name><wiki>Prince_(musician)</wiki><category>Musician</category></person>
+  <person difficulty="medium"><name>Tina Turner</name><wiki>Tina_Turner</wiki><category>Singer</category></person>
+  <person difficulty="medium"><name>Stevie Wonder</name><wiki>Stevie_Wonder</wiki><category>Musician</category></person>
+
+  <!-- Actors & Filmmakers -->
+  <person difficulty="medium"><name>Marlon Brando</name><wiki>Marlon_Brando</wiki><category>Actor</category></person>
+  <person difficulty="medium"><name>James Dean</name><wiki>James_Dean</wiki><category>Actor</category></person>
+  <person difficulty="medium"><name>Humphrey Bogart</name><wiki>Humphrey_Bogart</wiki><category>Actor</category></person>
+  <person difficulty="medium"><name>Grace Kelly</name><wiki>Grace_Kelly</wiki><category>Actress</category></person>
+  <person difficulty="medium"><name>Cary Grant</name><wiki>Cary_Grant</wiki><category>Actor</category></person>
+  <person difficulty="medium"><name>Orson Welles</name><wiki>Orson_Welles</wiki><category>Filmmaker</category></person>
+  <person difficulty="medium"><name>Ingrid Bergman</name><wiki>Ingrid_Bergman</wiki><category>Actress</category></person>
+  <person difficulty="medium"><name>Clark Gable</name><wiki>Clark_Gable</wiki><category>Actor</category></person>
+
+  <!-- Writers -->
+  <person difficulty="medium"><name>Charles Dickens</name><wiki>Charles_Dickens</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Leo Tolstoy</name><wiki>Leo_Tolstoy</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Fyodor Dostoevsky</name><wiki>Fyodor_Dostoevsky</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>George Orwell</name><wiki>George_Orwell</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Franz Kafka</name><wiki>Franz_Kafka</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Virginia Woolf</name><wiki>Virginia_Woolf</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Oscar Wilde</name><wiki>Oscar_Wilde</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Arthur Conan Doyle</name><wiki>Arthur_Conan_Doyle</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Agatha Christie</name><wiki>Agatha_Christie</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>J.R.R. Tolkien</name><wiki>J._R._R._Tolkien</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Victor Hugo</name><wiki>Victor_Hugo</wiki><category>Writer</category></person>
+  <person difficulty="medium"><name>Alexandre Dumas</name><wiki>Alexandre_Dumas</wiki><category>Writer</category></person>
+
+  <!-- Artists -->
+  <person difficulty="medium"><name>Rembrandt</name><wiki>Rembrandt</wiki><category>Artist</category></person>
+  <person difficulty="medium"><name>Salvador Dalí</name><wiki>Salvador_Dalí</wiki><category>Artist</category></person>
+
+  <!-- Philosophers -->
+  <person difficulty="medium"><name>Plato</name><wiki>Plato</wiki><category>Philosopher</category></person>
+  <person difficulty="medium"><name>Aristotle</name><wiki>Aristotle</wiki><category>Philosopher</category></person>
+  <person difficulty="medium"><name>Voltaire</name><wiki>Voltaire</wiki><category>Philosopher</category></person>
+  <person difficulty="medium"><name>Friedrich Nietzsche</name><wiki>Friedrich_Nietzsche</wiki><category>Philosopher</category></person>
+  <person difficulty="medium"><name>Immanuel Kant</name><wiki>Immanuel_Kant</wiki><category>Philosopher</category></person>
+  <person difficulty="medium"><name>René Descartes</name><wiki>René_Descartes</wiki><category>Philosopher</category></person>
+
+  <!-- Athletes -->
+  <person difficulty="medium"><name>LeBron James</name><wiki>LeBron_James</wiki><category>Basketball player</category></person>
+  <person difficulty="medium"><name>Tiger Woods</name><wiki>Tiger_Woods</wiki><category>Golfer</category></person>
+  <person difficulty="medium"><name>Roger Federer</name><wiki>Roger_Federer</wiki><category>Tennis player</category></person>
+  <person difficulty="medium"><name>Cristiano Ronaldo</name><wiki>Cristiano_Ronaldo</wiki><category>Footballer</category></person>
+  <person difficulty="medium"><name>Lionel Messi</name><wiki>Lionel_Messi</wiki><category>Footballer</category></person>
+  <person difficulty="medium"><name>Diego Maradona</name><wiki>Diego_Maradona</wiki><category>Footballer</category></person>
+  <person difficulty="medium"><name>Ayrton Senna</name><wiki>Ayrton_Senna</wiki><category>Racing driver</category></person>
+  <person difficulty="medium"><name>Michael Schumacher</name><wiki>Michael_Schumacher</wiki><category>Racing driver</category></person>
+  <person difficulty="medium"><name>Jackie Robinson</name><wiki>Jackie_Robinson</wiki><category>Baseball player</category></person>
+  <person difficulty="medium"><name>Jim Thorpe</name><wiki>Jim_Thorpe</wiki><category>Athlete</category></person>
+  <person difficulty="medium"><name>Wayne Gretzky</name><wiki>Wayne_Gretzky</wiki><category>Ice hockey player</category></person>
+  <person difficulty="medium"><name>Mike Tyson</name><wiki>Mike_Tyson</wiki><category>Boxer</category></person>
+  <person difficulty="medium"><name>Steffi Graf</name><wiki>Steffi_Graf</wiki><category>Tennis player</category></person>
+  <person difficulty="medium"><name>Martina Navratilova</name><wiki>Martina_Navratilova</wiki><category>Tennis player</category></person>
+  <person difficulty="medium"><name>Carl Lewis</name><wiki>Carl_Lewis</wiki><category>Sprinter</category></person>
+
 </people>
