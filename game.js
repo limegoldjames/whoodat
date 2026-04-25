@@ -17,7 +17,9 @@ async function loadPeople() {
     born:        p.getAttribute('born')        || null,
     died:        p.getAttribute('died')        || null,
     alive:       p.getAttribute('alive')       === 'true',
-    nationality: p.getAttribute('nationality') || null,
+    nationality:  p.getAttribute('nationality')  || null,
+    imgOverride:  p.getAttribute('img')          || null,
+    fact:         p.querySelector('fact')?.textContent || null,
   }));
 }
 
@@ -41,9 +43,12 @@ const HINT_DEFS = [
       return `${born} – ${died}`;
     },
     hasData: d => d && (d.born !== null || d.died !== null || d.alive) },
-  { key: "summary",     label: "First sentence on Wikipedia", cost: 250,
+  { key: "summary",     label: "First sentence on Wikipedia", cost: 200,
     extract: d => d.firstSentence || "…",
     hasData: d => d && d.firstSentence && d.firstSentence !== '…' && d.firstSentence !== 'No summary available.' },
+  { key: "fact",        label: "Hint",                        cost: 250,
+    extract: d => d.fact || "…",
+    hasData: d => !!d?.fact },
 ];
 
 // ============================================================
@@ -165,19 +170,21 @@ async function fetchWikiData(person) {
     const data = {
       name: person.name,
       category: person.category,
-      imageUrl: json.thumbnail?.source || json.originalimage?.source || null,
+      imageUrl: person.imgOverride || json.thumbnail?.source || json.originalimage?.source || null,
       extract: json.extract || "",
       firstSentence: pickBioSnippet(json.extract || "", person.name, json.extract_html || ""),
       born: null,
       died: null,
       alive: false,
       nationality: null,
+      fact: person.fact || null,
     };
     // Parse birth/death from description or extract
     const desc = (json.description || "") + " " + (json.extract || "");
     const bornMatch = desc.match(/born\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
     const diedMatch = desc.match(/died\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
-    const yrMatch = desc.match(/(\d{4})[\s\-–](\d{4}|\bpresent\b)/i);
+    // Require parentheses to avoid matching tenure years like "from 2001 to 2009"
+    const yrMatch = desc.match(/\((\d{4})[\s\-–](\d{4}|\bpresent\b)\)/i);
     if (bornMatch) data.born = bornMatch[1];
     else if (yrMatch) data.born = yrMatch[1];
     if (diedMatch) data.died = diedMatch[1];
@@ -194,10 +201,11 @@ async function fetchWikiData(person) {
     return {
       name: person.name,
       category: person.category,
-      imageUrl: null,
+      imageUrl: person.imgOverride || null,
       extract: "",
       firstSentence: "No summary available.",
       born: null, died: null, alive: false, nationality: null,
+      fact: person.fact || null,
     };
   }
 }
@@ -231,7 +239,19 @@ function extractInitials(name) {
 const REDACTION_LIMIT = 0.4;
 
 function pickBioSnippet(extract, personName, extractHtml) {
-  const parts = extract.split(/\. /);
+  // Merge fragments split by initials (e.g. "J." in "J. Robert Oppenheimer")
+  const rawParts = extract.split(/\. /);
+  const parts = [];
+  let acc = '';
+  for (const p of rawParts) {
+    acc = acc ? acc + '. ' + p : p;
+    if (acc.replace(/\(.*?\)/g, '').trim().length >= 30) {
+      parts.push(acc);
+      acc = '';
+    }
+  }
+  if (acc) parts.push(acc);
+
   for (let i = 0; i < Math.min(parts.length, 3); i++) {
     const cleaned = parts[i].replace(/\(.*?\)/g, "").trim();
     if (!cleaned) continue;
@@ -253,20 +273,34 @@ function redactionRatio(text) {
 // Replace every token of the subject's name(s) with a block. Uses Wikipedia's
 // <b>…</b> spans to catch birth names, nicknames, aliases not present in our
 // stored name (e.g. "Gabrielle Bonheur" / "Coco" for Coco Chanel).
+const REDACT_SKIP = new Set(['of','the','de','da','von','van','el','al','le','la','bin','bint','in','at','to','by','on','and','or','du','des','di','del','dos','das']);
+
 function redactNames(sentence, personName, extractHtml) {
   const tokens = new Set();
   const addTokens = str => {
-    str.replace(/<[^>]+>/g, ' ')
-       .replace(/[\"'“”‘’„«»]/g, ' ')
-       .replace(/\(.*?\)/g, ' ')
+    str.replace(/<[^>]+>/g, ‘ ‘)
+       .replace(/[\”’””’’„«»]/g, ‘ ‘)
+       .replace(/\(.*?\)/g, ‘ ‘)
        .split(/\s+/)
-       .map(t => t.replace(/[,.;:!?]+$/, ''))
-       .filter(t => t.length >= 2)
+       .map(t => { const s = t.replace(/[,.;:!?]+$/, ''); return s.length >= 2 ? s : t; })
+       .filter(t => t.length >= 2 && !REDACT_SKIP.has(t.toLowerCase()))
        .forEach(t => tokens.add(t));
   };
   addTokens(personName);
-  const boldSpans = [...extractHtml.matchAll(/<b[^>]*>([\s\S]*?)<\/b>/gi)].map(m => m[1]);
-  boldSpans.forEach(addTokens);
+  // Only use bold spans from the first sentence — birth/maiden names live there,
+  // but epithets like "Queen of All Media" appear in later sentences.
+  const plainText = extractHtml.replace(/<[^>]+>/g, '');
+  const plainParts = plainText.split(/\. /);
+  let sentLen = 0, sentAcc = '';
+  for (const p of plainParts) {
+    sentAcc = sentAcc ? sentAcc + '. ' + p : p;
+    sentLen = sentAcc.length;
+    if (sentAcc.length >= 30) break;
+  }
+  for (const m of extractHtml.matchAll(/<b[^>]*>([\s\S]*?)<\/b>/gi)) {
+    const plainStart = extractHtml.slice(0, m.index).replace(/<[^>]+>/g, '').length;
+    if (plainStart <= sentLen) addTokens(m[1]);
+  }
 
   let result = sentence;
   const BLOCK = '█████';
@@ -392,7 +426,7 @@ function renderHints(data) {
   for (const hint of HINT_DEFS) {
     const chip = document.createElement('div');
     const unlocked = !!state.unlockedHints[hint.key];
-    const wide = hint.key === 'summary' ? ' hint-chip-wide' : '';
+    const wide = (hint.key === 'summary' || hint.key === 'fact') ? ' hint-chip-wide' : '';
     chip.className = `hint-chip ${unlocked ? 'unlocked' : 'locked'}${wide}`;
     const dataReady = hint.hasData(data);
     if (unlocked && data) {

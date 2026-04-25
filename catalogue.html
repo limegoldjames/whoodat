@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>whoodat — catalogue</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, sans-serif;
+    background: #0d1117;
+    color: #e6edf3;
+    min-height: 100vh;
+  }
+
+  /* ── header ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: #161b22;
+    border-bottom: 1px solid #30363d;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .topbar-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f0b429;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+  .search-wrap {
+    position: relative;
+    flex: 1;
+    max-width: 380px;
+  }
+  .search-wrap input {
+    width: 100%;
+    padding: 7px 12px;
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    color: #e6edf3;
+    font-size: 0.875rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .search-wrap input:focus { border-color: #58a6ff; }
+  .search-dropdown {
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    right: 0;
+    background: #1c2128;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    max-height: 260px;
+    overflow-y: auto;
+    z-index: 100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .search-item {
+    display: flex;
+    gap: 12px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    align-items: baseline;
+  }
+  .search-item:hover, .search-item.focused { background: #21262d; }
+  .search-item-num { color: #484f58; font-size: 0.75rem; width: 36px; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+  .pos-badge {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: #8b949e;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── main card ── */
+  .main { max-width: 860px; margin: 32px auto; padding: 0 20px; }
+
+  .card {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 28px;
+    min-height: 340px;
+  }
+
+  /* image column */
+  .img-col { display: flex; flex-direction: column; gap: 10px; }
+  .img-box {
+    width: 200px;
+    height: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #21262d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .img-placeholder {
+    color: #484f58;
+    font-size: 0.78rem;
+    text-align: center;
+    padding: 12px;
+  }
+  .img-caption {
+    font-size: 0.72rem;
+    color: #484f58;
+    text-align: center;
+  }
+
+  /* info column */
+  .info-col { display: flex; flex-direction: column; gap: 0; }
+  .person-name {
+    font-size: 1.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 18px;
+    color: #e6edf3;
+  }
+  .person-wiki-link {
+    display: inline-block;
+    font-size: 0.72rem;
+    color: #58a6ff;
+    text-decoration: none;
+    margin-left: 8px;
+    vertical-align: middle;
+    opacity: 0.7;
+  }
+  .person-wiki-link:hover { opacity: 1; }
+
+  .field {
+    display: grid;
+    grid-template-columns: 170px 1fr;
+    gap: 8px 12px;
+    padding: 9px 0;
+    border-bottom: 1px solid #21262d;
+    align-items: baseline;
+  }
+  .field:last-child { border-bottom: none; }
+
+  .field-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8b949e;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cost-pill {
+    font-size: 0.65rem;
+    background: #21262d;
+    color: #6e7681;
+    padding: 1px 5px;
+    border-radius: 10px;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+  }
+
+  .field-value { font-size: 0.9rem; color: #e6edf3; line-height: 1.45; }
+  .field-value.dim { color: #484f58; font-style: italic; }
+  .field-value.fetching {
+    color: #388bfd;
+    font-size: 0.82rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .spinner {
+    width: 12px;
+    height: 12px;
+    border: 2px solid #21262d;
+    border-top-color: #388bfd;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── nav ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  .nav-btn {
+    padding: 9px 22px;
+    border: 1px solid #30363d;
+    background: #161b22;
+    color: #c9d1d9;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background 0.12s, border-color 0.12s, color 0.12s;
+  }
+  .nav-btn:hover:not(:disabled) {
+    background: #1f2937;
+    border-color: #58a6ff;
+    color: #58a6ff;
+  }
+  .nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .nav-hint { font-size: 0.72rem; color: #484f58; }
+
+  /* censored toggle */
+  .censor-btn {
+    font-size: 0.65rem;
+    padding: 1px 6px;
+    border: 1px solid #30363d;
+    background: transparent;
+    color: #6e7681;
+    border-radius: 4px;
+    cursor: pointer;
+    letter-spacing: 0;
+    text-transform: none;
+    font-weight: 400;
+    margin-left: 4px;
+    vertical-align: middle;
+    transition: border-color 0.12s, color 0.12s;
+  }
+  .censor-btn:hover { border-color: #8b949e; color: #c9d1d9; }
+  .censored-text {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #8b949e;
+    font-family: ui-monospace, monospace;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* loading overlay */
+  #loading-screen {
+    position: fixed;
+    inset: 0;
+    background: #0d1117;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #8b949e;
+    z-index: 200;
+  }
+</style>
+</head>
+<body>
+
+<div id="loading-screen">Loading people2.xml…</div>
+
+<div class="topbar">
+  <div class="topbar-title">WHOODAT — Catalogue</div>
+  <div class="search-wrap">
+    <input type="text" id="search-input" placeholder="Search by name…" autocomplete="off" spellcheck="false">
+    <div id="search-dropdown" class="search-dropdown" style="display:none;"></div>
+  </div>
+  <div class="pos-badge" id="pos-badge">— / —</div>
+</div>
+
+<div class="main">
+  <div class="card">
+    <div class="img-col">
+      <div class="img-box" id="img-box">
+        <div class="img-placeholder">…</div>
+      </div>
+      <div class="img-caption" id="img-caption"></div>
+    </div>
+    <div class="info-col" id="info-col">
+      <div class="person-name" style="color:#484f58">Loading…</div>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="nav-btn" id="prev-btn" onclick="navigate(-1)" disabled>← Prev</button>
+    <span class="nav-hint">arrow keys ← →  ·  C = toggle censored</span>
+    <button class="nav-btn" id="next-btn" onclick="navigate(1)" disabled>Next →</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+// ── state ──────────────────────────────────────────────────────────────────────
+let PEOPLE = [];
+let idx = 0;
+const wikiCache = new Map();   // wiki slug → fetched data
+
+// ── helpers (mirrors game.js) ──────────────────────────────────────────────────
+function esc(s) {
+  return String(s ?? '')
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function extractInitials(name) {
+  const skip = new Set(['da','de','van','von','of','el','al','le','la','bin','bint']);
+  const letters = [];
+  for (const word of name.split(/\s+/)) {
+    if (skip.has(word.toLowerCase())) continue;
+    const parts = word.split('.').filter(p => /[a-zA-Z]/.test(p));
+    if (parts.length > 1) {
+      for (const p of parts) {
+        const c = p.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+        if (c) letters.push(c);
+      }
+    } else {
+      const c = word.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+      if (c) letters.push(c);
+    }
+  }
+  return letters.join('.');
+}
+
+function extractNationalityFromText(text) {
+  const nats = [
+    'American','British','French','German','Italian','Russian','Spanish','Polish',
+    'Greek','Roman','Egyptian','Indian','Chinese','Japanese','Brazilian','Argentine',
+    'Austrian','Hungarian','Dutch','Swedish','Norwegian','Danish','Swiss','Czech',
+    'English','Scottish','Irish','Welsh','Canadian','Australian','South African',
+    'Cuban','Jamaican','Bolivian','Mexican','Albanian','Serbian','Croatian',
+    'Algerian','Tunisian','Kenyan','Nigerian','Portuguese','Colombian','Puerto Rican',
+    'Pakistani','Israeli','Iranian','Turkish','Saudi','Ugandan','Ghanaian',
+    'New Zealand','Venezuelan','Peruvian','Chilean','Uruguayan',
+  ];
+  for (const nat of nats) {
+    if (new RegExp('\\b' + nat + '\\b', 'i').test(text)) return nat;
+  }
+  return null;
+}
+
+function pickFirstSentence(extract) {
+  if (!extract) return null;
+  const parts = extract.split(/\. /);
+  let s = '';
+  for (const part of parts) {
+    s = s ? s + '. ' + part : part;
+    if (s.replace(/\(.*?\)/g, '').trim().length >= 30) break;
+  }
+  s = s.replace(/\(.*?\)/g, '').trim();
+  return s ? (s.endsWith('.') ? s : s + '.') : null;
+}
+
+const REDACT_SKIP = new Set(['of','the','de','da','von','van','el','al','le','la','bint','in','at','to','by','on','and','or','du','des','di','del','dos','das']);
+
+// Mirrors game.js redactNames — uses Wikipedia bold spans to catch aliases
+function redactNames(sentence, personName, extractHtml) {
+  const tokens = new Set();
+  const addTokens = str => {
+    str.replace(/<[^>]+>/g, ' ')
+       .replace(/["'""''„«»]/g, ' ')
+       .replace(/\(.*?\)/g, ' ')
+       .split(/\s+/)
+       .map(t => { const s = t.replace(/[,.;:!?]+$/, ''); return s.length >= 2 ? s : t; })
+       .filter(t => t.length >= 2 && !REDACT_SKIP.has(t.toLowerCase()))
+       .forEach(t => tokens.add(t));
+  };
+  addTokens(personName);
+  const plainText = extractHtml.replace(/<[^>]+>/g, '');
+  const plainParts = plainText.split(/\. /);
+  let sentLen = 0, sentAcc = '';
+  for (const p of plainParts) {
+    sentAcc = sentAcc ? sentAcc + '. ' + p : p;
+    sentLen = sentAcc.length;
+    if (sentAcc.length >= 30) break;
+  }
+  for (const m of extractHtml.matchAll(/<b[^>]*>([\s\S]*?)<\/b>/gi)) {
+    const plainStart = extractHtml.slice(0, m.index).replace(/<[^>]+>/g, '').length;
+    if (plainStart <= sentLen) addTokens(m[1]);
+  }
+
+  const BLOCK = '█████';
+  let result = sentence;
+  for (const token of tokens) {
+    const escaped = token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp('(^|[^\\p{L}])' + escaped + '(?=[^\\p{L}]|$)', 'giu');
+    result = result.replace(re, (_m, pre) => pre + BLOCK);
+  }
+  return result;
+}
+
+// ── XML load ───────────────────────────────────────────────────────────────────
+async function loadPeople() {
+  const res  = await fetch('people2.xml');
+  const text = await res.text();
+  const doc  = new DOMParser().parseFromString(text, 'application/xml');
+  PEOPLE = Array.from(doc.querySelectorAll('person')).map(p => ({
+    name:        p.querySelector('name').textContent,
+    wiki:        p.querySelector('wiki').textContent,
+    category:    p.querySelector('category').textContent,
+    born:        p.getAttribute('born')        || null,
+    died:        p.getAttribute('died')        || null,
+    alive:       p.getAttribute('alive')       === 'true',
+    nationality:  p.getAttribute('nationality')  || null,
+    imgOverride:  p.getAttribute('img')          || null,
+    fact:         p.querySelector('fact')?.textContent || null,
+  }));
+  document.getElementById('loading-screen').style.display = 'none';
+  document.getElementById('next-btn').disabled = false;
+  const hashIdx = parseInt(location.hash.slice(1));
+  showPerson(isNaN(hashIdx) ? 0 : hashIdx);
+}
+
+// ── render ─────────────────────────────────────────────────────────────────────
+function showPerson(i) {
+  idx = Math.max(0, Math.min(i, PEOPLE.length - 1));
+  const p = PEOPLE[idx];
+
+  history.replaceState(null, '', '#' + idx);
+  document.getElementById('pos-badge').textContent = `#${idx} / ${PEOPLE.length - 1}`;
+  document.getElementById('prev-btn').disabled = idx === 0;
+  document.getElementById('next-btn').disabled = idx === PEOPLE.length - 1;
+
+  // ── image: show override immediately, otherwise wait for fetch ──
+  const imgBox = document.getElementById('img-box');
+  if (p.imgOverride) {
+    imgBox.innerHTML = `<img src="${esc(p.imgOverride)}" alt="${esc(p.name)}">`;
+    document.getElementById('img-caption').textContent = 'img override';
+  } else {
+    imgBox.innerHTML = `<div class="img-placeholder"><div class="spinner" style="width:20px;height:20px;margin:0 auto 6px;"></div></div>`;
+    document.getElementById('img-caption').textContent = '';
+  }
+
+  // ── static fields (know immediately) ──
+  const initials = extractInitials(p.name);
+  const hasLifespan = p.born || p.died || p.alive;
+  const lifespanVal = hasLifespan
+    ? `${p.born || '?'} – ${p.died || (p.alive ? 'present' : '?')}`
+    : null;
+
+  const infoCol = document.getElementById('info-col');
+  infoCol.innerHTML = `
+    <div class="person-name">
+      ${esc(p.name)}
+      <a class="person-wiki-link" href="https://en.wikipedia.org/wiki/${esc(p.wiki)}" target="_blank" rel="noopener">↗ Wikipedia</a>
+    </div>
+    ${row('Occupation',   150, esc(p.category))}
+    ${row('Initials',     150, esc(initials))}
+    ${row('Nationality',  100,
+        p.nationality
+          ? esc(p.nationality)
+          : `<span class="field-value fetching" id="nat-val"><span class="spinner"></span>fetching…</span>`
+    )}
+    ${row('Lifespan',      75,
+        lifespanVal
+          ? esc(lifespanVal)
+          : `<span class="field-value fetching" id="life-val"><span class="spinner"></span>fetching…</span>`
+    )}
+    ${row('Wikipedia',    200, `<span class="field-value fetching" id="wiki-val"><span class="spinner"></span>fetching…</span>`)}
+    ${row('Hint',         250,
+        p.fact
+          ? esc(p.fact)
+          : `<span class="field-value dim">—</span>`
+    )}
+  `;
+
+  // ── kick off Wikipedia fetch ──
+  fetchWiki(p, idx);
+}
+
+function row(label, cost, valueHtml) {
+  return `<div class="field">
+    <div class="field-label">${label} <span class="cost-pill">${cost} pts</span></div>
+    <div class="field-value">${valueHtml}</div>
+  </div>`;
+}
+
+// ── Wikipedia fetch ────────────────────────────────────────────────────────────
+async function fetchWiki(person, forIdx) {
+  const key = person.wiki;
+  let data = wikiCache.get(key);
+
+  if (!data) {
+    try {
+      const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(key)}`;
+      const res  = await fetch(url);
+      const json = await res.json();
+      const extract = json.extract || '';
+      const desc    = (json.description || '') + ' ' + extract;
+
+      // lifespan parsing (mirrors game.js)
+      let born = person.born, died = person.died, alive = person.alive;
+      if (!born && !died && !alive) {
+        const bM = desc.match(/born\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
+        const dM = desc.match(/died\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
+        const yM = desc.match(/\((\d{4})[\s\-–](\d{4}|\bpresent\b)\)/i);
+        if (bM) born = bM[1]; else if (yM) born = yM[1];
+        if (dM) died = dM[1];
+        else if (yM && yM[2].toLowerCase() !== 'present') died = yM[2];
+        else if (yM) alive = true;
+      }
+
+      const extractHtml   = json.extract_html || '';
+      const firstSentence = pickFirstSentence(extract);
+      data = {
+        imageUrl:      json.thumbnail?.source || json.originalimage?.source || null,
+        firstSentence,
+        censored:      firstSentence ? redactNames(firstSentence, person.name, extractHtml) : null,
+        nationality:   person.nationality || extractNationalityFromText(extract + ' ' + (json.description || '')),
+        born, died, alive,
+      };
+    } catch {
+      data = {
+        imageUrl: null, firstSentence: null, censored: null,
+        nationality: person.nationality || null,
+        born: person.born, died: person.died, alive: person.alive,
+      };
+    }
+    wikiCache.set(key, data);
+  }
+
+  // Stale check — user may have navigated away while fetch was in-flight
+  if (forIdx !== idx) return;
+
+  // ── update image (skip if override already rendered) ──
+  if (!person.imgOverride) {
+    const imgBox = document.getElementById('img-box');
+    if (data.imageUrl) {
+      imgBox.innerHTML = `<img src="${esc(data.imageUrl)}" alt="${esc(person.name)}">`;
+    } else {
+      imgBox.innerHTML = `<div class="img-placeholder">No image</div>`;
+    }
+  }
+
+  // ── update nationality (if not in XML) ──
+  if (!person.nationality) {
+    const natEl = document.getElementById('nat-val');
+    if (natEl) {
+      natEl.outerHTML = data.nationality
+        ? `<span class="field-value">${esc(data.nationality)}</span>`
+        : `<span class="field-value dim">Unknown</span>`;
+    }
+  }
+
+  // ── update lifespan (if not in XML) ──
+  const needsLife = !person.born && !person.died && !person.alive;
+  if (needsLife) {
+    const lifeEl = document.getElementById('life-val');
+    if (lifeEl) {
+      const lv = (data.born || data.died || data.alive)
+        ? `${data.born || '?'} – ${data.died || (data.alive ? 'present' : '?')}`
+        : null;
+      lifeEl.outerHTML = lv
+        ? `<span class="field-value">${esc(lv)}</span>`
+        : `<span class="field-value dim">Unknown</span>`;
+    }
+  }
+
+  // ── update Wikipedia summary ──
+  const wikiEl = document.getElementById('wiki-val');
+  if (wikiEl) {
+    if (data.firstSentence) {
+      const hasCensored = !!data.censored && data.censored !== data.firstSentence;
+      wikiEl.outerHTML = `<span class="field-value">
+        ${esc(data.firstSentence)}${hasCensored ? `<button class="censor-btn" onclick="toggleCensored(this)">Show censored</button><span class="censored-text" style="display:none;">${esc(data.censored)}</span>` : ''}
+      </span>`;
+    } else {
+      wikiEl.outerHTML = `<span class="field-value dim">Not available</span>`;
+    }
+  }
+}
+
+function toggleCensored(btn) {
+  const span = btn.nextElementSibling;
+  const hidden = span.style.display === 'none';
+  span.style.display = hidden ? 'block' : 'none';
+  btn.textContent = hidden ? 'Hide censored' : 'Show censored';
+}
+
+// ── navigation ─────────────────────────────────────────────────────────────────
+function navigate(delta) {
+  showPerson(idx + delta);
+  document.getElementById('search-input').value = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   { e.preventDefault(); navigate(-1); }
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown')  { e.preventDefault(); navigate(1); }
+  if (e.key === 'c' || e.key === 'C') {
+    const btn = document.querySelector('.censor-btn');
+    if (btn) btn.click();
+  }
+});
+
+// ── search ─────────────────────────────────────────────────────────────────────
+const searchInput    = document.getElementById('search-input');
+const searchDropdown = document.getElementById('search-dropdown');
+let focusedItem = -1;
+
+searchInput.addEventListener('input', () => {
+  focusedItem = -1;
+  const val = searchInput.value.trim().toLowerCase();
+  if (!val || !PEOPLE.length) { searchDropdown.style.display = 'none'; return; }
+
+  const hits = PEOPLE
+    .map((p, i) => ({ p, i }))
+    .filter(({ p }) => p.name.toLowerCase().includes(val))
+    .slice(0, 12);
+
+  if (!hits.length) { searchDropdown.style.display = 'none'; return; }
+
+  searchDropdown.innerHTML = hits.map(({ p, i }) =>
+    `<div class="search-item" data-idx="${i}" onmousedown="jumpTo(${i})">
+      <span class="search-item-num">#${i}</span>
+      <span>${esc(p.name)}</span>
+    </div>`
+  ).join('');
+  searchDropdown.style.display = 'block';
+});
+
+searchInput.addEventListener('keydown', e => {
+  const items = searchDropdown.querySelectorAll('.search-item');
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    focusedItem = Math.min(focusedItem + 1, items.length - 1);
+    items.forEach((el, i) => el.classList.toggle('focused', i === focusedItem));
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    focusedItem = Math.max(focusedItem - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('focused', i === focusedItem));
+  } else if (e.key === 'Enter') {
+    if (focusedItem >= 0 && items[focusedItem]) {
+      jumpTo(parseInt(items[focusedItem].dataset.idx));
+    } else if (items[0]) {
+      jumpTo(parseInt(items[0].dataset.idx));
+    }
+  } else if (e.key === 'Escape') {
+    searchDropdown.style.display = 'none';
+    searchInput.blur();
+  }
+});
+
+searchInput.addEventListener('blur', () => {
+  setTimeout(() => searchDropdown.style.display = 'none', 150);
+});
+
+function jumpTo(i) {
+  searchDropdown.style.display = 'none';
+  searchInput.value = '';
+  showPerson(i);
+}
+
+window.addEventListener('hashchange', () => {
+  const h = parseInt(location.hash.slice(1));
+  if (!isNaN(h)) showPerson(h);
+});
+
+// ── boot ───────────────────────────────────────────────────────────────────────
+loadPeople();
+</script>
+</body>
+</html>
