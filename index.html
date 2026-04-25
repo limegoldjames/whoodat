@@ -133,23 +133,25 @@
   <!-- END SCREEN -->
   <div id="screen-end" class="screen">
     <div class="card mt-16">
-      <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+      <div class="end-header">
         <div class="end-title">Game Over!</div>
-        <div id="end-mode-badge" style="display:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;border-radius:3px;border:2px solid;"></div>
+        <div id="end-mode-badge" class="end-mode-badge"></div>
       </div>
-      <div style="padding:24px 28px 32px;text-align:center;">
+      <div class="end-body">
         <div class="final-score-block">
           <div class="final-score-label">Final Score</div>
           <div class="final-score-value" id="end-score">0</div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:var(--gold);letter-spacing:2px;" id="end-grade"></div>
+          <div class="end-grade" id="end-grade"></div>
         </div>
         <div class="results-list" id="results-list"></div>
-        <button class="btn btn-gold" id="share-copy-btn" onclick="copyShareUrl()" style="width:100%;margin-bottom:8px;">📋 Share Your Results</button>
-        <div id="end-daily-share" style="display:none;margin-bottom:16px;">
-          <button class="btn btn-gold" style="width:100%;" onclick="copyDailyUrl(this)">🏆 Challenge friends to today's Daily</button>
+        <div class="end-actions-stack">
+          <button class="btn btn-gold" id="share-copy-btn" onclick="copyShareUrl()">📋 Share Your Results</button>
+          <div id="end-daily-share" style="display:none;">
+            <button class="btn btn-gold" onclick="copyDailyUrl(this)">🏆 Challenge friends to today's Daily</button>
+          </div>
+          <button class="btn btn-gold" onclick="playRandom()">▶ Play Again</button>
+          <button class="btn btn-blue btn-sm" onclick="goHome()">🏠 Home</button>
         </div>
-        <button class="btn btn-gold" onclick="playRandom()" style="width:100%;margin-bottom:8px;">▶ Play Again</button>
-        <button class="btn btn-blue btn-sm" onclick="goHome()" style="width:100%;">🏠 Home</button>
       </div>
     </div>
   </div>

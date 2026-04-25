@@ -15,7 +15,7 @@
 
   <!-- Historical Figures -->
   <person difficulty="easy"><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Military leader</category></person>
-  <person difficulty="easy"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
+  <person difficulty="easy" born="~70 BC" died="~30 BC"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
   <person difficulty="easy"><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Military leader</category></person>
   <person difficulty="easy"><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Warlord</category></person>
   <person difficulty="easy"><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Military leader</category></person>

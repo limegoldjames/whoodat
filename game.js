@@ -480,9 +480,7 @@ function endGame() {
   const badge = document.getElementById('end-mode-badge');
   if (state.isDaily) {
     badge.textContent = '⭐ Daily';
-    badge.style.color = '#E6B800';
-    badge.style.borderColor = '#E6B800';
-    badge.style.display = '';
+    badge.style.display = 'inline-block';
   } else {
     badge.style.display = 'none';
   }
