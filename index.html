@@ -20,13 +20,44 @@
   </div>
 </header>
 
-<div class="ticker">★ &nbsp; Guess The Icon &nbsp; ★ &nbsp; Use Clues Wisely &nbsp; ★ &nbsp; Beat Your High Score &nbsp; ★ &nbsp; Share Your Results &nbsp; ★</div>
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>★ &nbsp; Guess The Icon &nbsp; ★ &nbsp; Use Clues Wisely &nbsp; ★ &nbsp; Beat Your High Score &nbsp; ★ &nbsp; Share Your Results &nbsp; ★ &nbsp;&nbsp;&nbsp;</span>
+    <span>★ &nbsp; Guess The Icon &nbsp; ★ &nbsp; Use Clues Wisely &nbsp; ★ &nbsp; Beat Your High Score &nbsp; ★ &nbsp; Share Your Results &nbsp; ★ &nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
 
 <div id="app">
 
   <!-- WELCOME SCREEN -->
   <div id="screen-welcome" class="screen active">
-    <div class="card mt-16">
+    <div class="mode-cards mt-16">
+      <button class="mode-card mode-card-primary" onclick="playRandom()">
+        <span class="mode-icon">🎲</span>
+        <span class="mode-text">
+          <span class="mode-title">Play</span>
+          <span class="mode-desc">Five random famous faces</span>
+        </span>
+        <span class="mode-arrow">▶</span>
+      </button>
+      <button class="mode-card" onclick="startDailyChallenge()">
+        <span class="mode-icon">⭐</span>
+        <span class="mode-text">
+          <span class="mode-title">Daily Challenge</span>
+          <span class="mode-desc" id="daily-date">…</span>
+        </span>
+        <span class="mode-arrow">▶</span>
+      </button>
+      <button class="mode-card" onclick="openPwfModal()">
+        <span class="mode-icon">👥</span>
+        <span class="mode-text">
+          <span class="mode-title">Play with Friends</span>
+          <span class="mode-desc">Share a link to play together</span>
+        </span>
+        <span class="mode-arrow">▶</span>
+      </button>
+    </div>
+    <div class="card" style="margin-top:16px;">
       <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);">
         <h2 style="font-family:'Alfa Slab One',serif;font-size:1.5rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;">How To Play</h2>
       </div>
@@ -51,32 +82,6 @@
             <strong>⏭ Skip</strong>
             Skip a person at the cost of all remaining points for that round.
           </div>
-        </div>
-        <div class="mode-cards">
-          <button class="mode-card mode-card-primary" onclick="playRandom()">
-            <span class="mode-icon">🎲</span>
-            <span class="mode-text">
-              <span class="mode-title">Play</span>
-              <span class="mode-desc">Five random famous faces</span>
-            </span>
-            <span class="mode-arrow">▶</span>
-          </button>
-          <button class="mode-card" onclick="startDailyChallenge()">
-            <span class="mode-icon">⭐</span>
-            <span class="mode-text">
-              <span class="mode-title">Daily Challenge</span>
-              <span class="mode-desc" id="daily-date">…</span>
-            </span>
-            <span class="mode-arrow">▶</span>
-          </button>
-          <button class="mode-card" onclick="openPwfModal()">
-            <span class="mode-icon">👥</span>
-            <span class="mode-text">
-              <span class="mode-title">Play with Friends</span>
-              <span class="mode-desc">Share a link to play together</span>
-            </span>
-            <span class="mode-arrow">▶</span>
-          </button>
         </div>
         <div style="background:var(--cream-dark);border-radius:4px;padding:14px 18px;font-size:0.95rem;color:#333;">
           <strong style="color:var(--blue);">5 rounds</strong> • Starting points per round: <strong style="color:var(--blue);">1,000</strong> • Max score: <strong style="color:var(--blue);">5,000</strong>

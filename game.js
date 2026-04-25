@@ -757,7 +757,8 @@ function renderRecap(data) {
 
     <div style="text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;letter-spacing:3px;color:#999;text-transform:uppercase;margin-bottom:14px;">— or —</div>
     <div style="text-align:center;">
-      <button class="btn btn-gold" style="width:100%;" onclick="${playAction}">▶ ${playLabel}</button>
+      <button class="btn btn-gold" style="width:100%;margin-bottom:10px;" onclick="${playAction}">▶ ${playLabel}</button>
+      <button class="btn btn-blue btn-sm" style="width:100%;" onclick="goHome()">🏠 Home</button>
     </div>`;
 }
 
@@ -816,7 +817,7 @@ let acSelected = -1;
 guessInput.addEventListener('input', () => {
   const val = guessInput.value.trim().toLowerCase();
   acSelected = -1;
-  if (!val || val.length < 2) { closeAutocomplete(); return; }
+  if (!val || val.length < 3) { closeAutocomplete(); return; }
   const matches = (state.pool || PEOPLE).map(p => p.name).filter(n => n.toLowerCase().includes(val)).slice(0, 8);
   if (!matches.length) { closeAutocomplete(); return; }
   acList.innerHTML = matches.map((m, i) => {
@@ -825,6 +826,25 @@ guessInput.addEventListener('input', () => {
     return `<div class="ac-item" data-name="${m}" data-idx="${i}">${highlighted}</div>`;
   }).join('');
   acList.classList.add('open');
+  // Position fixed relative to input so it escapes any overflow:hidden parent
+  const inputRect = guessInput.getBoundingClientRect();
+  const listHeight = Math.min(200, matches.length * 44);
+  const spaceBelow = window.innerHeight - inputRect.bottom;
+  if (spaceBelow < listHeight + 8) {
+    acList.style.top = '';
+    acList.style.bottom = (window.innerHeight - inputRect.top) + 'px';
+    acList.style.borderTop = '3px solid var(--blue)';
+    acList.style.borderBottom = 'none';
+    acList.style.borderRadius = '4px 4px 0 0';
+  } else {
+    acList.style.top = inputRect.bottom + 'px';
+    acList.style.bottom = '';
+    acList.style.borderTop = 'none';
+    acList.style.borderBottom = '';
+    acList.style.borderRadius = '0 0 4px 4px';
+  }
+  acList.style.left = inputRect.left + 'px';
+  acList.style.width = (inputRect.width) + 'px';
   acList.querySelectorAll('.ac-item').forEach(item => {
     item.addEventListener('mousedown', e => {
       e.preventDefault();
