@@ -4,23 +4,43 @@
 let PEOPLE = [];
 
 async function loadPeople() {
-  const res = await fetch('people2.xml');
-  if (!res.ok) throw new Error('Failed to load people.xml');
-  const xmlText = await res.text();
-  const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
-  const parseError = doc.querySelector('parsererror');
-  if (parseError) throw new Error('people.xml parse error: ' + parseError.textContent);
-  return Array.from(doc.querySelectorAll('person')).map(p => ({
-    name: p.querySelector('name').textContent,
-    wiki: p.querySelector('wiki').textContent,
-    category: p.querySelector('category').textContent,
-    born:        p.getAttribute('born')        || null,
-    died:        p.getAttribute('died')        || null,
-    alive:       p.getAttribute('alive')       === 'true',
-    nationality:  p.getAttribute('nationality')  || null,
-    imgOverride:  p.getAttribute('img')          || null,
-    fact:         p.querySelector('fact')?.textContent || null,
-  }));
+  const [factsRes, hintsRes] = await Promise.all([
+    fetch('person-facts.xml'),
+    fetch('hints.xml'),
+  ]);
+  if (!factsRes.ok) throw new Error('Failed to load person-facts.xml');
+  if (!hintsRes.ok) throw new Error('Failed to load hints.xml');
+  const [factsText, hintsText] = await Promise.all([factsRes.text(), hintsRes.text()]);
+
+  const parser = new DOMParser();
+  const factsDoc = parser.parseFromString(factsText, 'application/xml');
+  const hintsDoc = parser.parseFromString(hintsText, 'application/xml');
+  const factsErr = factsDoc.querySelector('parsererror');
+  if (factsErr) throw new Error('person-facts.xml parse error: ' + factsErr.textContent);
+  const hintsErr = hintsDoc.querySelector('parsererror');
+  if (hintsErr) throw new Error('hints.xml parse error: ' + hintsErr.textContent);
+
+  const hintByWiki = new Map();
+  for (const h of hintsDoc.querySelectorAll('hint')) {
+    hintByWiki.set(h.getAttribute('wiki'), h.textContent);
+  }
+
+  return Array.from(factsDoc.querySelectorAll('person')).map(p => {
+    const wiki = p.querySelector('wiki').textContent;
+    return {
+      name:         p.querySelector('name').textContent,
+      wiki,
+      category:     p.querySelector('category').textContent,
+      qid:          p.getAttribute('qid')          || null,
+      born:         p.getAttribute('born')         || null,
+      died:         p.getAttribute('died')         || null,
+      alive:        p.getAttribute('alive')        === 'true',
+      nationality:  p.getAttribute('nationality')  || null,
+      occupation:   p.getAttribute('occupation')   || null,
+      imgOverride:  p.getAttribute('img')          || null,
+      fact:         hintByWiki.get(wiki)           || null,
+    };
+  });
 }
 
 // ============================================================
@@ -278,9 +298,9 @@ const REDACT_SKIP = new Set(['of','the','de','da','von','van','el','al','le','la
 function redactNames(sentence, personName, extractHtml) {
   const tokens = new Set();
   const addTokens = str => {
-    str.replace(/<[^>]+>/g, ‘ ‘)
-       .replace(/[\”’””’’„«»]/g, ‘ ‘)
-       .replace(/\(.*?\)/g, ‘ ‘)
+    str.replace(/<[^>]+>/g, ' ')
+       .replace(/["'“”‘’„«»]/g, ' ')
+       .replace(/\(.*?\)/g, ' ')
        .split(/\s+/)
        .map(t => { const s = t.replace(/[,.;:!?]+$/, ''); return s.length >= 2 ? s : t; })
        .filter(t => t.length >= 2 && !REDACT_SKIP.has(t.toLowerCase()))
