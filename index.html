@@ -52,31 +52,32 @@
             Skip a person at the cost of all remaining points for that round.
           </div>
         </div>
-        <div class="difficulty-label">Choose Difficulty</div>
-        <div class="difficulty-picker">
-          <button class="diff-btn diff-easy active" id="diff-easy" onclick="selectDifficulty('easy')">
-            <span class="diff-name">Easy</span>
-            <span class="diff-desc">50 iconic names</span>
+        <div class="mode-cards">
+          <button class="mode-card mode-card-primary" onclick="playRandom()">
+            <span class="mode-icon">🎲</span>
+            <span class="mode-text">
+              <span class="mode-title">Play</span>
+              <span class="mode-desc">Five random famous faces</span>
+            </span>
+            <span class="mode-arrow">▶</span>
           </button>
-          <button class="diff-btn diff-medium" id="diff-medium" onclick="selectDifficulty('medium')">
-            <span class="diff-name">Medium</span>
-            <span class="diff-desc">150 people</span>
+          <button class="mode-card" onclick="startDailyChallenge()">
+            <span class="mode-icon">⭐</span>
+            <span class="mode-text">
+              <span class="mode-title">Daily Challenge</span>
+              <span class="mode-desc" id="daily-date">…</span>
+            </span>
+            <span class="mode-arrow">▶</span>
           </button>
-          <button class="diff-btn diff-hard" id="diff-hard" disabled>
-            <span class="diff-name">Hard</span>
-            <span class="diff-desc">Coming soon</span>
+          <button class="mode-card" onclick="openPwfModal()">
+            <span class="mode-icon">👥</span>
+            <span class="mode-text">
+              <span class="mode-title">Play with Friends</span>
+              <span class="mode-desc">Share a link to play together</span>
+            </span>
+            <span class="mode-arrow">▶</span>
           </button>
         </div>
-        <div class="daily-box">
-          <div class="daily-box-inner">
-            <div>
-              <div class="daily-title">⭐ Daily Challenge</div>
-              <div id="daily-date" class="daily-date-str"></div>
-            </div>
-            <button class="btn btn-gold btn-sm" onclick="startDailyChallenge()">Play ▶</button>
-          </div>
-        </div>
-        <button class="btn btn-blue pwf-home-btn" onclick="openPwfModal()">👥 Play with Friends</button>
         <div style="background:var(--cream-dark);border-radius:4px;padding:14px 18px;font-size:0.95rem;color:#333;">
           <strong style="color:var(--blue);">5 rounds</strong> • Starting points per round: <strong style="color:var(--blue);">1,000</strong> • Max score: <strong style="color:var(--blue);">5,000</strong>
         </div>
@@ -88,7 +89,7 @@
   <div id="screen-game" class="screen">
     <div class="compact-game-header" onclick="goHome()" style="cursor:pointer;">WHOODAT?</div>
     <div id="scorebar">
-      <div class="score-item"><span id="game-diff-badge" class="game-diff-badge"></span></div>
+      <div class="score-item" style="display:none;"><span id="game-mode-badge" class="game-mode-badge"></span></div>
       <div class="score-item">Round <span id="sb-round">1</span>/5</div>
       <div class="score-item">Points: <span id="sb-pts">1000</span></div>
       <div class="score-item">Total: <span id="sb-total">0</span></div>
@@ -134,7 +135,7 @@
     <div class="card mt-16">
       <div style="background:var(--blue);padding:18px 24px 14px;border-bottom:3px solid var(--gold);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
         <div class="end-title">Game Over!</div>
-        <div id="end-difficulty-badge" style="font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;border-radius:3px;border:2px solid;"></div>
+        <div id="end-mode-badge" style="display:none;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;border-radius:3px;border:2px solid;"></div>
       </div>
       <div style="padding:24px 28px 32px;text-align:center;">
         <div class="final-score-block">
@@ -147,22 +148,8 @@
         <div id="end-daily-share" style="display:none;margin-bottom:16px;">
           <button class="btn btn-gold" style="width:100%;" onclick="copyDailyUrl(this)">🏆 Challenge friends to today's Daily</button>
         </div>
-        <div class="end-play-again-label">Play Again</div>
-        <div class="difficulty-picker">
-          <button class="diff-btn diff-easy" onclick="selectDifficulty('easy')">
-            <span class="diff-name">Easy</span>
-            <span class="diff-desc">50 iconic names</span>
-          </button>
-          <button class="diff-btn diff-medium" onclick="selectDifficulty('medium')">
-            <span class="diff-name">Medium</span>
-            <span class="diff-desc">150 people</span>
-          </button>
-          <button class="diff-btn diff-hard" disabled>
-            <span class="diff-name">Hard</span>
-            <span class="diff-desc">Coming soon</span>
-          </button>
-        </div>
-        <button class="btn btn-blue btn-sm" onclick="goHome()" style="margin-top:4px;">🏠 Home</button>
+        <button class="btn btn-gold" onclick="playRandom()" style="width:100%;margin-bottom:8px;">▶ Play Again</button>
+        <button class="btn btn-blue btn-sm" onclick="goHome()" style="width:100%;">🏠 Home</button>
       </div>
     </div>
   </div>
@@ -203,20 +190,7 @@
       <button class="modal-close" onclick="closePwfModal()">✕</button>
     </div>
     <div class="modal-body">
-      <p style="color:#444;font-size:0.95rem;margin:0 0 14px;">Everyone who plays this link gets the same people — compare scores!</p>
-      <div style="margin-bottom:12px;">
-        <div class="difficulty-label" style="margin-bottom:8px;">Difficulty</div>
-        <div class="difficulty-picker" style="margin-bottom:0;">
-          <button class="diff-btn diff-easy pwf-diff-btn active" onclick="setPwfDifficulty('easy')">
-            <span class="diff-name">Easy</span>
-            <span class="diff-desc">50 iconic names</span>
-          </button>
-          <button class="diff-btn diff-medium pwf-diff-btn" onclick="setPwfDifficulty('medium')">
-            <span class="diff-name">Medium</span>
-            <span class="diff-desc">150 people</span>
-          </button>
-        </div>
-      </div>
+      <p style="color:#444;font-size:0.95rem;margin:0 0 14px;">Share this link — everyone who plays it gets the same five faces. Compare scores!</p>
       <div class="pwf-link-row">
         <input type="text" id="pwf-link-input" class="pwf-link-input" readonly />
         <button class="btn btn-gold btn-sm" onclick="copyPwfLink(this)">Copy</button>

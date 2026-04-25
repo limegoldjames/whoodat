@@ -104,7 +104,7 @@
   <person difficulty="medium"><name>Che Guevara</name><wiki>Che_Guevara</wiki><category>Revolutionary</category></person>
   <person difficulty="medium"><name>Margaret Thatcher</name><wiki>Margaret_Thatcher</wiki><category>Prime Minister</category></person>
   <person difficulty="medium"><name>John F. Kennedy</name><wiki>John_F._Kennedy</wiki><category>President</category></person>
-  <person difficulty="medium"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
+  <person difficulty="medium" born="1893" died="1976"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
   <person difficulty="medium"><name>Joseph Stalin</name><wiki>Joseph_Stalin</wiki><category>Political leader</category></person>
   <person difficulty="medium"><name>Thomas Jefferson</name><wiki>Thomas_Jefferson</wiki><category>President</category></person>
   <person difficulty="medium"><name>Theodore Roosevelt</name><wiki>Theodore_Roosevelt</wiki><category>President</category></person>
