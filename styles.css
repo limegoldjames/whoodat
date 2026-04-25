@@ -206,90 +206,71 @@ h1 {
   letter-spacing: 1px;
 }
 
-/* ── DIFFICULTY PICKER ── */
-.difficulty-label {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 0.78rem;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin: 20px 0 8px;
-}
-.difficulty-picker {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-.diff-btn {
+/* ── MODE CARDS (welcome screen) ── */
+.mode-cards {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin: 20px 0 18px;
+}
+.mode-card {
+  display: flex;
   align-items: center;
-  gap: 3px;
-  padding: 10px 8px;
-  border-radius: 4px;
-  border: 2px solid;
-  background: none;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
-  font-family: 'Barlow Condensed', sans-serif;
-}
-.diff-btn .diff-name {
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-.diff-btn .diff-desc {
-  font-size: 0.72rem;
-  opacity: 0.75;
-}
-.diff-btn.diff-easy         { border-color: #5ecf7a; background: rgba(45,198,83,0.12); color: #1a5c2a; }
-.diff-btn.diff-easy:hover   { background: rgba(45,198,83,0.22); }
-.diff-btn.diff-easy.active  { background: rgba(45,198,83,0.30); border-color: var(--green); }
-.diff-btn.diff-medium         { border-color: var(--gold-dark); background: rgba(255,217,61,0.15); color: #5a4200; }
-.diff-btn.diff-medium:hover   { background: rgba(255,217,61,0.28); }
-.diff-btn.diff-medium.active  { background: rgba(255,217,61,0.38); border-color: var(--gold); }
-.diff-btn.diff-hard { border-color: #bbb; color: #aaa; cursor: not-allowed; opacity: 0.55; }
-
-/* ── END SCREEN PLAY AGAIN ── */
-.end-play-again-label {
-  font-family: 'Alfa Slab One', serif;
-  font-size: 1.4rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--blue);
-  margin: 24px 0 10px;
-}
-
-/* ── DAILY CHALLENGE BOX ── */
-.daily-box {
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
   border: 2px solid var(--gold-dark);
   border-radius: 4px;
   background: var(--cream-dark);
-  padding: 12px 16px;
-  margin-bottom: 16px;
-}
-.daily-box-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.daily-title {
-  font-family: 'Barlow Condensed', sans-serif;
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--blue);
-}
-.daily-date-str {
+  color: var(--text-dark);
+  cursor: pointer;
+  text-align: left;
   font-family: 'Barlow', sans-serif;
-  font-size: 0.82rem;
-  color: #666;
-  margin-top: 2px;
+  transition: background 0.15s, border-color 0.15s, transform 0.08s;
+}
+.mode-card:hover {
+  background: rgba(255,217,61,0.32);
+  border-color: var(--gold);
+}
+.mode-card:active { transform: scale(0.985); }
+.mode-card-primary {
+  background: var(--gold);
+  border-color: var(--gold-dark);
+}
+.mode-card-primary:hover {
+  background: #FFE066;
+  border-color: var(--gold-dark);
+}
+.mode-icon {
+  font-size: 1.7rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.mode-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.mode-title {
+  font-family: 'Alfa Slab One', serif;
+  font-size: 1.05rem;
+  color: var(--blue);
+  letter-spacing: 1px;
+}
+.mode-desc {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  color: #555;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mode-arrow {
+  font-size: 1.1rem;
+  color: var(--red);
+  font-weight: 700;
+  flex-shrink: 0;
 }
 
 /* ── IN-GAME COMPACT MODE ── */
@@ -372,22 +353,22 @@ body.in-game .compact-game-header {
 }
 .hints-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
   margin-bottom: 10px;
 }
 .hint-chip {
   border: 2px solid;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 4px 7px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 .hint-chip.locked {
   border-color: var(--blue-light);
@@ -395,6 +376,13 @@ body.in-game .compact-game-header {
   color: var(--blue);
 }
 .hint-chip.locked:hover { background: rgba(29,53,87,0.15); }
+.hint-chip-unavailable {
+  border-color: #ccc;
+  background: rgba(0,0,0,0.04);
+  color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 .hint-chip.unlocked {
   border-color: var(--green);
   background: rgba(45,198,83,0.1);
@@ -403,13 +391,13 @@ body.in-game .compact-game-header {
 }
 .hint-chip-wide { grid-column: 1 / -1; }
 .hint-cost {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
   opacity: 0.7;
 }
 .hint-value {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 700;
   word-break: break-word;
 }
@@ -512,56 +500,156 @@ body.in-game .compact-game-header {
 }
 
 /* ── END SCREEN ── */
-#screen-end .card { padding: 36px 30px; text-align: center; }
+.end-header {
+  background: var(--blue);
+  padding: 16px 24px 14px;
+  border-bottom: 3px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
 .end-title {
   font-family: 'Alfa Slab One', serif;
-  font-size: 2.4rem;
-  color: var(--red);
+  font-size: 1.8rem;
+  color: var(--gold);
   letter-spacing: 3px;
   text-transform: uppercase;
+  line-height: 1;
+}
+.end-mode-badge {
+  display: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 3px;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  white-space: nowrap;
+}
+.end-body {
+  padding: 20px 24px 28px;
+  text-align: center;
 }
 .final-score-block {
   background: var(--blue);
-  border: 4px solid var(--gold);
+  border: 3px solid var(--gold);
   border-radius: 6px;
-  padding: 20px;
-  margin: 20px 0;
-  display: inline-block;
-  min-width: 200px;
+  padding: 14px 20px 12px;
+  margin: 0 0 16px;
 }
 .final-score-label {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   letter-spacing: 4px;
   text-transform: uppercase;
   color: var(--gold);
+  opacity: 0.75;
 }
 .final-score-value {
   font-family: 'Alfa Slab One', serif;
-  font-size: 4rem;
+  font-size: 3.5rem;
   color: #fff;
-  line-height: 1.1;
+  line-height: 1.05;
 }
-.results-list {
-  text-align: left;
-  margin: 20px 0;
+.end-grade {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-top: 2px;
+}
+.results-list { margin: 0 0 4px; }
+.end-actions-stack {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 16px;
 }
-.result-row {
-  background: rgba(29,53,87,0.08);
-  border-left: 4px solid;
-  padding: 10px 14px;
-  border-radius: 0 4px 4px 0;
+.end-actions-stack .btn { width: 100%; }
+.end-actions-stack #end-daily-share .btn { width: 100%; }
+
+/* ── RESULT CARDS ── */
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.result-card {
+  border-radius: 6px;
+  padding: 10px 4px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  text-align: center;
+}
+.rc-gold  { background: var(--gold);       color: var(--text-dark); }
+.rc-green { background: var(--green);      color: #fff; }
+.rc-wrong { background: var(--red);        color: #fff; }
+.rc-skip  { background: #888;              color: #fff; }
+.rc-icon  { font-size: 1.4rem; line-height: 1; }
+.rc-name  { display: none; }
+.rc-pts   { font-family: 'Alfa Slab One', serif; font-size: 0.95rem; line-height: 1; }
+.rc-stats {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  opacity: 0.85;
+  line-height: 1.3;
+}
+
+/* ── ANSWERS TOGGLE ── */
+.toggle-answers-btn {
+  width: 100%;
+  background: var(--blue);
+  border: none;
+  border-radius: 4px;
+  color: var(--cream);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  cursor: pointer;
+  transition: background 0.15s;
+  margin-top: 6px;
+}
+.toggle-answers-btn:hover { background: var(--blue-light); }
+
+/* ── ANSWERS LIST ── */
+#end-answers {
+  text-align: left;
+  margin: 8px 0 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.end-answer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 1rem;
+  padding: 6px 10px;
+  background: rgba(29,53,87,0.06);
+  border-radius: 4px;
 }
-.result-row.r-correct { border-color: var(--green); }
-.result-row.r-wrong { border-color: var(--red); }
-.result-row .r-name { font-weight: 700; font-size: 1.1rem; color: var(--blue); }
-.result-row .r-detail { font-size: 0.85rem; color: #555; }
+.end-answer-num {
+  font-weight: 700;
+  color: var(--blue-light);
+  min-width: 16px;
+}
+.end-answer-name { flex: 1; font-weight: 700; color: var(--blue); }
+.end-answer-icon { font-size: 1rem; }
 
 .share-box {
   background: var(--cream-dark);
@@ -699,27 +787,69 @@ body.in-game .compact-game-header {
 
   /* Slightly larger input and tap targets */
   #guess-input { font-size: 1rem; padding: 10px 12px; }
-  .hint-chip   { padding: 7px 10px; }
+  .hint-chip   { padding: 8px 10px; font-size: 0.95rem; }
+  .hint-cost   { font-size: 0.72rem; }
+  .hint-value  { font-size: 1rem; }
   .ac-item     { padding: 11px 14px; }
+  .hints-grid  { grid-template-columns: repeat(2, 1fr); }
 
   /* Next button subtitle */
   .next-btn-sub-desktop { display: none; }
   .next-btn-sub-mobile  { display: block; }
+
+  /* End screen */
+  .end-header  { padding: 14px 16px 12px; }
+  .end-title   { font-size: 1.5rem; letter-spacing: 2px; }
+  .end-body    { padding: 16px 16px 24px; }
+  .final-score-value { font-size: 3rem; }
+
+  /* Results: stacked rows on mobile */
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+  .result-card {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 1px;
+    text-align: left;
+    padding: 10px 14px;
+  }
+  .rc-icon  { grid-column: 1; grid-row: 1 / 3; align-self: center; font-size: 1.2rem; }
+  .rc-name  {
+    display: block;
+    grid-column: 2; grid-row: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    user-select: none;
+  }
+  .results-grid.names-revealed .rc-name {
+    opacity: 1;
+    user-select: text;
+  }
+  .rc-pts   { grid-column: 3; grid-row: 1; font-size: 0.9rem; text-align: right; }
+  .rc-stats { display: block; grid-column: 2 / 4; grid-row: 2; text-align: right; font-size: 0.72rem; }
+  /* Keep separate answers list hidden — names toggle inline instead */
+  #end-answers { display: none !important; }
 }
 
-/* ── GAME DIFFICULTY BADGE (scorebar) ── */
-.game-diff-badge {
+/* ── GAME MODE BADGE (scorebar) ── */
+.game-mode-badge {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-}
-
-/* ── PLAY WITH FRIENDS HOME BUTTON ── */
-.pwf-home-btn {
-  width: 100%;
-  margin-top: 10px;
 }
 
 /* ── MODAL ── */

@@ -15,7 +15,7 @@
 
   <!-- Historical Figures -->
   <person difficulty="easy"><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Military leader</category></person>
-  <person difficulty="easy"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
+  <person difficulty="easy" born="~70 BC" died="~30 BC"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
   <person difficulty="easy"><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Military leader</category></person>
   <person difficulty="easy"><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Warlord</category></person>
   <person difficulty="easy"><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Military leader</category></person>
@@ -104,7 +104,7 @@
   <person difficulty="medium"><name>Che Guevara</name><wiki>Che_Guevara</wiki><category>Revolutionary</category></person>
   <person difficulty="medium"><name>Margaret Thatcher</name><wiki>Margaret_Thatcher</wiki><category>Prime Minister</category></person>
   <person difficulty="medium"><name>John F. Kennedy</name><wiki>John_F._Kennedy</wiki><category>President</category></person>
-  <person difficulty="medium"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
+  <person difficulty="medium" born="1893" died="1976"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
   <person difficulty="medium"><name>Joseph Stalin</name><wiki>Joseph_Stalin</wiki><category>Political leader</category></person>
   <person difficulty="medium"><name>Thomas Jefferson</name><wiki>Thomas_Jefferson</wiki><category>President</category></person>
   <person difficulty="medium"><name>Theodore Roosevelt</name><wiki>Theodore_Roosevelt</wiki><category>President</category></person>
@@ -173,7 +173,7 @@
   <person difficulty="medium"><name>LeBron James</name><wiki>LeBron_James</wiki><category>Basketball player</category></person>
   <person difficulty="medium"><name>Tiger Woods</name><wiki>Tiger_Woods</wiki><category>Golfer</category></person>
   <person difficulty="medium"><name>Roger Federer</name><wiki>Roger_Federer</wiki><category>Tennis player</category></person>
-  <person difficulty="medium"><name>Cristiano Ronaldo</name><wiki>Cristiano_Ronaldo</wiki><category>Footballer</category></person>
+  <person difficulty="medium" nationality="Portuguese"><name>Cristiano Ronaldo</name><wiki>Cristiano_Ronaldo</wiki><category>Footballer</category></person>
   <person difficulty="medium"><name>Lionel Messi</name><wiki>Lionel_Messi</wiki><category>Footballer</category></person>
   <person difficulty="medium"><name>Diego Maradona</name><wiki>Diego_Maradona</wiki><category>Footballer</category></person>
   <person difficulty="medium"><name>Ayrton Senna</name><wiki>Ayrton_Senna</wiki><category>Racing driver</category></person>

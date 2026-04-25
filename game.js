@@ -4,7 +4,7 @@
 let PEOPLE = [];
 
 async function loadPeople() {
-  const res = await fetch('people.xml');
+  const res = await fetch('people2.xml');
   if (!res.ok) throw new Error('Failed to load people.xml');
   const xmlText = await res.text();
   const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
@@ -14,7 +14,10 @@ async function loadPeople() {
     name: p.querySelector('name').textContent,
     wiki: p.querySelector('wiki').textContent,
     category: p.querySelector('category').textContent,
-    difficulty: p.getAttribute('difficulty') || 'easy',
+    born:        p.getAttribute('born')        || null,
+    died:        p.getAttribute('died')        || null,
+    alive:       p.getAttribute('alive')       === 'true',
+    nationality: p.getAttribute('nationality') || null,
   }));
 }
 
@@ -22,33 +25,32 @@ async function loadPeople() {
 // HINT DEFINITIONS
 // ============================================================
 const HINT_DEFS = [
-  { key: "category",    label: "Occupation",   cost: 150,  extract: d => d.category },
-  { key: "nationality", label: "Nationality",      cost: 100,  extract: d => extractNationality(d) },
-  { key: "lifespan",    label: "Lifespan",          cost: 75, extract: d => {
-    const born = d.born || "?";
-    const died = d.died || (d.alive ? "present" : "?");
-    return `${born} – ${died}`;
-  }},
-  { key: "summary",     label: "First sentence on Wikipedia",  cost: 250, extract: d => d.firstSentence || "…" },
+  { key: "category",    label: "Occupation",   cost: 150,
+    extract: d => d.category,
+    hasData: d => !!d?.category },
+  { key: "initials",    label: "Initials",     cost: 150,
+    extract: d => extractInitials(d.name),
+    hasData: d => !!d?.name },
+  { key: "nationality", label: "Nationality",  cost: 100,
+    extract: d => extractNationality(d),
+    hasData: d => d && extractNationality(d) !== 'Unknown' },
+  { key: "lifespan",    label: "Lifespan",     cost: 75,
+    extract: d => {
+      const born = d.born || "?";
+      const died = d.died || (d.alive ? "present" : "?");
+      return `${born} – ${died}`;
+    },
+    hasData: d => d && (d.born !== null || d.died !== null || d.alive) },
+  { key: "summary",     label: "First sentence on Wikipedia", cost: 250,
+    extract: d => d.firstSentence || "…",
+    hasData: d => d && d.firstSentence && d.firstSentence !== '…' && d.firstSentence !== 'No summary available.' },
 ];
 
 // ============================================================
-// DIFFICULTY & SEED
+// SEED
 // ============================================================
-let selectedDifficulty = 'easy';
 let currentSeed = null;
 let pwfSeed = null;
-
-function setDifficulty(d) {
-  selectedDifficulty = d;
-  document.querySelectorAll('.diff-btn').forEach(btn => btn.classList.remove('active'));
-  document.querySelectorAll('.diff-' + d).forEach(btn => btn.classList.add('active'));
-}
-
-function selectDifficulty(d) {
-  setDifficulty(d);
-  startGame(currentSeed ? deriveNextSeed(currentSeed) : null);
-}
 
 function generateSeed() {
   return Math.random().toString(36).slice(2, 8).toUpperCase();
@@ -58,6 +60,10 @@ function deriveNextSeed(seed) {
   const h = hashStr(seed + ':next');
   const s = h.toString(36).toUpperCase();
   return s.length >= 6 ? s.slice(0, 6) : s.padStart(6, '0');
+}
+
+function playRandom() {
+  startGame(currentSeed ? deriveNextSeed(currentSeed) : null);
 }
 
 // ============================================================
@@ -101,7 +107,6 @@ function showDailySplash() {
 }
 
 function startDailyChallenge() {
-  setDifficulty('medium');
   const dailySeed = getPSTDateString();
   currentSeed = dailySeed;
   const rng = mulberry32(hashStr(dailySeed));
@@ -124,7 +129,7 @@ function startDailyChallenge() {
   document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
-  updateGameDiffBadge();
+  updateGameBadge();
   loadRound();
 }
 
@@ -178,6 +183,11 @@ async function fetchWikiData(person) {
     if (diedMatch) data.died = diedMatch[1];
     else if (yrMatch && yrMatch[2].toLowerCase() !== 'present') data.died = yrMatch[2];
     else if (yrMatch && yrMatch[2].toLowerCase() === 'present') data.alive = true;
+    // people.xml overrides take precedence over Wikipedia-parsed values
+    if (person.born)        data.born        = person.born;
+    if (person.died)        data.died        = person.died;
+    if (person.alive)       data.alive       = true;
+    if (person.nationality) data.nationality = person.nationality;
     data.nationality = extractNationalityFromText(json.extract || json.description || "");
     return data;
   } catch(e) {
@@ -194,6 +204,25 @@ async function fetchWikiData(person) {
 
 function extractNationality(data) {
   return data.nationality || "Unknown";
+}
+
+function extractInitials(name) {
+  const skip = new Set(['da', 'de', 'van', 'von', 'of', 'el', 'al', 'le', 'la', 'bin', 'bint']);
+  const letters = [];
+  for (const word of name.split(/\s+/)) {
+    if (skip.has(word.toLowerCase())) continue;
+    const parts = word.split('.').filter(p => /[a-zA-Z]/.test(p));
+    if (parts.length > 1) {
+      for (const p of parts) {
+        const c = p.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+        if (c) letters.push(c);
+      }
+    } else {
+      const c = word.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+      if (c) letters.push(c);
+    }
+  }
+  return letters.join('.');
 }
 
 // Pick the first sentence that survives redaction with enough info intact;
@@ -288,10 +317,8 @@ function seededShuffle(arr, rng) {
 function startGame(seed = null) {
   if (!seed) seed = generateSeed();
   currentSeed = seed;
-  const pool = selectedDifficulty === 'easy'
-    ? PEOPLE.filter(p => p.difficulty === 'easy')
-    : PEOPLE;
-  const rng = mulberry32(hashStr(seed + selectedDifficulty));
+  const pool = PEOPLE;
+  const rng = mulberry32(hashStr(seed));
   const indices = seededShuffle([...Array(pool.length).keys()], rng).slice(0, ROUNDS);
   state = {
     pool,
@@ -310,7 +337,7 @@ function startGame(seed = null) {
   document.body.classList.add('in-game');
   showScreen('screen-game');
   document.getElementById('scorebar').classList.add('visible');
-  updateGameDiffBadge();
+  updateGameBadge();
   loadRound();
 }
 
@@ -367,9 +394,13 @@ function renderHints(data) {
     const unlocked = !!state.unlockedHints[hint.key];
     const wide = hint.key === 'summary' ? ' hint-chip-wide' : '';
     chip.className = `hint-chip ${unlocked ? 'unlocked' : 'locked'}${wide}`;
+    const dataReady = hint.hasData(data);
     if (unlocked && data) {
       const val = hint.extract(data);
       chip.innerHTML = `<span class="hint-cost">${hint.label}</span><span class="hint-value">${val}</span>`;
+    } else if (!dataReady) {
+      chip.className = `hint-chip hint-chip-unavailable${wide}`;
+      chip.innerHTML = `<span class="hint-cost">N/A</span><span class="hint-value">🚫 ${hint.label}</span>`;
     } else {
       chip.innerHTML = `<span class="hint-cost">−${hint.cost} pts</span><span class="hint-value">🔒 ${hint.label}</span>`;
       chip.onclick = () => unlockHint(hint);
@@ -468,17 +499,12 @@ function endGame() {
   showScreen('screen-end');
 
   document.getElementById('end-score').textContent = state.totalScore;
-  const badge = document.getElementById('end-difficulty-badge');
+  const badge = document.getElementById('end-mode-badge');
   if (state.isDaily) {
     badge.textContent = '⭐ Daily';
-    badge.style.color = '#E6B800';
-    badge.style.borderColor = '#E6B800';
+    badge.style.display = 'inline-block';
   } else {
-    const diffLabel = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
-    const diffColor = selectedDifficulty === 'easy' ? '#2DC653' : '#457B9D';
-    badge.textContent = diffLabel;
-    badge.style.color = diffColor;
-    badge.style.borderColor = diffColor;
+    badge.style.display = 'none';
   }
   const maxPossible = ROUNDS * START_POINTS;
   const pct = state.totalScore / maxPossible;
@@ -491,16 +517,44 @@ function endGame() {
   ];
   document.getElementById('end-grade').textContent = (grades.find(g => pct >= g[0]) || grades[4])[1];
 
-  // Build results list
+  // Build results grid
   const list = document.getElementById('results-list');
   list.innerHTML = '';
+
+  const grid = document.createElement('div');
+  grid.className = 'results-grid';
   for (const r of state.results) {
-    const div = document.createElement('div');
-    div.className = `result-row ${r.correct ? 'r-correct' : 'r-wrong'}`;
-    div.innerHTML = `<div class="r-name">${r.correct ? '✅' : (r.skipped ? '⏭' : '❌')} ${r.name}</div>
-      <div class="r-detail">${r.correct ? `+${r.points} pts` : '0 pts'} &nbsp;|&nbsp; ${r.guesses} guess${r.guesses !== 1 ? 'es' : ''} &nbsp;|&nbsp; ${r.hintsUsed} hint${r.hintsUsed !== 1 ? 's' : ''} used</div>`;
-    list.appendChild(div);
+    const colorClass = r.correct ? (r.points >= 800 ? 'rc-gold' : 'rc-green') : (r.skipped ? 'rc-skip' : 'rc-wrong');
+    const icon = r.correct ? '✅' : (r.skipped ? '⏭' : '❌');
+    const pts = r.correct ? `+${r.points}` : '0';
+    const stats = r.skipped ? '—' : `${r.guesses} guess${r.guesses !== 1 ? 'es' : ''} · ${r.hintsUsed} hint${r.hintsUsed !== 1 ? 's' : ''}`;
+    const card = document.createElement('div');
+    card.className = `result-card ${colorClass}`;
+    card.innerHTML = `<div class="rc-icon">${icon}</div>
+      <div class="rc-name">${r.name}</div>
+      <div class="rc-pts">${pts}</div>
+      <div class="rc-stats">${stats}</div>`;
+    grid.appendChild(card);
   }
+  list.appendChild(grid);
+
+  const answerList = document.createElement('div');
+  answerList.id = 'end-answers';
+  answerList.style.display = 'none';
+  state.results.forEach((r, i) => {
+    const row = document.createElement('div');
+    row.className = 'end-answer-row';
+    row.innerHTML = `<span class="end-answer-num">${i + 1}</span><span class="end-answer-name">${r.name}</span><span class="end-answer-icon">${r.correct ? '✅' : (r.skipped ? '⏭' : '❌')}</span>`;
+    answerList.appendChild(row);
+  });
+  list.appendChild(answerList);
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'toggle-answers-btn';
+  toggleBtn.className = 'toggle-answers-btn';
+  toggleBtn.textContent = 'Show Names';
+  toggleBtn.onclick = toggleEndAnswers;
+  list.appendChild(toggleBtn);
 
   // Share URL — stashed on the copy button
   const shareData = buildShareData();
@@ -514,14 +568,8 @@ function endGame() {
 // ============================================================
 // PLAY WITH FRIENDS MODAL
 // ============================================================
-let pwfDifficulty = 'easy';
-
 function openPwfModal() {
   pwfSeed = generateSeed();
-  pwfDifficulty = selectedDifficulty;
-  document.querySelectorAll('.pwf-diff-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = document.querySelector(`.pwf-diff-btn.diff-${pwfDifficulty}`);
-  if (activeBtn) activeBtn.classList.add('active');
   updatePwfLink();
   document.getElementById('pwf-modal').style.display = 'flex';
 }
@@ -530,17 +578,9 @@ function closePwfModal() {
   document.getElementById('pwf-modal').style.display = 'none';
 }
 
-function setPwfDifficulty(d) {
-  pwfDifficulty = d;
-  document.querySelectorAll('.pwf-diff-btn').forEach(btn => btn.classList.remove('active'));
-  const activeBtn = document.querySelector(`.pwf-diff-btn.diff-${d}`);
-  if (activeBtn) activeBtn.classList.add('active');
-  updatePwfLink();
-}
-
 function updatePwfLink() {
   const base = window.location.href.replace(/[?#].*$/, '');
-  document.getElementById('pwf-link-input').value = `${base}?seed=${pwfSeed}&d=${pwfDifficulty}`;
+  document.getElementById('pwf-link-input').value = `${base}?seed=${pwfSeed}`;
 }
 
 function copyPwfLink(btn) {
@@ -554,12 +594,10 @@ function copyPwfLink(btn) {
 
 function startPwfGame() {
   closePwfModal();
-  setDifficulty(pwfDifficulty);
   startGame(pwfSeed);
 }
 
-function startSeededGameFromRecap(seed, diff) {
-  setDifficulty(diff || 'easy');
+function startSeededGameFromRecap(seed) {
   startGame(seed);
 }
 
@@ -575,7 +613,6 @@ function copyDailyUrl(btn) {
 function buildShareData() {
   const payload = {
     s: state.totalScore,
-    d: selectedDifficulty,
     dy: state.isDaily ? 1 : 0,
     seed: state.isDaily ? null : (state.seed || null),
     r: state.results.map(r => ({
@@ -629,9 +666,6 @@ function renderRecap(data) {
   const grades = [[0.9,'🌟 Legendary!'],[0.7,'🔥 Outstanding!'],[0.5,'👍 Not Bad!'],[0.3,'😬 Keep Practicing'],[0,'💀 Yikes…']];
   const grade = (grades.find(g => pct >= g[0]) || grades[4])[1];
   const isRecapDaily = data.dy === 1;
-  const recapDiff = data.d || 'easy';
-  const recapBadgeText = isRecapDaily ? '⭐ Daily' : recapDiff.charAt(0).toUpperCase() + recapDiff.slice(1);
-  const recapDiffColor = isRecapDaily ? '#E6B800' : (recapDiff === 'easy' ? '#2DC653' : '#457B9D');
 
   let resultsHtml = '';
   for (const r of data.r) {
@@ -644,15 +678,18 @@ function renderRecap(data) {
   const recapSeed = data.seed || null;
   const playAction = isRecapDaily
     ? 'startDailyChallenge()'
-    : (recapSeed ? `startSeededGameFromRecap('${recapSeed}','${recapDiff}')` : `startGame()`);
+    : (recapSeed ? `startSeededGameFromRecap('${recapSeed}')` : `startGame()`);
   const playLabel = isRecapDaily ? 'Play the Daily &amp; Beat Their Score!' : 'Play &amp; Beat Their Score!';
+  const dailyBadgeHtml = isRecapDaily
+    ? `<div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid #E6B800;color:#E6B800;">⭐ Daily</div>`
+    : '';
 
   body.innerHTML = `
     <div style="text-align:center;margin-bottom:20px;">
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:0.8rem;letter-spacing:4px;color:var(--blue);text-transform:uppercase;margin-bottom:6px;">A friend scored</div>
       <div style="font-family:'Alfa Slab One',serif;font-size:3.5rem;color:var(--text-dark);line-height:1;">${data.s}</div>
       <div style="font-family:'Barlow Condensed',sans-serif;font-size:1.1rem;color:var(--red);font-weight:700;">${grade}</div>
-      <div style="display:inline-block;margin-top:8px;font-family:'Barlow Condensed',sans-serif;font-size:0.78rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:3px 10px;border-radius:3px;border:2px solid ${recapDiffColor};color:${recapDiffColor};">${recapBadgeText}</div>
+      ${dailyBadgeHtml}
     </div>
 
     <div style="position:relative;margin-bottom:16px;">
@@ -686,21 +723,32 @@ function goHome() {
   showScreen('screen-welcome');
 }
 
+function toggleEndAnswers() {
+  const panel = document.getElementById('end-answers');
+  const btn = document.getElementById('toggle-answers-btn');
+  const grid = document.querySelector('.results-grid');
+  const showing = panel.style.display !== 'none';
+  panel.style.display = showing ? 'none' : 'block';
+  if (grid) grid.classList.toggle('names-revealed', !showing);
+  btn.textContent = showing ? 'Show Names' : 'Hide Names';
+}
+
 function updateScorebar() {
   document.getElementById('sb-round').textContent = state.roundIndex + 1;
   document.getElementById('sb-pts').textContent = state.roundPoints;
   document.getElementById('sb-total').textContent = state.totalScore;
 }
 
-function updateGameDiffBadge() {
-  const badge = document.getElementById('game-diff-badge');
-  if (!badge) return;
+function updateGameBadge() {
+  const badge = document.getElementById('game-mode-badge');
+  const item = badge ? badge.closest('.score-item') : null;
+  if (!badge || !item) return;
   if (state.isDaily) {
     badge.textContent = '⭐ Daily';
     badge.style.color = '#E6B800';
+    item.style.display = '';
   } else {
-    badge.textContent = selectedDifficulty === 'easy' ? 'Easy' : 'Medium';
-    badge.style.color = selectedDifficulty === 'easy' ? '#2DC653' : '#E6B800';
+    item.style.display = 'none';
   }
 }
 
@@ -794,10 +842,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   if (params.get('daily') === '1') {
     showDailySplash();
   } else if (params.get('seed')) {
-    const seed = params.get('seed');
-    const diff = params.get('d') || 'easy';
-    setDifficulty(diff);
-    startGame(seed);
+    startGame(params.get('seed'));
   } else if (!checkSharedResult()) {
     showScreen('screen-welcome');
   }
