@@ -438,13 +438,12 @@ body.in-game .compact-game-header {
 
 /* ── AUTOCOMPLETE ── */
 #autocomplete-list {
-  position: absolute;
-  top: 100%; left: 0; right: 80px;
+  position: fixed;
   background: var(--cream);
   border: 3px solid var(--blue);
   border-top: none;
   border-radius: 0 0 4px 4px;
-  z-index: 100;
+  z-index: 1000;
   max-height: 200px;
   overflow-y: auto;
   display: none;
@@ -720,9 +719,18 @@ body.in-game .compact-game-header {
   letter-spacing: 3px;
   text-transform: uppercase;
   padding: 5px 0;
-  text-align: center;
   overflow: hidden;
   white-space: nowrap;
+}
+.ticker-track {
+  display: inline-block;
+  white-space: nowrap;
+  animation: ticker-scroll 22s linear infinite;
+}
+.ticker-track span { display: inline-block; }
+@keyframes ticker-scroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 .round-actions {
   display: flex;
