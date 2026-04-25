@@ -1,0 +1,827 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<people>
+
+  <!-- ═══ ORIGINAL ENTRIES (150) ═══ -->
+  <person><name>Albert Einstein</name><wiki>Albert_Einstein</wiki><category>Physicist</category></person>
+  <person><name>Marie Curie</name><wiki>Marie_Curie</wiki><category>Scientist</category></person>
+  <person><name>Isaac Newton</name><wiki>Isaac_Newton</wiki><category>Physicist</category></person>
+  <person><name>Charles Darwin</name><wiki>Charles_Darwin</wiki><category>Naturalist</category></person>
+  <person><name>Nikola Tesla</name><wiki>Nikola_Tesla</wiki><category>Inventor</category></person>
+  <person><name>Thomas Edison</name><wiki>Thomas_Edison</wiki><category>Inventor</category></person>
+  <person><name>Stephen Hawking</name><wiki>Stephen_Hawking</wiki><category>Physicist</category></person>
+  <person><name>Ada Lovelace</name><wiki>Ada_Lovelace</wiki><category>Mathematician</category></person>
+  <person><name>Napoleon Bonaparte</name><wiki>Napoleon</wiki><category>Military leader</category></person>
+  <person born="~70 BC" died="~30 BC"><name>Cleopatra</name><wiki>Cleopatra</wiki><category>Pharaoh</category></person>
+  <person><name>Julius Caesar</name><wiki>Julius_Caesar</wiki><category>Military leader</category></person>
+  <person><name>Genghis Khan</name><wiki>Genghis_Khan</wiki><category>Warlord</category></person>
+  <person><name>Joan of Arc</name><wiki>Joan_of_Arc</wiki><category>Military leader</category></person>
+  <person><name>Leonardo da Vinci</name><wiki>Leonardo_da_Vinci</wiki><category>Artist / Inventor</category></person>
+  <person><name>Michelangelo</name><wiki>Michelangelo</wiki><category>Artist</category></person>
+  <person><name>William Shakespeare</name><wiki>William_Shakespeare</wiki><category>Writer</category></person>
+  <person><name>Pablo Picasso</name><wiki>Pablo_Picasso</wiki><category>Artist</category></person>
+  <person><name>Vincent van Gogh</name><wiki>Vincent_van_Gogh</wiki><category>Artist</category></person>
+  <person><name>Frida Kahlo</name><wiki>Frida_Kahlo</wiki><category>Artist</category></person>
+  <person><name>Edgar Allan Poe</name><wiki>Edgar_Allan_Poe</wiki><category>Writer</category></person>
+  <person><name>Mark Twain</name><wiki>Mark_Twain</wiki><category>Writer</category></person>
+  <person><name>Jane Austen</name><wiki>Jane_Austen</wiki><category>Writer</category></person>
+  <person><name>Ernest Hemingway</name><wiki>Ernest_Hemingway</wiki><category>Writer</category></person>
+  <person><name>Abraham Lincoln</name><wiki>Abraham_Lincoln</wiki><category>President</category></person>
+  <person><name>Winston Churchill</name><wiki>Winston_Churchill</wiki><category>Prime Minister</category></person>
+  <person><name>Nelson Mandela</name><wiki>Nelson_Mandela</wiki><category>President</category></person>
+  <person><name>Mahatma Gandhi</name><wiki>Mahatma_Gandhi</wiki><category>Political leader</category></person>
+  <person><name>George Washington</name><wiki>George_Washington</wiki><category>President</category></person>
+  <person><name>Queen Victoria</name><wiki>Queen_Victoria</wiki><category>Monarch</category></person>
+  <person><name>Franklin D. Roosevelt</name><wiki>Franklin_D._Roosevelt</wiki><category>President</category></person>
+  <person><name>Muhammad Ali</name><wiki>Muhammad_Ali</wiki><category>Boxer</category></person>
+  <person><name>Pelé</name><wiki>Pelé</wiki><category>Footballer</category></person>
+  <person><name>Serena Williams</name><wiki>Serena_Williams</wiki><category>Tennis player</category></person>
+  <person><name>Michael Jordan</name><wiki>Michael_Jordan</wiki><category>Basketball player</category></person>
+  <person><name>Usain Bolt</name><wiki>Usain_Bolt</wiki><category>Sprinter</category></person>
+  <person><name>Jesse Owens</name><wiki>Jesse_Owens</wiki><category>Sprinter</category></person>
+  <person><name>Babe Ruth</name><wiki>Babe_Ruth</wiki><category>Baseball player</category></person>
+  <person><name>Elvis Presley</name><wiki>Elvis_Presley</wiki><category>Musician</category></person>
+  <person><name>Marilyn Monroe</name><wiki>Marilyn_Monroe</wiki><category>Actress</category></person>
+  <person><name>Charlie Chaplin</name><wiki>Charlie_Chaplin</wiki><category>Actor / Filmmaker</category></person>
+  <person><name>Frank Sinatra</name><wiki>Frank_Sinatra</wiki><category>Singer</category></person>
+  <person><name>Freddie Mercury</name><wiki>Freddie_Mercury</wiki><category>Musician</category></person>
+  <person><name>David Bowie</name><wiki>David_Bowie</wiki><category>Musician</category></person>
+  <person><name>Audrey Hepburn</name><wiki>Audrey_Hepburn</wiki><category>Actress</category></person>
+  <person><name>Alfred Hitchcock</name><wiki>Alfred_Hitchcock</wiki><category>Film director</category></person>
+  <person><name>Walt Disney</name><wiki>Walt_Disney</wiki><category>Animator / Producer</category></person>
+  <person><name>Sigmund Freud</name><wiki>Sigmund_Freud</wiki><category>Psychologist</category></person>
+  <person><name>Karl Marx</name><wiki>Karl_Marx</wiki><category>Philosopher</category></person>
+  <person><name>Coco Chanel</name><wiki>Coco_Chanel</wiki><category>Fashion designer</category></person>
+  <person><name>Amelia Earhart</name><wiki>Amelia_Earhart</wiki><category>Aviator</category></person>
+  <person><name>Galileo Galilei</name><wiki>Galileo_Galilei</wiki><category>Astronomer</category></person>
+  <person><name>Alan Turing</name><wiki>Alan_Turing</wiki><category>Computer scientist</category></person>
+  <person><name>Richard Feynman</name><wiki>Richard_Feynman</wiki><category>Physicist</category></person>
+  <person><name>Carl Sagan</name><wiki>Carl_Sagan</wiki><category>Astronomer</category></person>
+  <person><name>Louis Pasteur</name><wiki>Louis_Pasteur</wiki><category>Scientist</category></person>
+  <person><name>Alexander Fleming</name><wiki>Alexander_Fleming</wiki><category>Scientist</category></person>
+  <person><name>Rosalind Franklin</name><wiki>Rosalind_Franklin</wiki><category>Chemist</category></person>
+  <person><name>Gregor Mendel</name><wiki>Gregor_Mendel</wiki><category>Botanist</category></person>
+  <person><name>Edwin Hubble</name><wiki>Edwin_Hubble</wiki><category>Astronomer</category></person>
+  <person><name>Niels Bohr</name><wiki>Niels_Bohr</wiki><category>Physicist</category></person>
+  <person><name>Archimedes</name><wiki>Archimedes</wiki><category>Mathematician</category></person>
+  <person><name>Nicolaus Copernicus</name><wiki>Nicolaus_Copernicus</wiki><category>Astronomer</category></person>
+  <person><name>James Watt</name><wiki>James_Watt</wiki><category>Inventor</category></person>
+  <person><name>Lise Meitner</name><wiki>Lise_Meitner</wiki><category>Physicist</category></person>
+  <person><name>Max Planck</name><wiki>Max_Planck</wiki><category>Physicist</category></person>
+  <person><name>Ernest Rutherford</name><wiki>Ernest_Rutherford</wiki><category>Physicist</category></person>
+  <person><name>Michael Faraday</name><wiki>Michael_Faraday</wiki><category>Physicist</category></person>
+  <person><name>Neil Armstrong</name><wiki>Neil_Armstrong</wiki><category>Astronaut</category></person>
+  <person><name>Werner Heisenberg</name><wiki>Werner_Heisenberg</wiki><category>Physicist</category></person>
+  <person><name>James Clerk Maxwell</name><wiki>James_Clerk_Maxwell</wiki><category>Physicist</category></person>
+  <person><name>Alexander the Great</name><wiki>Alexander_the_Great</wiki><category>Military commander</category></person>
+  <person><name>Attila the Hun</name><wiki>Attila</wiki><category>Warlord</category></person>
+  <person><name>Marco Polo</name><wiki>Marco_Polo</wiki><category>Explorer</category></person>
+  <person><name>Christopher Columbus</name><wiki>Christopher_Columbus</wiki><category>Explorer</category></person>
+  <person><name>Catherine the Great</name><wiki>Catherine_the_Great</wiki><category>Empress</category></person>
+  <person><name>Queen Elizabeth I</name><wiki>Elizabeth_I</wiki><category>Monarch</category></person>
+  <person><name>Queen Elizabeth II</name><wiki>Elizabeth_II</wiki><category>Monarch</category></person>
+  <person><name>Martin Luther</name><wiki>Martin_Luther</wiki><category>Theologian</category></person>
+  <person><name>Che Guevara</name><wiki>Che_Guevara</wiki><category>Revolutionary</category></person>
+  <person><name>Margaret Thatcher</name><wiki>Margaret_Thatcher</wiki><category>Prime Minister</category></person>
+  <person><name>John F. Kennedy</name><wiki>John_F._Kennedy</wiki><category>President</category></person>
+  <person born="1893" died="1976"><name>Mao Zedong</name><wiki>Mao_Zedong</wiki><category>Political leader</category></person>
+  <person><name>Joseph Stalin</name><wiki>Joseph_Stalin</wiki><category>Political leader</category></person>
+  <person><name>Thomas Jefferson</name><wiki>Thomas_Jefferson</wiki><category>President</category></person>
+  <person><name>Theodore Roosevelt</name><wiki>Theodore_Roosevelt</wiki><category>President</category></person>
+  <person><name>Vladimir Lenin</name><wiki>Vladimir_Lenin</wiki><category>Revolutionary</category></person>
+  <person><name>Fidel Castro</name><wiki>Fidel_Castro</wiki><category>Political leader</category></person>
+  <person><name>Simón Bolívar</name><wiki>Simón_Bolívar</wiki><category>Revolutionary</category></person>
+  <person><name>Martin Luther King Jr.</name><wiki>Martin_Luther_King_Jr.</wiki><category>Civil rights leader</category></person>
+  <person><name>Harriet Tubman</name><wiki>Harriet_Tubman</wiki><category>Abolitionist</category></person>
+  <person><name>John Lennon</name><wiki>John_Lennon</wiki><category>Musician</category></person>
+  <person><name>Paul McCartney</name><wiki>Paul_McCartney</wiki><category>Musician</category></person>
+  <person><name>Michael Jackson</name><wiki>Michael_Jackson</wiki><category>Musician</category></person>
+  <person><name>Bob Dylan</name><wiki>Bob_Dylan</wiki><category>Musician</category></person>
+  <person><name>Jimi Hendrix</name><wiki>Jimi_Hendrix</wiki><category>Musician</category></person>
+  <person><name>Whitney Houston</name><wiki>Whitney_Houston</wiki><category>Singer</category></person>
+  <person><name>Madonna</name><wiki>Madonna_(entertainer)</wiki><category>Singer</category></person>
+  <person><name>Aretha Franklin</name><wiki>Aretha_Franklin</wiki><category>Singer</category></person>
+  <person><name>Bob Marley</name><wiki>Bob_Marley</wiki><category>Musician</category></person>
+  <person><name>Louis Armstrong</name><wiki>Louis_Armstrong</wiki><category>Musician</category></person>
+  <person><name>Miles Davis</name><wiki>Miles_Davis</wiki><category>Musician</category></person>
+  <person><name>Jim Morrison</name><wiki>Jim_Morrison</wiki><category>Musician</category></person>
+  <person><name>Kurt Cobain</name><wiki>Kurt_Cobain</wiki><category>Musician</category></person>
+  <person><name>Elton John</name><wiki>Elton_John</wiki><category>Musician</category></person>
+  <person><name>Prince</name><wiki>Prince_(musician)</wiki><category>Musician</category></person>
+  <person><name>Tina Turner</name><wiki>Tina_Turner</wiki><category>Singer</category></person>
+  <person><name>Stevie Wonder</name><wiki>Stevie_Wonder</wiki><category>Musician</category></person>
+  <person><name>Marlon Brando</name><wiki>Marlon_Brando</wiki><category>Actor</category></person>
+  <person><name>James Dean</name><wiki>James_Dean</wiki><category>Actor</category></person>
+  <person><name>Humphrey Bogart</name><wiki>Humphrey_Bogart</wiki><category>Actor</category></person>
+  <person><name>Grace Kelly</name><wiki>Grace_Kelly</wiki><category>Actress</category></person>
+  <person><name>Cary Grant</name><wiki>Cary_Grant</wiki><category>Actor</category></person>
+  <person><name>Orson Welles</name><wiki>Orson_Welles</wiki><category>Filmmaker</category></person>
+  <person><name>Ingrid Bergman</name><wiki>Ingrid_Bergman</wiki><category>Actress</category></person>
+  <person><name>Clark Gable</name><wiki>Clark_Gable</wiki><category>Actor</category></person>
+  <person><name>Charles Dickens</name><wiki>Charles_Dickens</wiki><category>Writer</category></person>
+  <person><name>Leo Tolstoy</name><wiki>Leo_Tolstoy</wiki><category>Writer</category></person>
+  <person><name>Fyodor Dostoevsky</name><wiki>Fyodor_Dostoevsky</wiki><category>Writer</category></person>
+  <person><name>George Orwell</name><wiki>George_Orwell</wiki><category>Writer</category></person>
+  <person><name>Franz Kafka</name><wiki>Franz_Kafka</wiki><category>Writer</category></person>
+  <person><name>Virginia Woolf</name><wiki>Virginia_Woolf</wiki><category>Writer</category></person>
+  <person><name>Oscar Wilde</name><wiki>Oscar_Wilde</wiki><category>Writer</category></person>
+  <person><name>Arthur Conan Doyle</name><wiki>Arthur_Conan_Doyle</wiki><category>Writer</category></person>
+  <person><name>Agatha Christie</name><wiki>Agatha_Christie</wiki><category>Writer</category></person>
+  <person><name>J.R.R. Tolkien</name><wiki>J._R._R._Tolkien</wiki><category>Writer</category></person>
+  <person><name>Victor Hugo</name><wiki>Victor_Hugo</wiki><category>Writer</category></person>
+  <person><name>Alexandre Dumas</name><wiki>Alexandre_Dumas</wiki><category>Writer</category></person>
+  <person><name>Rembrandt</name><wiki>Rembrandt</wiki><category>Artist</category></person>
+  <person><name>Salvador Dalí</name><wiki>Salvador_Dalí</wiki><category>Artist</category></person>
+  <person><name>Plato</name><wiki>Plato</wiki><category>Philosopher</category></person>
+  <person><name>Aristotle</name><wiki>Aristotle</wiki><category>Philosopher</category></person>
+  <person><name>Voltaire</name><wiki>Voltaire</wiki><category>Philosopher</category></person>
+  <person><name>Friedrich Nietzsche</name><wiki>Friedrich_Nietzsche</wiki><category>Philosopher</category></person>
+  <person><name>Immanuel Kant</name><wiki>Immanuel_Kant</wiki><category>Philosopher</category></person>
+  <person><name>René Descartes</name><wiki>René_Descartes</wiki><category>Philosopher</category></person>
+  <person><name>LeBron James</name><wiki>LeBron_James</wiki><category>Basketball player</category></person>
+  <person><name>Tiger Woods</name><wiki>Tiger_Woods</wiki><category>Golfer</category></person>
+  <person><name>Roger Federer</name><wiki>Roger_Federer</wiki><category>Tennis player</category></person>
+  <person nationality="Portuguese"><name>Cristiano Ronaldo</name><wiki>Cristiano_Ronaldo</wiki><category>Footballer</category></person>
+  <person><name>Lionel Messi</name><wiki>Lionel_Messi</wiki><category>Footballer</category></person>
+  <person><name>Diego Maradona</name><wiki>Diego_Maradona</wiki><category>Footballer</category></person>
+  <person><name>Ayrton Senna</name><wiki>Ayrton_Senna</wiki><category>Racing driver</category></person>
+  <person><name>Michael Schumacher</name><wiki>Michael_Schumacher</wiki><category>Racing driver</category></person>
+  <person><name>Jackie Robinson</name><wiki>Jackie_Robinson</wiki><category>Baseball player</category></person>
+  <person><name>Wayne Gretzky</name><wiki>Wayne_Gretzky</wiki><category>Ice hockey player</category></person>
+  <person><name>Mike Tyson</name><wiki>Mike_Tyson</wiki><category>Boxer</category></person>
+  <person><name>Steffi Graf</name><wiki>Steffi_Graf</wiki><category>Tennis player</category></person>
+  <person><name>Martina Navratilova</name><wiki>Martina_Navratilova</wiki><category>Tennis player</category></person>
+
+  <!-- ═══ SCIENTISTS, INVENTORS, ASTRONAUTS (34) ═══ -->
+  <person><name>Jane Goodall</name><wiki>Jane_Goodall</wiki><category>Primatologist</category></person>
+  <person><name>Neil deGrasse Tyson</name><wiki>Neil_deGrasse_Tyson</wiki><category>Astrophysicist</category></person>
+  <person><name>Bill Nye</name><wiki>Bill_Nye</wiki><category>Science communicator</category></person>
+  <person><name>David Attenborough</name><wiki>David_Attenborough</wiki><category>Naturalist</category></person>
+  <person><name>Buzz Aldrin</name><wiki>Buzz_Aldrin</wiki><category>Astronaut</category></person>
+  <person><name>Yuri Gagarin</name><wiki>Yuri_Gagarin</wiki><category>Astronaut</category></person>
+  <person><name>Sally Ride</name><wiki>Sally_Ride</wiki><category>Astronaut</category></person>
+  <person><name>Florence Nightingale</name><wiki>Florence_Nightingale</wiki><category>Nurse</category></person>
+  <person><name>Wright Brothers</name><wiki>Wright_brothers</wiki><category>Inventors</category></person>
+  <person><name>Alexander Graham Bell</name><wiki>Alexander_Graham_Bell</wiki><category>Inventor</category></person>
+  <person><name>Henry Ford</name><wiki>Henry_Ford</wiki><category>Industrialist</category></person>
+  <person><name>Pythagoras</name><wiki>Pythagoras</wiki><category>Mathematician</category></person>
+  <person><name>Euclid</name><wiki>Euclid</wiki><category>Mathematician</category></person>
+  <person><name>Erwin Schrödinger</name><wiki>Erwin_Schrödinger</wiki><category>Physicist</category></person>
+  <person><name>J. Robert Oppenheimer</name><wiki>J._Robert_Oppenheimer</wiki><category>Physicist</category></person>
+  <person><name>Enrico Fermi</name><wiki>Enrico_Fermi</wiki><category>Physicist</category></person>
+  <person><name>Marie Antoinette</name><wiki>Marie_Antoinette</wiki><category>Queen</category></person>
+  <person><name>Hippocrates</name><wiki>Hippocrates</wiki><category>Physician</category></person>
+  <person><name>Grace Hopper</name><wiki>Grace_Hopper</wiki><category>Computer scientist</category></person>
+  <person><name>Wernher von Braun</name><wiki>Wernher_von_Braun</wiki><category>Rocket engineer</category></person>
+
+  <!-- ═══ TECH FOUNDERS / BUSINESS (25) ═══ -->
+  <person><name>Steve Jobs</name><wiki>Steve_Jobs</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Bill Gates</name><wiki>Bill_Gates</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Elon Musk</name><wiki>Elon_Musk</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Mark Zuckerberg</name><wiki>Mark_Zuckerberg</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Jeff Bezos</name><wiki>Jeff_Bezos</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Larry Page</name><wiki>Larry_Page</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Sergey Brin</name><wiki>Sergey_Brin</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Steve Wozniak</name><wiki>Steve_Wozniak</wiki><category>Computer engineer</category></person>
+  <person><name>Sundar Pichai</name><wiki>Sundar_Pichai</wiki><category>Tech executive</category></person>
+  <person><name>Tim Cook</name><wiki>Tim_Cook</wiki><category>Tech executive</category></person>
+  <person><name>Sam Altman</name><wiki>Sam_Altman</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Jensen Huang</name><wiki>Jensen_Huang</wiki><category>Tech entrepreneur</category></person>
+  <person><name>Warren Buffett</name><wiki>Warren_Buffett</wiki><category>Investor</category></person>
+  <person><name>Oprah Winfrey</name><wiki>Oprah_Winfrey</wiki><category>Media mogul</category></person>
+  <person><name>Martha Stewart</name><wiki>Martha_Stewart</wiki><category>Businesswoman</category></person>
+  <person><name>Richard Branson</name><wiki>Richard_Branson</wiki><category>Businessman</category></person>
+  <person><name>Donald Trump</name><wiki>Donald_Trump</wiki><category>President</category></person>
+  <person><name>Howard Hughes</name><wiki>Howard_Hughes</wiki><category>Businessman</category></person>
+  <person><name>John D. Rockefeller</name><wiki>John_D._Rockefeller</wiki><category>Industrialist</category></person>
+  <person><name>Andrew Carnegie</name><wiki>Andrew_Carnegie</wiki><category>Industrialist</category></person>
+  <person><name>J.P. Morgan</name><wiki>J._P._Morgan</wiki><category>Financier</category></person>
+  <person><name>Estée Lauder</name><wiki>Estée_Lauder_(businesswoman)</wiki><category>Businesswoman</category></person>
+  
+  <!-- ═══ POLITICIANS / WORLD LEADERS / ROYALS / ACTIVISTS (85) ═══ -->
+  <person><name>Barack Obama</name><wiki>Barack_Obama</wiki><category>President</category></person>
+  <person><name>Michelle Obama</name><wiki>Michelle_Obama</wiki><category>First Lady</category></person>
+  <person><name>Joe Biden</name><wiki>Joe_Biden</wiki><category>President</category></person>
+  <person><name>Kamala Harris</name><wiki>Kamala_Harris</wiki><category>Vice President</category></person>
+  <person><name>Hillary Clinton</name><wiki>Hillary_Clinton</wiki><category>Politician</category></person>
+  <person><name>Bill Clinton</name><wiki>Bill_Clinton</wiki><category>President</category></person>
+  <person><name>George W. Bush</name><wiki>George_W._Bush</wiki><category>President</category></person>
+  <person><name>George H. W. Bush</name><wiki>George_H._W._Bush</wiki><category>President</category></person>
+  <person><name>Ronald Reagan</name><wiki>Ronald_Reagan</wiki><category>President</category></person>
+  <person><name>Jimmy Carter</name><wiki>Jimmy_Carter</wiki><category>President</category></person>
+  <person><name>Richard Nixon</name><wiki>Richard_Nixon</wiki><category>President</category></person>
+  <person><name>Lyndon B. Johnson</name><wiki>Lyndon_B._Johnson</wiki><category>President</category></person>
+  <person><name>Dwight D. Eisenhower</name><wiki>Dwight_D._Eisenhower</wiki><category>President</category></person>
+  <person><name>Harry S. Truman</name><wiki>Harry_S._Truman</wiki><category>President</category></person>
+  <person><name>Andrew Jackson</name><wiki>Andrew_Jackson</wiki><category>President</category></person>
+  <person><name>Ulysses S. Grant</name><wiki>Ulysses_S._Grant</wiki><category>President</category></person>
+  <person><name>Benjamin Franklin</name><wiki>Benjamin_Franklin</wiki><category>Founding Father</category></person>
+  <person><name>Alexander Hamilton</name><wiki>Alexander_Hamilton</wiki><category>Founding Father</category></person>
+  <person><name>Bernie Sanders</name><wiki>Bernie_Sanders</wiki><category>Politician</category></person>
+  <person><name>Nancy Pelosi</name><wiki>Nancy_Pelosi</wiki><category>Politician</category></person>
+  <person><name>Alexandria Ocasio-Cortez</name><wiki>Alexandria_Ocasio-Cortez</wiki><category>Politician</category></person>
+  <person><name>Mitch McConnell</name><wiki>Mitch_McConnell</wiki><category>Politician</category></person>
+  <person><name>John McCain</name><wiki>John_McCain</wiki><category>Politician</category></person>
+  <person><name>Mitt Romney</name><wiki>Mitt_Romney</wiki><category>Politician</category></person>
+  <person><name>Al Gore</name><wiki>Al_Gore</wiki><category>Vice President</category></person>
+  <person><name>Dick Cheney</name><wiki>Dick_Cheney</wiki><category>Vice President</category></person>
+  <person><name>Ruth Bader Ginsburg</name><wiki>Ruth_Bader_Ginsburg</wiki><category>Supreme Court Justice</category></person>
+  <person><name>Antonin Scalia</name><wiki>Antonin_Scalia</wiki><category>Supreme Court Justice</category></person>
+  <person><name>Sonia Sotomayor</name><wiki>Sonia_Sotomayor</wiki><category>Supreme Court Justice</category></person>
+  <person><name>Sandra Day O'Connor</name><wiki>Sandra_Day_O'Connor</wiki><category>Supreme Court Justice</category></person>
+  <person><name>Justin Trudeau</name><wiki>Justin_Trudeau</wiki><category>Prime Minister</category></person>
+  <person><name>Pierre Trudeau</name><wiki>Pierre_Trudeau</wiki><category>Prime Minister</category></person>
+  <person><name>Boris Johnson</name><wiki>Boris_Johnson</wiki><category>Prime Minister</category></person>
+  <person><name>Tony Blair</name><wiki>Tony_Blair</wiki><category>Prime Minister</category></person>
+  <person><name>David Cameron</name><wiki>David_Cameron</wiki><category>Prime Minister</category></person>
+  <person><name>Rishi Sunak</name><wiki>Rishi_Sunak</wiki><category>Prime Minister</category></person>
+  <person><name>Keir Starmer</name><wiki>Keir_Starmer</wiki><category>Prime Minister</category></person>
+  <person><name>Angela Merkel</name><wiki>Angela_Merkel</wiki><category>Chancellor</category></person>
+  <person><name>Emmanuel Macron</name><wiki>Emmanuel_Macron</wiki><category>President</category></person>
+  <person><name>Vladimir Putin</name><wiki>Vladimir_Putin</wiki><category>President</category></person>
+  <person><name>Volodymyr Zelenskyy</name><wiki>Volodymyr_Zelenskyy</wiki><category>President</category></person>
+  <person><name>Xi Jinping</name><wiki>Xi_Jinping</wiki><category>President</category></person>
+  <person><name>Kim Jong Un</name><wiki>Kim_Jong_Un</wiki><category>Supreme Leader</category></person>
+  <person><name>Kim Jong Il</name><wiki>Kim_Jong_Il</wiki><category>Supreme Leader</category></person>
+  <person><name>Benjamin Netanyahu</name><wiki>Benjamin_Netanyahu</wiki><category>Prime Minister</category></person>
+  <person><name>Narendra Modi</name><wiki>Narendra_Modi</wiki><category>Prime Minister</category></person>
+  <person><name>Shinzo Abe</name><wiki>Shinzo_Abe</wiki><category>Prime Minister</category></person>
+  <person><name>Mikhail Gorbachev</name><wiki>Mikhail_Gorbachev</wiki><category>Political leader</category></person>
+  <person><name>Boris Yeltsin</name><wiki>Boris_Yeltsin</wiki><category>President</category></person>
+  <person><name>Hugo Chávez</name><wiki>Hugo_Chávez</wiki><category>President</category></person>
+  <person><name>Saddam Hussein</name><wiki>Saddam_Hussein</wiki><category>President</category></person>
+  <person><name>Muammar Gaddafi</name><wiki>Muammar_Gaddafi</wiki><category>Political leader</category></person>
+  <person><name>Yasser Arafat</name><wiki>Yasser_Arafat</wiki><category>Political leader</category></person>
+  <person><name>Anwar Sadat</name><wiki>Anwar_Sadat</wiki><category>President</category></person>
+  <person><name>Golda Meir</name><wiki>Golda_Meir</wiki><category>Prime Minister</category></person>
+  <person><name>Indira Gandhi</name><wiki>Indira_Gandhi</wiki><category>Prime Minister</category></person>
+  <person><name>Pope Francis</name><wiki>Pope_Francis</wiki><category>Pope</category></person>
+  <person><name>Pope John Paul II</name><wiki>Pope_John_Paul_II</wiki><category>Pope</category></person>
+  <person><name>Pope Benedict XVI</name><wiki>Pope_Benedict_XVI</wiki><category>Pope</category></person>
+  <person><name>Mother Teresa</name><wiki>Mother_Teresa</wiki><category>Nun / Missionary</category></person>
+  <person><name>Dalai Lama</name><wiki>14th_Dalai_Lama</wiki><category>Spiritual leader</category></person>
+  <person><name>Adolf Hitler</name><wiki>Adolf_Hitler</wiki><category>Dictator</category></person>
+  <person><name>Benito Mussolini</name><wiki>Benito_Mussolini</wiki><category>Dictator</category></person>
+  <person><name>Osama bin Laden</name><wiki>Osama_bin_Laden</wiki><category>Terrorist</category></person>
+  <person><name>Henry Kissinger</name><wiki>Henry_Kissinger</wiki><category>Statesman</category></person>
+  <person><name>Colin Powell</name><wiki>Colin_Powell</wiki><category>Secretary of State</category></person>
+  <person><name>Condoleezza Rice</name><wiki>Condoleezza_Rice</wiki><category>Secretary of State</category></person>
+  <person><name>Madeleine Albright</name><wiki>Madeleine_Albright</wiki><category>Secretary of State</category></person>
+  <person><name>King Charles III</name><wiki>Charles_III</wiki><category>Monarch</category></person>
+  <person><name>Princess Diana</name><wiki>Diana,_Princess_of_Wales</wiki><category>Princess</category></person>
+  <person><name>Prince William</name><wiki>William,_Prince_of_Wales</wiki><category>Prince</category></person>
+  <person><name>Prince Harry</name><wiki>Prince_Harry,_Duke_of_Sussex</wiki><category>Prince</category></person>
+  <person><name>Meghan Markle</name><wiki>Meghan,_Duchess_of_Sussex</wiki><category>Duchess</category></person>
+  <person><name>Kate Middleton</name><wiki>Catherine,_Princess_of_Wales</wiki><category>Princess</category></person>
+  <person><name>Prince Philip</name><wiki>Prince_Philip,_Duke_of_Edinburgh</wiki><category>Prince consort</category></person>
+  <person><name>Eleanor Roosevelt</name><wiki>Eleanor_Roosevelt</wiki><category>First Lady</category></person>
+  <person><name>Jacqueline Kennedy Onassis</name><wiki>Jacqueline_Kennedy_Onassis</wiki><category>First Lady</category></person>
+  <person><name>Malcolm X</name><wiki>Malcolm_X</wiki><category>Civil rights leader</category></person>
+  <person><name>Rosa Parks</name><wiki>Rosa_Parks</wiki><category>Civil rights leader</category></person>
+  <person><name>Frederick Douglass</name><wiki>Frederick_Douglass</wiki><category>Abolitionist</category></person>
+  <person><name>Susan B. Anthony</name><wiki>Susan_B._Anthony</wiki><category>Suffragist</category></person>
+  <person><name>Malala Yousafzai</name><wiki>Malala_Yousafzai</wiki><category>Activist</category></person>
+  <person><name>Greta Thunberg</name><wiki>Greta_Thunberg</wiki><category>Activist</category></person>
+  <person><name>Anne Frank</name><wiki>Anne_Frank</wiki><category>Diarist</category></person>
+
+  <!-- ═══ ACTORS / FILMMAKERS (146) ═══ -->
+  <person><name>Tom Hanks</name><wiki>Tom_Hanks</wiki><category>Actor</category></person>
+  <person><name>Tom Cruise</name><wiki>Tom_Cruise</wiki><category>Actor</category></person>
+  <person><name>Brad Pitt</name><wiki>Brad_Pitt</wiki><category>Actor</category></person>
+  <person><name>Angelina Jolie</name><wiki>Angelina_Jolie</wiki><category>Actress</category></person>
+  <person><name>Leonardo DiCaprio</name><wiki>Leonardo_DiCaprio</wiki><category>Actor</category></person>
+  <person><name>Robert De Niro</name><wiki>Robert_De_Niro</wiki><category>Actor</category></person>
+  <person><name>Al Pacino</name><wiki>Al_Pacino</wiki><category>Actor</category></person>
+  <person><name>Jack Nicholson</name><wiki>Jack_Nicholson</wiki><category>Actor</category></person>
+  <person><name>Robert Redford</name><wiki>Robert_Redford</wiki><category>Actor</category></person>
+  <person><name>Paul Newman</name><wiki>Paul_Newman</wiki><category>Actor</category></person>
+  <person><name>Clint Eastwood</name><wiki>Clint_Eastwood</wiki><category>Actor / Director</category></person>
+  <person><name>Harrison Ford</name><wiki>Harrison_Ford</wiki><category>Actor</category></person>
+  <person><name>Sean Connery</name><wiki>Sean_Connery</wiki><category>Actor</category></person>
+  <person><name>Anthony Hopkins</name><wiki>Anthony_Hopkins</wiki><category>Actor</category></person>
+  <person><name>Morgan Freeman</name><wiki>Morgan_Freeman</wiki><category>Actor</category></person>
+  <person><name>Samuel L. Jackson</name><wiki>Samuel_L._Jackson</wiki><category>Actor</category></person>
+  <person><name>Denzel Washington</name><wiki>Denzel_Washington</wiki><category>Actor</category></person>
+  <person><name>Will Smith</name><wiki>Will_Smith</wiki><category>Actor</category></person>
+  <person><name>Eddie Murphy</name><wiki>Eddie_Murphy</wiki><category>Actor / Comedian</category></person>
+  <person><name>Robin Williams</name><wiki>Robin_Williams</wiki><category>Actor / Comedian</category></person>
+  <person><name>Jim Carrey</name><wiki>Jim_Carrey</wiki><category>Actor / Comedian</category></person>
+  <person><name>Adam Sandler</name><wiki>Adam_Sandler</wiki><category>Actor / Comedian</category></person>
+  <person><name>Bill Murray</name><wiki>Bill_Murray</wiki><category>Actor / Comedian</category></person>
+  <person><name>Steve Martin</name><wiki>Steve_Martin</wiki><category>Actor / Comedian</category></person>
+  <person><name>Mike Myers</name><wiki>Mike_Myers</wiki><category>Actor / Comedian</category></person>
+  <person><name>Ben Stiller</name><wiki>Ben_Stiller</wiki><category>Actor / Comedian</category></person>
+  <person><name>Dustin Hoffman</name><wiki>Dustin_Hoffman</wiki><category>Actor</category></person>
+  <person><name>Sylvester Stallone</name><wiki>Sylvester_Stallone</wiki><category>Actor</category></person>
+  <person><name>Arnold Schwarzenegger</name><wiki>Arnold_Schwarzenegger</wiki><category>Actor</category></person>
+  <person><name>Bruce Willis</name><wiki>Bruce_Willis</wiki><category>Actor</category></person>
+  <person><name>Mel Gibson</name><wiki>Mel_Gibson</wiki><category>Actor / Director</category></person>
+  <person><name>Kevin Costner</name><wiki>Kevin_Costner</wiki><category>Actor</category></person>
+  <person><name>Michael Douglas</name><wiki>Michael_Douglas</wiki><category>Actor</category></person>
+  <person><name>Kirk Douglas</name><wiki>Kirk_Douglas</wiki><category>Actor</category></person>
+  <person><name>Gene Hackman</name><wiki>Gene_Hackman</wiki><category>Actor</category></person>
+  <person><name>Christopher Walken</name><wiki>Christopher_Walken</wiki><category>Actor</category></person>
+  <person><name>Johnny Depp</name><wiki>Johnny_Depp</wiki><category>Actor</category></person>
+  <person><name>Keanu Reeves</name><wiki>Keanu_Reeves</wiki><category>Actor</category></person>
+  <person><name>Matt Damon</name><wiki>Matt_Damon</wiki><category>Actor</category></person>
+  <person><name>Ben Affleck</name><wiki>Ben_Affleck</wiki><category>Actor</category></person>
+  <person><name>George Clooney</name><wiki>George_Clooney</wiki><category>Actor</category></person>
+  <person><name>Hugh Jackman</name><wiki>Hugh_Jackman</wiki><category>Actor</category></person>
+  <person><name>Russell Crowe</name><wiki>Russell_Crowe</wiki><category>Actor</category></person>
+  <person><name>Christian Bale</name><wiki>Christian_Bale</wiki><category>Actor</category></person>
+  <person><name>Daniel Day-Lewis</name><wiki>Daniel_Day-Lewis</wiki><category>Actor</category></person>
+  <person><name>Daniel Craig</name><wiki>Daniel_Craig</wiki><category>Actor</category></person>
+  <person><name>Pierce Brosnan</name><wiki>Pierce_Brosnan</wiki><category>Actor</category></person>
+  <person><name>Hugh Grant</name><wiki>Hugh_Grant</wiki><category>Actor</category></person>
+  <person><name>Colin Firth</name><wiki>Colin_Firth</wiki><category>Actor</category></person>
+  <person><name>Liam Neeson</name><wiki>Liam_Neeson</wiki><category>Actor</category></person>
+  <person><name>Ian McKellen</name><wiki>Ian_McKellen</wiki><category>Actor</category></person>
+  <person><name>Patrick Stewart</name><wiki>Patrick_Stewart</wiki><category>Actor</category></person>
+  <person><name>Helen Mirren</name><wiki>Helen_Mirren</wiki><category>Actress</category></person>
+  <person><name>Judi Dench</name><wiki>Judi_Dench</wiki><category>Actress</category></person>
+  <person><name>Maggie Smith</name><wiki>Maggie_Smith</wiki><category>Actress</category></person>
+  <person><name>Meryl Streep</name><wiki>Meryl_Streep</wiki><category>Actress</category></person>
+  <person><name>Julia Roberts</name><wiki>Julia_Roberts</wiki><category>Actress</category></person>
+  <person><name>Sandra Bullock</name><wiki>Sandra_Bullock</wiki><category>Actress</category></person>
+  <person><name>Nicole Kidman</name><wiki>Nicole_Kidman</wiki><category>Actress</category></person>
+  <person><name>Cate Blanchett</name><wiki>Cate_Blanchett</wiki><category>Actress</category></person>
+  <person><name>Charlize Theron</name><wiki>Charlize_Theron</wiki><category>Actress</category></person>
+  <person><name>Halle Berry</name><wiki>Halle_Berry</wiki><category>Actress</category></person>
+  <person><name>Whoopi Goldberg</name><wiki>Whoopi_Goldberg</wiki><category>Actress / Comedian</category></person>
+  <person><name>Reese Witherspoon</name><wiki>Reese_Witherspoon</wiki><category>Actress</category></person>
+  <person><name>Jennifer Aniston</name><wiki>Jennifer_Aniston</wiki><category>Actress</category></person>
+  <person><name>Jennifer Lawrence</name><wiki>Jennifer_Lawrence</wiki><category>Actress</category></person>
+  <person><name>Anne Hathaway</name><wiki>Anne_Hathaway</wiki><category>Actress</category></person>
+  <person><name>Scarlett Johansson</name><wiki>Scarlett_Johansson</wiki><category>Actress</category></person>
+  <person><name>Natalie Portman</name><wiki>Natalie_Portman</wiki><category>Actress</category></person>
+  <person><name>Drew Barrymore</name><wiki>Drew_Barrymore</wiki><category>Actress</category></person>
+  <person><name>Cameron Diaz</name><wiki>Cameron_Diaz</wiki><category>Actress</category></person>
+  <person><name>Gwyneth Paltrow</name><wiki>Gwyneth_Paltrow</wiki><category>Actress</category></person>
+  <person><name>Demi Moore</name><wiki>Demi_Moore</wiki><category>Actress</category></person>
+  <person><name>Sharon Stone</name><wiki>Sharon_Stone</wiki><category>Actress</category></person>
+  <person><name>Salma Hayek</name><wiki>Salma_Hayek</wiki><category>Actress</category></person>
+  <person><name>Penélope Cruz</name><wiki>Penélope_Cruz</wiki><category>Actress</category></person>
+  <person><name>Sophia Loren</name><wiki>Sophia_Loren</wiki><category>Actress</category></person>
+  <person><name>Brigitte Bardot</name><wiki>Brigitte_Bardot</wiki><category>Actress</category></person>
+  <person><name>Elizabeth Taylor</name><wiki>Elizabeth_Taylor</wiki><category>Actress</category></person>
+  <person><name>Bette Davis</name><wiki>Bette_Davis</wiki><category>Actress</category></person>
+  <person><name>Katharine Hepburn</name><wiki>Katharine_Hepburn</wiki><category>Actress</category></person>
+  <person><name>Judy Garland</name><wiki>Judy_Garland</wiki><category>Actress</category></person>
+  <person><name>Shirley Temple</name><wiki>Shirley_Temple</wiki><category>Actress</category></person>
+  <person><name>Lucille Ball</name><wiki>Lucille_Ball</wiki><category>Actress</category></person>
+  <person><name>Mary Tyler Moore</name><wiki>Mary_Tyler_Moore</wiki><category>Actress</category></person>
+  <person><name>Carrie Fisher</name><wiki>Carrie_Fisher</wiki><category>Actress</category></person>
+  <person><name>Mark Hamill</name><wiki>Mark_Hamill</wiki><category>Actor</category></person>
+  <person><name>Robert Downey Jr.</name><wiki>Robert_Downey_Jr.</wiki><category>Actor</category></person>
+  <person><name>Chris Hemsworth</name><wiki>Chris_Hemsworth</wiki><category>Actor</category></person>
+  <person><name>Chris Evans</name><wiki>Chris_Evans_(actor)</wiki><category>Actor</category></person>
+  <person><name>Chris Pratt</name><wiki>Chris_Pratt</wiki><category>Actor</category></person>
+  <person><name>Ryan Reynolds</name><wiki>Ryan_Reynolds</wiki><category>Actor</category></person>
+  <person><name>Ryan Gosling</name><wiki>Ryan_Gosling</wiki><category>Actor</category></person>
+  <person><name>Idris Elba</name><wiki>Idris_Elba</wiki><category>Actor</category></person>
+  <person><name>Dwayne Johnson</name><wiki>Dwayne_Johnson</wiki><category>Actor</category></person>
+  <person><name>Vin Diesel</name><wiki>Vin_Diesel</wiki><category>Actor</category></person>
+  <person><name>Jason Statham</name><wiki>Jason_Statham</wiki><category>Actor</category></person>
+  <person><name>Jackie Chan</name><wiki>Jackie_Chan</wiki><category>Actor</category></person>
+  <person><name>Bruce Lee</name><wiki>Bruce_Lee</wiki><category>Actor / Martial artist</category></person>
+  <person><name>Jet Li</name><wiki>Jet_Li</wiki><category>Actor / Martial artist</category></person>
+  <person><name>Timothée Chalamet</name><wiki>Timothée_Chalamet</wiki><category>Actor</category></person>
+  <person><name>Tom Holland</name><wiki>Tom_Holland</wiki><category>Actor</category></person>
+  <person><name>Zendaya</name><wiki>Zendaya</wiki><category>Actress</category></person>
+  <person><name>Margot Robbie</name><wiki>Margot_Robbie</wiki><category>Actress</category></person>
+  <person><name>Emma Stone</name><wiki>Emma_Stone</wiki><category>Actress</category></person>
+  <person><name>Emma Watson</name><wiki>Emma_Watson</wiki><category>Actress</category></person>
+  <person><name>Daniel Radcliffe</name><wiki>Daniel_Radcliffe</wiki><category>Actor</category></person>
+  <person><name>Rupert Grint</name><wiki>Rupert_Grint</wiki><category>Actor</category></person>
+  <person><name>Kristen Stewart</name><wiki>Kristen_Stewart</wiki><category>Actress</category></person>
+  <person><name>Robert Pattinson</name><wiki>Robert_Pattinson</wiki><category>Actor</category></person>
+  <person><name>Mila Kunis</name><wiki>Mila_Kunis</wiki><category>Actress</category></person>
+  <person><name>Ashton Kutcher</name><wiki>Ashton_Kutcher</wiki><category>Actor</category></person>
+  <person><name>Mark Wahlberg</name><wiki>Mark_Wahlberg</wiki><category>Actor</category></person>
+  <person><name>Matthew McConaughey</name><wiki>Matthew_McConaughey</wiki><category>Actor</category></person>
+  <person><name>Woody Harrelson</name><wiki>Woody_Harrelson</wiki><category>Actor</category></person>
+  <person><name>Owen Wilson</name><wiki>Owen_Wilson</wiki><category>Actor</category></person>
+  <person><name>Vince Vaughn</name><wiki>Vince_Vaughn</wiki><category>Actor</category></person>
+  <person><name>Will Ferrell</name><wiki>Will_Ferrell</wiki><category>Actor / Comedian</category></person>
+  <person><name>Jack Black</name><wiki>Jack_Black</wiki><category>Actor / Comedian</category></person>
+  <person><name>Seth Rogen</name><wiki>Seth_Rogen</wiki><category>Actor / Comedian</category></person>
+  <person><name>Steve Carell</name><wiki>Steve_Carell</wiki><category>Actor / Comedian</category></person>
+  <person><name>Tina Fey</name><wiki>Tina_Fey</wiki><category>Actress / Comedian</category></person>
+  <person><name>Amy Poehler</name><wiki>Amy_Poehler</wiki><category>Actress / Comedian</category></person>
+  <person><name>Melissa McCarthy</name><wiki>Melissa_McCarthy</wiki><category>Actress / Comedian</category></person>
+  <person><name>Kristen Wiig</name><wiki>Kristen_Wiig</wiki><category>Actress / Comedian</category></person>
+  <person><name>Mindy Kaling</name><wiki>Mindy_Kaling</wiki><category>Actress / Writer</category></person>
+  <person><name>Steven Spielberg</name><wiki>Steven_Spielberg</wiki><category>Film director</category></person>
+  <person><name>Martin Scorsese</name><wiki>Martin_Scorsese</wiki><category>Film director</category></person>
+  <person><name>Quentin Tarantino</name><wiki>Quentin_Tarantino</wiki><category>Film director</category></person>
+  <person><name>Christopher Nolan</name><wiki>Christopher_Nolan</wiki><category>Film director</category></person>
+  <person><name>James Cameron</name><wiki>James_Cameron</wiki><category>Film director</category></person>
+  <person><name>George Lucas</name><wiki>George_Lucas</wiki><category>Film director</category></person>
+  <person><name>Stanley Kubrick</name><wiki>Stanley_Kubrick</wiki><category>Film director</category></person>
+  <person><name>Francis Ford Coppola</name><wiki>Francis_Ford_Coppola</wiki><category>Film director</category></person>
+  <person><name>Tim Burton</name><wiki>Tim_Burton</wiki><category>Film director</category></person>
+  <person><name>Wes Anderson</name><wiki>Wes_Anderson</wiki><category>Film director</category></person>
+  <person><name>Spike Lee</name><wiki>Spike_Lee</wiki><category>Film director</category></person>
+  <person><name>Peter Jackson</name><wiki>Peter_Jackson</wiki><category>Film director</category></person>
+  <person><name>Ron Howard</name><wiki>Ron_Howard</wiki><category>Film director</category></person>
+  <person><name>Woody Allen</name><wiki>Woody_Allen</wiki><category>Film director</category></person>
+  <person><name>Jordan Peele</name><wiki>Jordan_Peele</wiki><category>Film director</category></person>
+  <person><name>Greta Gerwig</name><wiki>Greta_Gerwig</wiki><category>Film director</category></person>
+  <person><name>Sofia Coppola</name><wiki>Sofia_Coppola</wiki><category>Film director</category></person>
+  <person><name>J.J. Abrams</name><wiki>J._J._Abrams</wiki><category>Film director</category></person>
+  <person><name>Guillermo del Toro</name><wiki>Guillermo_del_Toro</wiki><category>Film director</category></person>
+  <person><name>Hayao Miyazaki</name><wiki>Hayao_Miyazaki</wiki><category>Animator / Director</category></person>
+
+  <!-- ═══ MUSICIANS / SINGERS / RAPPERS / COMPOSERS (108) ═══ -->
+  <person><name>Beyoncé</name><wiki>Beyoncé</wiki><category>Singer</category></person>
+  <person><name>Jay-Z</name><wiki>Jay-Z</wiki><category>Rapper</category></person>
+  <person><name>Rihanna</name><wiki>Rihanna</wiki><category>Singer</category></person>
+  <person><name>Taylor Swift</name><wiki>Taylor_Swift</wiki><category>Singer</category></person>
+  <person><name>Adele</name><wiki>Adele</wiki><category>Singer</category></person>
+  <person><name>Lady Gaga</name><wiki>Lady_Gaga</wiki><category>Singer</category></person>
+  <person><name>Katy Perry</name><wiki>Katy_Perry</wiki><category>Singer</category></person>
+  <person><name>Ariana Grande</name><wiki>Ariana_Grande</wiki><category>Singer</category></person>
+  <person><name>Billie Eilish</name><wiki>Billie_Eilish</wiki><category>Singer</category></person>
+  <person><name>Dua Lipa</name><wiki>Dua_Lipa</wiki><category>Singer</category></person>
+  <person><name>Olivia Rodrigo</name><wiki>Olivia_Rodrigo</wiki><category>Singer</category></person>
+  <person><name>Sabrina Carpenter</name><wiki>Sabrina_Carpenter</wiki><category>Singer</category></person>
+  <person><name>Miley Cyrus</name><wiki>Miley_Cyrus</wiki><category>Singer</category></person>
+  <person><name>Selena Gomez</name><wiki>Selena_Gomez</wiki><category>Singer / Actress</category></person>
+  <person><name>Demi Lovato</name><wiki>Demi_Lovato</wiki><category>Singer</category></person>
+  <person><name>Christina Aguilera</name><wiki>Christina_Aguilera</wiki><category>Singer</category></person>
+  <person><name>Britney Spears</name><wiki>Britney_Spears</wiki><category>Singer</category></person>
+  <person><name>Jennifer Lopez</name><wiki>Jennifer_Lopez</wiki><category>Singer / Actress</category></person>
+  <person><name>Mariah Carey</name><wiki>Mariah_Carey</wiki><category>Singer</category></person>
+  <person><name>Céline Dion</name><wiki>Celine_Dion</wiki><category>Singer</category></person>
+  <person><name>Shakira</name><wiki>Shakira</wiki><category>Singer</category></person>
+  <person><name>Pink</name><wiki>Pink_(singer)</wiki><category>Singer</category></person>
+  <person><name>Alicia Keys</name><wiki>Alicia_Keys</wiki><category>Singer</category></person>
+  <person><name>John Legend</name><wiki>John_Legend</wiki><category>Singer</category></person>
+  <person><name>Bruno Mars</name><wiki>Bruno_Mars</wiki><category>Singer</category></person>
+  <person><name>Justin Bieber</name><wiki>Justin_Bieber</wiki><category>Singer</category></person>
+  <person><name>Justin Timberlake</name><wiki>Justin_Timberlake</wiki><category>Singer</category></person>
+  <person><name>Ed Sheeran</name><wiki>Ed_Sheeran</wiki><category>Singer</category></person>
+  <person><name>Harry Styles</name><wiki>Harry_Styles</wiki><category>Singer</category></person>
+  <person><name>Shawn Mendes</name><wiki>Shawn_Mendes</wiki><category>Singer</category></person>
+  <person><name>The Weeknd</name><wiki>The_Weeknd</wiki><category>Singer</category></person>
+  <person><name>Drake</name><wiki>Drake_(musician)</wiki><category>Rapper</category></person>
+  <person><name>Kanye West</name><wiki>Kanye_West</wiki><category>Rapper</category></person>
+  <person><name>Kendrick Lamar</name><wiki>Kendrick_Lamar</wiki><category>Rapper</category></person>
+  <person><name>Eminem</name><wiki>Eminem</wiki><category>Rapper</category></person>
+  <person><name>Snoop Dogg</name><wiki>Snoop_Dogg</wiki><category>Rapper</category></person>
+  <person><name>Dr. Dre</name><wiki>Dr._Dre</wiki><category>Rapper / Producer</category></person>
+  <person><name>50 Cent</name><wiki>50_Cent</wiki><category>Rapper</category></person>
+  <person><name>Tupac Shakur</name><wiki>Tupac_Shakur</wiki><category>Rapper</category></person>
+  <person><name>The Notorious B.I.G.</name><wiki>The_Notorious_B.I.G.</wiki><category>Rapper</category></person>
+  <person><name>Lil Wayne</name><wiki>Lil_Wayne</wiki><category>Rapper</category></person>
+  <person><name>Travis Scott</name><wiki>Travis_Scott</wiki><category>Rapper</category></person>
+  <person><name>Post Malone</name><wiki>Post_Malone</wiki><category>Rapper / Singer</category></person>
+  <person><name>Cardi B</name><wiki>Cardi_B</wiki><category>Rapper</category></person>
+  <person><name>Nicki Minaj</name><wiki>Nicki_Minaj</wiki><category>Rapper</category></person>
+  <person><name>Megan Thee Stallion</name><wiki>Megan_Thee_Stallion</wiki><category>Rapper</category></person>
+  <person><name>Ice Cube</name><wiki>Ice_Cube</wiki><category>Rapper</category></person>
+  <person><name>LL Cool J</name><wiki>LL_Cool_J</wiki><category>Rapper</category></person>
+  <person><name>Pharrell Williams</name><wiki>Pharrell_Williams</wiki><category>Musician / Producer</category></person>
+  <person><name>Usher</name><wiki>Usher_(musician)</wiki><category>Singer</category></person>
+  <person><name>Chris Brown</name><wiki>Chris_Brown</wiki><category>Singer</category></person>
+  <person><name>Frank Ocean</name><wiki>Frank_Ocean</wiki><category>Singer</category></person>
+  <person><name>Bad Bunny</name><wiki>Bad_Bunny</wiki><category>Singer / Rapper</category></person>
+  <person><name>Doja Cat</name><wiki>Doja_Cat</wiki><category>Rapper / Singer</category></person>
+  <person><name>Lana Del Rey</name><wiki>Lana_Del_Rey</wiki><category>Singer</category></person>
+  <person><name>Bruce Springsteen</name><wiki>Bruce_Springsteen</wiki><category>Musician</category></person>
+  <person><name>Mick Jagger</name><wiki>Mick_Jagger</wiki><category>Musician</category></person>
+  <person><name>Keith Richards</name><wiki>Keith_Richards</wiki><category>Musician</category></person>
+  <person><name>Ringo Starr</name><wiki>Ringo_Starr</wiki><category>Musician</category></person>
+  <person><name>George Harrison</name><wiki>George_Harrison</wiki><category>Musician</category></person>
+  <person><name>Eric Clapton</name><wiki>Eric_Clapton</wiki><category>Musician</category></person>
+  <person><name>Billy Joel</name><wiki>Billy_Joel</wiki><category>Musician</category></person>
+  <person><name>Neil Young</name><wiki>Neil_Young</wiki><category>Musician</category></person>
+  <person><name>Joni Mitchell</name><wiki>Joni_Mitchell</wiki><category>Musician</category></person>
+  <person><name>Cher</name><wiki>Cher</wiki><category>Singer</category></person>
+  <person><name>Diana Ross</name><wiki>Diana_Ross</wiki><category>Singer</category></person>
+  <person><name>Ray Charles</name><wiki>Ray_Charles</wiki><category>Musician</category></person>
+  <person><name>Johnny Cash</name><wiki>Johnny_Cash</wiki><category>Musician</category></person>
+  <person><name>Willie Nelson</name><wiki>Willie_Nelson</wiki><category>Musician</category></person>
+  <person><name>Dolly Parton</name><wiki>Dolly_Parton</wiki><category>Singer</category></person>
+  <person><name>Garth Brooks</name><wiki>Garth_Brooks</wiki><category>Singer</category></person>
+  <person><name>Shania Twain</name><wiki>Shania_Twain</wiki><category>Singer</category></person>
+  <person><name>Carrie Underwood</name><wiki>Carrie_Underwood</wiki><category>Singer</category></person>
+  <person><name>Luke Bryan</name><wiki>Luke_Bryan</wiki><category>Singer</category></person>
+  <person><name>Reba McEntire</name><wiki>Reba_McEntire</wiki><category>Singer</category></person>
+  <person><name>Faith Hill</name><wiki>Faith_Hill</wiki><category>Singer</category></person>
+  <person><name>Tim McGraw</name><wiki>Tim_McGraw</wiki><category>Singer</category></person>
+  <person><name>Morgan Wallen</name><wiki>Morgan_Wallen</wiki><category>Singer</category></person>
+  <person><name>Lizzo</name><wiki>Lizzo</wiki><category>Singer / Rapper</category></person>
+  <person><name>Lorde</name><wiki>Lorde</wiki><category>Singer</category></person>
+  <person><name>Halsey</name><wiki>Halsey_(singer)</wiki><category>Singer</category></person>
+  <person><name>Sia</name><wiki>Sia_(musician)</wiki><category>Singer</category></person>
+  <person><name>Amy Winehouse</name><wiki>Amy_Winehouse</wiki><category>Singer</category></person>
+  <person><name>Pink Floyd's Roger Waters</name><wiki>Roger_Waters</wiki><category>Musician</category></person>
+  <person><name>Ozzy Osbourne</name><wiki>Ozzy_Osbourne</wiki><category>Musician</category></person>
+  <person><name>Axl Rose</name><wiki>Axl_Rose</wiki><category>Musician</category></person>
+  <person><name>Slash</name><wiki>Slash_(musician)</wiki><category>Musician</category></person>
+  <person><name>Bono</name><wiki>Bono</wiki><category>Musician</category></person>
+  <person><name>Sting</name><wiki>Sting_(musician)</wiki><category>Musician</category></person>
+  <person><name>Phil Collins</name><wiki>Phil_Collins</wiki><category>Musician</category></person>
+  <person><name>Lenny Kravitz</name><wiki>Lenny_Kravitz</wiki><category>Musician</category></person>
+  <person><name>Carlos Santana</name><wiki>Carlos_Santana</wiki><category>Musician</category></person>
+  <person><name>Quincy Jones</name><wiki>Quincy_Jones</wiki><category>Producer</category></person>
+  <person><name>Pavarotti</name><wiki>Luciano_Pavarotti</wiki><category>Opera singer</category></person>
+  <person><name>Andrea Bocelli</name><wiki>Andrea_Bocelli</wiki><category>Opera singer</category></person>
+  <person><name>Yo-Yo Ma</name><wiki>Yo-Yo_Ma</wiki><category>Cellist</category></person>
+  <person><name>Lin-Manuel Miranda</name><wiki>Lin-Manuel_Miranda</wiki><category>Composer / Actor</category></person>
+  <person><name>Andrew Lloyd Webber</name><wiki>Andrew_Lloyd_Webber</wiki><category>Composer</category></person>
+  <person><name>Hans Zimmer</name><wiki>Hans_Zimmer</wiki><category>Composer</category></person>
+  <person><name>John Williams</name><wiki>John_Williams</wiki><category>Composer</category></person>
+  <person><name>Ludwig van Beethoven</name><wiki>Ludwig_van_Beethoven</wiki><category>Composer</category></person>
+  <person><name>Wolfgang Amadeus Mozart</name><wiki>Wolfgang_Amadeus_Mozart</wiki><category>Composer</category></person>
+  <person><name>Johann Sebastian Bach</name><wiki>Johann_Sebastian_Bach</wiki><category>Composer</category></person>
+  <person><name>Pyotr Ilyich Tchaikovsky</name><wiki>Pyotr_Ilyich_Tchaikovsky</wiki><category>Composer</category></person>
+  <person><name>Frédéric Chopin</name><wiki>Frédéric_Chopin</wiki><category>Composer</category></person>
+  <person><name>Antonio Vivaldi</name><wiki>Antonio_Vivaldi</wiki><category>Composer</category></person>
+
+  <!-- ═══ ATHLETES (106) ═══ -->
+  <person><name>Kobe Bryant</name><wiki>Kobe_Bryant</wiki><category>Basketball player</category></person>
+  <person><name>Shaquille O'Neal</name><wiki>Shaquille_O'Neal</wiki><category>Basketball player</category></person>
+  <person><name>Magic Johnson</name><wiki>Magic_Johnson</wiki><category>Basketball player</category></person>
+  <person><name>Larry Bird</name><wiki>Larry_Bird</wiki><category>Basketball player</category></person>
+  <person><name>Kareem Abdul-Jabbar</name><wiki>Kareem_Abdul-Jabbar</wiki><category>Basketball player</category></person>
+  <person><name>Stephen Curry</name><wiki>Stephen_Curry</wiki><category>Basketball player</category></person>
+  <person><name>Kevin Durant</name><wiki>Kevin_Durant</wiki><category>Basketball player</category></person>
+  <person><name>Giannis Antetokounmpo</name><wiki>Giannis_Antetokounmpo</wiki><category>Basketball player</category></person>
+  <person><name>Allen Iverson</name><wiki>Allen_Iverson</wiki><category>Basketball player</category></person>
+  <person><name>Charles Barkley</name><wiki>Charles_Barkley</wiki><category>Basketball player</category></person>
+  <person><name>Dennis Rodman</name><wiki>Dennis_Rodman</wiki><category>Basketball player</category></person>
+  <person><name>Caitlin Clark</name><wiki>Caitlin_Clark</wiki><category>Basketball player</category></person>
+  <person><name>Tom Brady</name><wiki>Tom_Brady</wiki><category>American football player</category></person>
+  <person><name>Peyton Manning</name><wiki>Peyton_Manning</wiki><category>American football player</category></person>
+  <person><name>Patrick Mahomes</name><wiki>Patrick_Mahomes</wiki><category>American football player</category></person>
+  <person><name>Aaron Rodgers</name><wiki>Aaron_Rodgers</wiki><category>American football player</category></person>
+  <person><name>Joe Montana</name><wiki>Joe_Montana</wiki><category>American football player</category></person>
+  <person><name>Jerry Rice</name><wiki>Jerry_Rice</wiki><category>American football player</category></person>
+  <person><name>Brett Favre</name><wiki>Brett_Favre</wiki><category>American football player</category></person>
+  <person><name>Travis Kelce</name><wiki>Travis_Kelce</wiki><category>American football player</category></person>
+  <person><name>O.J. Simpson</name><wiki>O._J._Simpson</wiki><category>American football player</category></person>
+  <person><name>David Beckham</name><wiki>David_Beckham</wiki><category>Footballer</category></person>
+  <person><name>Zinedine Zidane</name><wiki>Zinedine_Zidane</wiki><category>Footballer</category></person>
+  <person><name>Ronaldinho</name><wiki>Ronaldinho</wiki><category>Footballer</category></person>
+  <person><name>Ronaldo Nazário</name><wiki>Ronaldo_(Brazilian_footballer)</wiki><category>Footballer</category></person>
+  <person><name>Neymar</name><wiki>Neymar</wiki><category>Footballer</category></person>
+  <person><name>Kylian Mbappé</name><wiki>Kylian_Mbappé</wiki><category>Footballer</category></person>
+  <person><name>Mohamed Salah</name><wiki>Mohamed_Salah</wiki><category>Footballer</category></person>
+  <person><name>Megan Rapinoe</name><wiki>Megan_Rapinoe</wiki><category>Footballer</category></person>
+  <person><name>Mia Hamm</name><wiki>Mia_Hamm</wiki><category>Footballer</category></person>
+  <person><name>Rafael Nadal</name><wiki>Rafael_Nadal</wiki><category>Tennis player</category></person>
+  <person><name>Novak Djokovic</name><wiki>Novak_Djokovic</wiki><category>Tennis player</category></person>
+  <person><name>Venus Williams</name><wiki>Venus_Williams</wiki><category>Tennis player</category></person>
+  <person><name>Billie Jean King</name><wiki>Billie_Jean_King</wiki><category>Tennis player</category></person>
+  <person><name>Naomi Osaka</name><wiki>Naomi_Osaka</wiki><category>Tennis player</category></person>
+  <person><name>Carlos Alcaraz</name><wiki>Carlos_Alcaraz</wiki><category>Tennis player</category></person>
+  <person><name>Jack Nicklaus</name><wiki>Jack_Nicklaus</wiki><category>Golfer</category></person>
+  <person><name>Arnold Palmer</name><wiki>Arnold_Palmer</wiki><category>Golfer</category></person>
+  <person><name>Rory McIlroy</name><wiki>Rory_McIlroy</wiki><category>Golfer</category></person>
+  <person><name>Sidney Crosby</name><wiki>Sidney_Crosby</wiki><category>Ice hockey player</category></person>
+  <person><name>Alexander Ovechkin</name><wiki>Alexander_Ovechkin</wiki><category>Ice hockey player</category></person>
+  <person><name>Mario Lemieux</name><wiki>Mario_Lemieux</wiki><category>Ice hockey player</category></person>
+  <person><name>Derek Jeter</name><wiki>Derek_Jeter</wiki><category>Baseball player</category></person>
+  <person><name>Mickey Mantle</name><wiki>Mickey_Mantle</wiki><category>Baseball player</category></person>
+  <person><name>Hank Aaron</name><wiki>Hank_Aaron</wiki><category>Baseball player</category></person>
+  <person><name>Willie Mays</name><wiki>Willie_Mays</wiki><category>Baseball player</category></person>
+  <person><name>Joe DiMaggio</name><wiki>Joe_DiMaggio</wiki><category>Baseball player</category></person>
+  <person><name>Barry Bonds</name><wiki>Barry_Bonds</wiki><category>Baseball player</category></person>
+  <person><name>Shohei Ohtani</name><wiki>Shohei_Ohtani</wiki><category>Baseball player</category></person>
+  <person><name>Mike Trout</name><wiki>Mike_Trout</wiki><category>Baseball player</category></person>
+  <person><name>Floyd Mayweather Jr.</name><wiki>Floyd_Mayweather_Jr.</wiki><category>Boxer</category></person>
+  <person><name>Manny Pacquiao</name><wiki>Manny_Pacquiao</wiki><category>Boxer</category></person>
+  <person><name>George Foreman</name><wiki>George_Foreman</wiki><category>Boxer</category></person>
+  <person><name>Evander Holyfield</name><wiki>Evander_Holyfield</wiki><category>Boxer</category></person>
+  <person><name>Conor McGregor</name><wiki>Conor_McGregor</wiki><category>MMA fighter</category></person>
+  <person><name>Ronda Rousey</name><wiki>Ronda_Rousey</wiki><category>MMA fighter</category></person>
+  <person><name>Lewis Hamilton</name><wiki>Lewis_Hamilton</wiki><category>Racing driver</category></person>
+  <person><name>Dale Earnhardt</name><wiki>Dale_Earnhardt</wiki><category>Racing driver</category></person>
+  <person><name>Max Verstappen</name><wiki>Max_Verstappen</wiki><category>Racing driver</category></person>
+  <person><name>Michael Phelps</name><wiki>Michael_Phelps</wiki><category>Swimmer</category></person>
+  <person><name>Katie Ledecky</name><wiki>Katie_Ledecky</wiki><category>Swimmer</category></person>
+  <person><name>Simone Biles</name><wiki>Simone_Biles</wiki><category>Gymnast</category></person>
+  <person><name>Nadia Comăneci</name><wiki>Nadia_Comăneci</wiki><category>Gymnast</category></person>
+  <person><name>Mary Lou Retton</name><wiki>Mary_Lou_Retton</wiki><category>Gymnast</category></person>
+  <person><name>Michelle Kwan</name><wiki>Michelle_Kwan</wiki><category>Figure skater</category></person>
+  <person><name>Tonya Harding</name><wiki>Tonya_Harding</wiki><category>Figure skater</category></person>
+  <person><name>Shaun White</name><wiki>Shaun_White</wiki><category>Snowboarder</category></person>
+  <person><name>Tony Hawk</name><wiki>Tony_Hawk</wiki><category>Skateboarder</category></person>
+  <person><name>Lance Armstrong</name><wiki>Lance_Armstrong</wiki><category>Cyclist</category></person>
+  <person><name>Hulk Hogan</name><wiki>Hulk_Hogan</wiki><category>Wrestler</category></person>
+  <person><name>John Cena</name><wiki>John_Cena</wiki><category>Wrestler / Actor</category></person>
+  <person><name>"Stone Cold" Steve Austin</name><wiki>Stone_Cold_Steve_Austin</wiki><category>Wrestler</category></person>
+
+  <!-- ═══ INTERNET / TV / COMEDY / FASHION / CHEFS (105) ═══ -->
+  <person><name>MrBeast</name><wiki>MrBeast</wiki><category>YouTuber</category></person>
+  <person><name>PewDiePie</name><wiki>PewDiePie</wiki><category>YouTuber</category></person>
+  <person><name>Logan Paul</name><wiki>Logan_Paul</wiki><category>YouTuber</category></person>
+  <person><name>Jake Paul</name><wiki>Jake_Paul</wiki><category>YouTuber / Boxer</category></person>
+  <person><name>Markiplier</name><wiki>Markiplier</wiki><category>YouTuber</category></person>
+  <person><name>KSI</name><wiki>KSI_(entertainer)</wiki><category>YouTuber</category></person>
+  <person><name>Charli D'Amelio</name><wiki>Charli_D'Amelio</wiki><category>TikTok personality</category></person>
+  <person><name>Addison Rae</name><wiki>Addison_Rae</wiki><category>TikTok personality</category></person>
+  <person><name>Khaby Lame</name><wiki>Khaby_Lame</wiki><category>TikTok personality</category></person>
+  <person><name>Bella Poarch</name><wiki>Bella_Poarch</wiki><category>TikTok personality</category></person>
+  <person><name>Ninja</name><wiki>Ninja_(gamer)</wiki><category>Streamer</category></person>
+  <person><name>Pokimane</name><wiki>Pokimane</wiki><category>Streamer</category></person>
+  <person><name>Dr Disrespect</name><wiki>Dr_Disrespect</wiki><category>Streamer</category></person>
+  <person><name>Kai Cenat</name><wiki>Kai_Cenat</wiki><category>Streamer</category></person>
+  <person><name>Hasan Piker</name><wiki>Hasan_Piker</wiki><category>Streamer</category></person>
+  <person><name>Joe Rogan</name><wiki>Joe_Rogan</wiki><category>Podcaster</category></person>
+  <person><name>Lex Fridman</name><wiki>Lex_Fridman</wiki><category>Podcaster</category></person>
+  <person><name>Andrew Tate</name><wiki>Andrew_Tate</wiki><category>Internet personality</category></person>
+  <person><name>Jordan Peterson</name><wiki>Jordan_Peterson</wiki><category>Psychologist / Author</category></person>
+  <person><name>Ellen DeGeneres</name><wiki>Ellen_DeGeneres</wiki><category>Comedian / TV host</category></person>
+  <person><name>Jimmy Fallon</name><wiki>Jimmy_Fallon</wiki><category>TV host</category></person>
+  <person><name>Jimmy Kimmel</name><wiki>Jimmy_Kimmel</wiki><category>TV host</category></person>
+  <person><name>Stephen Colbert</name><wiki>Stephen_Colbert</wiki><category>TV host / Comedian</category></person>
+  <person><name>Conan O'Brien</name><wiki>Conan_O'Brien</wiki><category>TV host / Comedian</category></person>
+  <person><name>David Letterman</name><wiki>David_Letterman</wiki><category>TV host</category></person>
+  <person><name>Jay Leno</name><wiki>Jay_Leno</wiki><category>TV host / Comedian</category></person>
+  <person><name>Johnny Carson</name><wiki>Johnny_Carson</wiki><category>TV host</category></person>
+  <person><name>Jon Stewart</name><wiki>Jon_Stewart</wiki><category>TV host / Comedian</category></person>
+  <person><name>John Oliver</name><wiki>John_Oliver</wiki><category>TV host / Comedian</category></person>
+  <person><name>Trevor Noah</name><wiki>Trevor_Noah</wiki><category>TV host / Comedian</category></person>
+  <person><name>Larry King</name><wiki>Larry_King</wiki><category>TV host</category></person>
+  <person><name>Barbara Walters</name><wiki>Barbara_Walters</wiki><category>Journalist</category></person>
+  <person><name>Anderson Cooper</name><wiki>Anderson_Cooper</wiki><category>Journalist</category></person>
+  <person><name>Walter Cronkite</name><wiki>Walter_Cronkite</wiki><category>Journalist</category></person>
+  <person><name>Diane Sawyer</name><wiki>Diane_Sawyer</wiki><category>Journalist</category></person>
+  <person><name>Katie Couric</name><wiki>Katie_Couric</wiki><category>Journalist</category></person>
+  <person><name>Tucker Carlson</name><wiki>Tucker_Carlson</wiki><category>TV host</category></person>
+  <person><name>Rachel Maddow</name><wiki>Rachel_Maddow</wiki><category>TV host</category></person>
+  <person><name>Dr. Phil</name><wiki>Phil_McGraw</wiki><category>TV host</category></person>
+  <person><name>Dr. Oz</name><wiki>Mehmet_Oz</wiki><category>TV host / Surgeon</category></person>
+  <person><name>Judge Judy</name><wiki>Judy_Sheindlin</wiki><category>TV host</category></person>
+  <person><name>Ryan Seacrest</name><wiki>Ryan_Seacrest</wiki><category>TV host</category></person>
+  <person><name>Simon Cowell</name><wiki>Simon_Cowell</wiki><category>TV host</category></person>
+  <person><name>Howard Stern</name><wiki>Howard_Stern</wiki><category>Radio host</category></person>
+  <person><name>Bob Ross</name><wiki>Bob_Ross</wiki><category>TV painter</category></person>
+  <person><name>Mr. Rogers</name><wiki>Fred_Rogers</wiki><category>TV host</category></person>
+  <person><name>Steve Irwin</name><wiki>Steve_Irwin</wiki><category>TV host / Conservationist</category></person>
+  <person><name>Anthony Bourdain</name><wiki>Anthony_Bourdain</wiki><category>Chef / TV host</category></person>
+  <person><name>Jerry Seinfeld</name><wiki>Jerry_Seinfeld</wiki><category>Comedian</category></person>
+  <person><name>Chris Rock</name><wiki>Chris_Rock</wiki><category>Comedian</category></person>
+  <person><name>Dave Chappelle</name><wiki>Dave_Chappelle</wiki><category>Comedian</category></person>
+  <person><name>Kevin Hart</name><wiki>Kevin_Hart</wiki><category>Comedian</category></person>
+  <person><name>Eddie Izzard</name><wiki>Eddie_Izzard</wiki><category>Comedian</category></person>
+  <person><name>Ricky Gervais</name><wiki>Ricky_Gervais</wiki><category>Comedian</category></person>
+  <person><name>Sarah Silverman</name><wiki>Sarah_Silverman</wiki><category>Comedian</category></person>
+  <person><name>Amy Schumer</name><wiki>Amy_Schumer</wiki><category>Comedian</category></person>
+  <person><name>George Carlin</name><wiki>George_Carlin</wiki><category>Comedian</category></person>
+  <person><name>Richard Pryor</name><wiki>Richard_Pryor</wiki><category>Comedian</category></person>
+  <person><name>Bill Cosby</name><wiki>Bill_Cosby</wiki><category>Comedian</category></person>
+  <person><name>Joan Rivers</name><wiki>Joan_Rivers</wiki><category>Comedian</category></person>
+  <person><name>Bob Hope</name><wiki>Bob_Hope</wiki><category>Comedian</category></person>
+  <person><name>Rodney Dangerfield</name><wiki>Rodney_Dangerfield</wiki><category>Comedian</category></person>
+  <person><name>Bo Burnham</name><wiki>Bo_Burnham</wiki><category>Comedian</category></person>
+  <person><name>John Mulaney</name><wiki>John_Mulaney</wiki><category>Comedian</category></person>
+  <person><name>Pete Davidson</name><wiki>Pete_Davidson</wiki><category>Comedian</category></person>
+  <person><name>Naomi Campbell</name><wiki>Naomi_Campbell</wiki><category>Model</category></person>
+  <person><name>Cindy Crawford</name><wiki>Cindy_Crawford</wiki><category>Model</category></person>
+  <person><name>Tyra Banks</name><wiki>Tyra_Banks</wiki><category>Model / TV host</category></person>
+  <person><name>Heidi Klum</name><wiki>Heidi_Klum</wiki><category>Model / TV host</category></person>
+  <person><name>Kate Moss</name><wiki>Kate_Moss</wiki><category>Model</category></person>
+  <person><name>Gisele Bündchen</name><wiki>Gisele_Bündchen</wiki><category>Model</category></person>
+  <person><name>Bella Hadid</name><wiki>Bella_Hadid</wiki><category>Model</category></person>
+  <person><name>Gigi Hadid</name><wiki>Gigi_Hadid</wiki><category>Model</category></person>
+  <person><name>Kendall Jenner</name><wiki>Kendall_Jenner</wiki><category>Model</category></person>
+  <person><name>Karlie Kloss</name><wiki>Karlie_Kloss</wiki><category>Model</category></person>
+  <person><name>Ralph Lauren</name><wiki>Ralph_Lauren</wiki><category>Fashion designer</category></person>
+  <person><name>Calvin Klein</name><wiki>Calvin_Klein</wiki><category>Fashion designer</category></person>
+  <person><name>Tommy Hilfiger</name><wiki>Tommy_Hilfiger</wiki><category>Fashion designer</category></person>
+  <person><name>Donatella Versace</name><wiki>Donatella_Versace</wiki><category>Fashion designer</category></person>
+  <person><name>Gianni Versace</name><wiki>Gianni_Versace</wiki><category>Fashion designer</category></person>
+  <person><name>Giorgio Armani</name><wiki>Giorgio_Armani</wiki><category>Fashion designer</category></person>
+  <person><name>Karl Lagerfeld</name><wiki>Karl_Lagerfeld</wiki><category>Fashion designer</category></person>
+  <person><name>Yves Saint Laurent</name><wiki>Yves_Saint_Laurent_(designer)</wiki><category>Fashion designer</category></person>
+  <person><name>Marc Jacobs</name><wiki>Marc_Jacobs</wiki><category>Fashion designer</category></person>
+  <person><name>Tom Ford</name><wiki>Tom_Ford</wiki><category>Fashion designer</category></person>
+  <person><name>Vera Wang</name><wiki>Vera_Wang</wiki><category>Fashion designer</category></person>
+  <person><name>Anna Wintour</name><wiki>Anna_Wintour</wiki><category>Fashion editor</category></person>
+  <person><name>Kim Kardashian</name><wiki>Kim_Kardashian</wiki><category>TV personality</category></person>
+  <person><name>Kourtney Kardashian</name><wiki>Kourtney_Kardashian</wiki><category>TV personality</category></person>
+  <person><name>Khloé Kardashian</name><wiki>Khloé_Kardashian</wiki><category>TV personality</category></person>
+  <person><name>Kris Jenner</name><wiki>Kris_Jenner</wiki><category>TV personality</category></person>
+  <person><name>Kylie Jenner</name><wiki>Kylie_Jenner</wiki><category>TV personality</category></person>
+  <person><name>Caitlyn Jenner</name><wiki>Caitlyn_Jenner</wiki><category>TV personality / Athlete</category></person>
+  <person><name>Paris Hilton</name><wiki>Paris_Hilton</wiki><category>Socialite</category></person>
+  <person><name>Gordon Ramsay</name><wiki>Gordon_Ramsay</wiki><category>Chef</category></person>
+  <person><name>Julia Child</name><wiki>Julia_Child</wiki><category>Chef</category></person>
+  <person><name>Wolfgang Puck</name><wiki>Wolfgang_Puck</wiki><category>Chef</category></person>
+  <person><name>Jamie Oliver</name><wiki>Jamie_Oliver</wiki><category>Chef</category></person>
+  <person><name>Bobby Flay</name><wiki>Bobby_Flay</wiki><category>Chef</category></person>
+  <person><name>Rachael Ray</name><wiki>Rachael_Ray</wiki><category>Chef / TV host</category></person>
+  <person><name>Guy Fieri</name><wiki>Guy_Fieri</wiki><category>Chef / TV host</category></person>
+  <person><name>Salt Bae</name><wiki>Salt_Bae</wiki><category>Chef</category></person>
+
+  <!-- ═══ WRITERS / ARTISTS / EXPLORERS / MILITARY / HISTORICAL (112) ═══ -->
+  <person><name>Stephen King</name><wiki>Stephen_King</wiki><category>Writer</category></person>
+  <person><name>J.K. Rowling</name><wiki>J._K._Rowling</wiki><category>Writer</category></person>
+  <person><name>Maya Angelou</name><wiki>Maya_Angelou</wiki><category>Writer / Poet</category></person>
+  <person><name>Toni Morrison</name><wiki>Toni_Morrison</wiki><category>Writer</category></person>
+  <person><name>Margaret Atwood</name><wiki>Margaret_Atwood</wiki><category>Writer</category></person>
+  <person><name>Salman Rushdie</name><wiki>Salman_Rushdie</wiki><category>Writer</category></person>
+  <person><name>Neil Gaiman</name><wiki>Neil_Gaiman</wiki><category>Writer</category></person>
+  <person><name>George R. R. Martin</name><wiki>George_R._R._Martin</wiki><category>Writer</category></person>
+  <person><name>Dan Brown</name><wiki>Dan_Brown</wiki><category>Writer</category></person>
+  <person><name>James Patterson</name><wiki>James_Patterson</wiki><category>Writer</category></person>
+  <person><name>John Grisham</name><wiki>John_Grisham</wiki><category>Writer</category></person>
+  <person><name>Malcolm Gladwell</name><wiki>Malcolm_Gladwell</wiki><category>Writer</category></person>
+  <person><name>Roald Dahl</name><wiki>Roald_Dahl</wiki><category>Writer</category></person>
+  <person><name>Dr. Seuss</name><wiki>Dr._Seuss</wiki><category>Writer / Illustrator</category></person>
+  <person><name>C.S. Lewis</name><wiki>C._S._Lewis</wiki><category>Writer</category></person>
+  <person><name>Harper Lee</name><wiki>Harper_Lee</wiki><category>Writer</category></person>
+  <person><name>F. Scott Fitzgerald</name><wiki>F._Scott_Fitzgerald</wiki><category>Writer</category></person>
+  <person><name>John Steinbeck</name><wiki>John_Steinbeck</wiki><category>Writer</category></person>
+  <person><name>Ray Bradbury</name><wiki>Ray_Bradbury</wiki><category>Writer</category></person>
+  <person><name>Isaac Asimov</name><wiki>Isaac_Asimov</wiki><category>Writer</category></person>
+  <person><name>H.G. Wells</name><wiki>H._G._Wells</wiki><category>Writer</category></person>
+  <person><name>Jules Verne</name><wiki>Jules_Verne</wiki><category>Writer</category></person>
+  <person><name>J.D. Salinger</name><wiki>J._D._Salinger</wiki><category>Writer</category></person>
+  <person><name>Kurt Vonnegut</name><wiki>Kurt_Vonnegut</wiki><category>Writer</category></person>
+  <person><name>Truman Capote</name><wiki>Truman_Capote</wiki><category>Writer</category></person>
+  <person><name>Hunter S. Thompson</name><wiki>Hunter_S._Thompson</wiki><category>Writer</category></person>
+  <person><name>Aldous Huxley</name><wiki>Aldous_Huxley</wiki><category>Writer</category></person>
+  <person><name>Sylvia Plath</name><wiki>Sylvia_Plath</wiki><category>Writer / Poet</category></person>
+  <person><name>Andy Warhol</name><wiki>Andy_Warhol</wiki><category>Artist</category></person>
+  <person><name>Jackson Pollock</name><wiki>Jackson_Pollock</wiki><category>Artist</category></person>
+  <person><name>Georgia O'Keeffe</name><wiki>Georgia_O'Keeffe</wiki><category>Artist</category></person>
+  <person><name>Norman Rockwell</name><wiki>Norman_Rockwell</wiki><category>Artist</category></person>
+  <person><name>Banksy</name><wiki>Banksy</wiki><category>Artist</category></person>
+  <person><name>Jean-Michel Basquiat</name><wiki>Jean-Michel_Basquiat</wiki><category>Artist</category></person>
+  <person><name>Roy Lichtenstein</name><wiki>Roy_Lichtenstein</wiki><category>Artist</category></person>
+  <person><name>Henri Matisse</name><wiki>Henri_Matisse</wiki><category>Artist</category></person>
+  <person><name>Claude Monet</name><wiki>Claude_Monet</wiki><category>Artist</category></person>
+  <person><name>Pierre-Auguste Renoir</name><wiki>Pierre-Auguste_Renoir</wiki><category>Artist</category></person>
+  <person><name>Edgar Degas</name><wiki>Edgar_Degas</wiki><category>Artist</category></person>
+  <person><name>Paul Cézanne</name><wiki>Paul_Cézanne</wiki><category>Artist</category></person>
+  <person><name>Edvard Munch</name><wiki>Edvard_Munch</wiki><category>Artist</category></person>
+  <person><name>Gustav Klimt</name><wiki>Gustav_Klimt</wiki><category>Artist</category></person>
+  <person><name>Marcel Duchamp</name><wiki>Marcel_Duchamp</wiki><category>Artist</category></person>
+  <person><name>Yayoi Kusama</name><wiki>Yayoi_Kusama</wiki><category>Artist</category></person>
+  <person><name>Ansel Adams</name><wiki>Ansel_Adams</wiki><category>Photographer</category></person>
+  <person><name>Annie Leibovitz</name><wiki>Annie_Leibovitz</wiki><category>Photographer</category></person>
+  <person><name>Ferdinand Magellan</name><wiki>Ferdinand_Magellan</wiki><category>Explorer</category></person>
+  <person><name>Lewis and Clark</name><wiki>Lewis_and_Clark_Expedition</wiki><category>Explorers</category></person>
+  <person><name>Roald Amundsen</name><wiki>Roald_Amundsen</wiki><category>Explorer</category></person>
+  <person><name>Ernest Shackleton</name><wiki>Ernest_Shackleton</wiki><category>Explorer</category></person>
+  <person><name>Edmund Hillary</name><wiki>Edmund_Hillary</wiki><category>Mountaineer</category></person>
+  <person><name>Tenzing Norgay</name><wiki>Tenzing_Norgay</wiki><category>Mountaineer</category></person>
+  <person><name>Jacques Cousteau</name><wiki>Jacques_Cousteau</wiki><category>Oceanographer</category></person>
+  <person><name>Evel Knievel</name><wiki>Evel_Knievel</wiki><category>Daredevil</category></person>
+  <person><name>Felix Baumgartner</name><wiki>Felix_Baumgartner</wiki><category>Daredevil</category></person>
+  <person><name>George S. Patton</name><wiki>George_S._Patton</wiki><category>General</category></person>
+  <person><name>Douglas MacArthur</name><wiki>Douglas_MacArthur</wiki><category>General</category></person>
+  <person><name>Robert E. Lee</name><wiki>Robert_E._Lee</wiki><category>General</category></person>
+  <person><name>Stonewall Jackson</name><wiki>Stonewall_Jackson</wiki><category>General</category></person>
+  <person><name>William Tecumseh Sherman</name><wiki>William_Tecumseh_Sherman</wiki><category>General</category></person>
+  <person><name>Erwin Rommel</name><wiki>Erwin_Rommel</wiki><category>General</category></person>
+  <person><name>Al Capone</name><wiki>Al_Capone</wiki><category>Gangster</category></person>
+  <person><name>John Gotti</name><wiki>John_Gotti</wiki><category>Gangster</category></person>
+  <person><name>Pablo Escobar</name><wiki>Pablo_Escobar</wiki><category>Drug lord</category></person>
+  <person><name>Bonnie and Clyde</name><wiki>Bonnie_and_Clyde</wiki><category>Outlaws</category></person>
+  <person><name>John Dillinger</name><wiki>John_Dillinger</wiki><category>Bank robber</category></person>
+  <person><name>Jesse James</name><wiki>Jesse_James</wiki><category>Outlaw</category></person>
+  <person><name>Billy the Kid</name><wiki>Billy_the_Kid</wiki><category>Outlaw</category></person>
+  <person><name>Ted Bundy</name><wiki>Ted_Bundy</wiki><category>Serial killer</category></person>
+  <person><name>Charles Manson</name><wiki>Charles_Manson</wiki><category>Cult leader / Criminal</category></person>
+  <person><name>Jeffrey Dahmer</name><wiki>Jeffrey_Dahmer</wiki><category>Serial killer</category></person>
+  <person><name>Confucius</name><wiki>Confucius</wiki><category>Philosopher</category></person>
+  <person><name>Sun Tzu</name><wiki>Sun_Tzu</wiki><category>Military strategist</category></person>
+  <person><name>Buddha</name><wiki>Gautama_Buddha</wiki><category>Spiritual leader</category></person>
+  <person><name>Jesus Christ</name><wiki>Jesus</wiki><category>Religious figure</category></person>
+  <person><name>Muhammad</name><wiki>Muhammad</wiki><category>Religious figure</category></person>
+  <person><name>Moses</name><wiki>Moses</wiki><category>Religious figure</category></person>
+  <person><name>Socrates</name><wiki>Socrates</wiki><category>Philosopher</category></person>
+  <person><name>Charlemagne</name><wiki>Charlemagne</wiki><category>Emperor</category></person>
+  <person><name>King Arthur</name><wiki>King_Arthur</wiki><category>Legendary king</category></person>
+  <person><name>Vlad the Impaler</name><wiki>Vlad_the_Impaler</wiki><category>Prince</category></person>
+  <person><name>Henry VIII</name><wiki>Henry_VIII</wiki><category>King</category></person>
+  <person><name>Louis XIV</name><wiki>Louis_XIV</wiki><category>King</category></person>
+  <person><name>Tutankhamun</name><wiki>Tutankhamun</wiki><category>Pharaoh</category></person>
+  <person><name>Ramesses II</name><wiki>Ramesses_II</wiki><category>Pharaoh</category></person>
+  <person><name>Nefertiti</name><wiki>Nefertiti</wiki><category>Queen</category></person>
+  <person><name>Hammurabi</name><wiki>Hammurabi</wiki><category>King</category></person>
+  <person><name>Hernán Cortés</name><wiki>Hernán_Cortés</wiki><category>Conquistador</category></person>
+  <person><name>Francisco Pizarro</name><wiki>Francisco_Pizarro</wiki><category>Conquistador</category></person>
+  <person><name>Davy Crockett</name><wiki>Davy_Crockett</wiki><category>Frontiersman</category></person>
+  <person><name>Daniel Boone</name><wiki>Daniel_Boone</wiki><category>Frontiersman</category></person>
+  <person><name>Sitting Bull</name><wiki>Sitting_Bull</wiki><category>Native American leader</category></person>
+  <person><name>Crazy Horse</name><wiki>Crazy_Horse</wiki><category>Native American leader</category></person>
+  <person><name>Geronimo</name><wiki>Geronimo</wiki><category>Native American leader</category></person>
+  <person><name>Pocahontas</name><wiki>Pocahontas</wiki><category>Native American figure</category></person>
+  <person><name>Sacagawea</name><wiki>Sacagawea</wiki><category>Native American figure</category></person>
+  <person><name>Helen Keller</name><wiki>Helen_Keller</wiki><category>Author / Activist</category></person>
+  <person><name>John Wayne</name><wiki>John_Wayne</wiki><category>Actor</category></person>
+  <person><name>Gene Kelly</name><wiki>Gene_Kelly</wiki><category>Actor / Dancer</category></person>
+  <person><name>Fred Astaire</name><wiki>Fred_Astaire</wiki><category>Actor / Dancer</category></person>
+  <person><name>Ginger Rogers</name><wiki>Ginger_Rogers</wiki><category>Actress / Dancer</category></person>
+  <person><name>Jane Fonda</name><wiki>Jane_Fonda</wiki><category>Actress</category></person>
+  <person><name>The Undertaker</name><wiki>The_Undertaker</wiki><category>Wrestler</category></person>
+  <person><name>Andre the Giant</name><wiki>André_the_Giant</wiki><category>Wrestler</category></person>
+  <person><name>Ric Flair</name><wiki>Ric_Flair</wiki><category>Wrestler</category></person>
+
+</people>
