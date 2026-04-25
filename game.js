@@ -183,7 +183,8 @@ async function fetchWikiData(person) {
     const desc = (json.description || "") + " " + (json.extract || "");
     const bornMatch = desc.match(/born\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
     const diedMatch = desc.match(/died\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}\s+\w+\s+\d{4}|\d{4})/i);
-    const yrMatch = desc.match(/(\d{4})[\s\-–](\d{4}|\bpresent\b)/i);
+    // Require parentheses to avoid matching tenure years like "from 2001 to 2009"
+    const yrMatch = desc.match(/\((\d{4})[\s\-–](\d{4}|\bpresent\b)\)/i);
     if (bornMatch) data.born = bornMatch[1];
     else if (yrMatch) data.born = yrMatch[1];
     if (diedMatch) data.died = diedMatch[1];
@@ -238,7 +239,19 @@ function extractInitials(name) {
 const REDACTION_LIMIT = 0.4;
 
 function pickBioSnippet(extract, personName, extractHtml) {
-  const parts = extract.split(/\. /);
+  // Merge fragments split by initials (e.g. "J." in "J. Robert Oppenheimer")
+  const rawParts = extract.split(/\. /);
+  const parts = [];
+  let acc = '';
+  for (const p of rawParts) {
+    acc = acc ? acc + '. ' + p : p;
+    if (acc.replace(/\(.*?\)/g, '').trim().length >= 30) {
+      parts.push(acc);
+      acc = '';
+    }
+  }
+  if (acc) parts.push(acc);
+
   for (let i = 0; i < Math.min(parts.length, 3); i++) {
     const cleaned = parts[i].replace(/\(.*?\)/g, "").trim();
     if (!cleaned) continue;
@@ -260,20 +273,34 @@ function redactionRatio(text) {
 // Replace every token of the subject's name(s) with a block. Uses Wikipedia's
 // <b>…</b> spans to catch birth names, nicknames, aliases not present in our
 // stored name (e.g. "Gabrielle Bonheur" / "Coco" for Coco Chanel).
+const REDACT_SKIP = new Set(['of','the','de','da','von','van','el','al','le','la','bin','bint','in','at','to','by','on','and','or','du','des','di','del','dos','das']);
+
 function redactNames(sentence, personName, extractHtml) {
   const tokens = new Set();
   const addTokens = str => {
-    str.replace(/<[^>]+>/g, ' ')
-       .replace(/[\"'“”‘’„«»]/g, ' ')
-       .replace(/\(.*?\)/g, ' ')
+    str.replace(/<[^>]+>/g, ‘ ‘)
+       .replace(/[\”’””’’„«»]/g, ‘ ‘)
+       .replace(/\(.*?\)/g, ‘ ‘)
        .split(/\s+/)
-       .map(t => t.replace(/[,.;:!?]+$/, ''))
-       .filter(t => t.length >= 2)
+       .map(t => { const s = t.replace(/[,.;:!?]+$/, ''); return s.length >= 2 ? s : t; })
+       .filter(t => t.length >= 2 && !REDACT_SKIP.has(t.toLowerCase()))
        .forEach(t => tokens.add(t));
   };
   addTokens(personName);
-  const boldSpans = [...extractHtml.matchAll(/<b[^>]*>([\s\S]*?)<\/b>/gi)].map(m => m[1]);
-  boldSpans.forEach(addTokens);
+  // Only use bold spans from the first sentence — birth/maiden names live there,
+  // but epithets like "Queen of All Media" appear in later sentences.
+  const plainText = extractHtml.replace(/<[^>]+>/g, '');
+  const plainParts = plainText.split(/\. /);
+  let sentLen = 0, sentAcc = '';
+  for (const p of plainParts) {
+    sentAcc = sentAcc ? sentAcc + '. ' + p : p;
+    sentLen = sentAcc.length;
+    if (sentAcc.length >= 30) break;
+  }
+  for (const m of extractHtml.matchAll(/<b[^>]*>([\s\S]*?)<\/b>/gi)) {
+    const plainStart = extractHtml.slice(0, m.index).replace(/<[^>]+>/g, '').length;
+    if (plainStart <= sentLen) addTokens(m[1]);
+  }
 
   let result = sentence;
   const BLOCK = '█████';
