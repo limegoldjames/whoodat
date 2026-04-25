@@ -14,9 +14,10 @@ async function loadPeople() {
     name: p.querySelector('name').textContent,
     wiki: p.querySelector('wiki').textContent,
     category: p.querySelector('category').textContent,
-    born:  p.getAttribute('born')  || null,
-    died:  p.getAttribute('died')  || null,
-    alive: p.getAttribute('alive') === 'true',
+    born:        p.getAttribute('born')        || null,
+    died:        p.getAttribute('died')        || null,
+    alive:       p.getAttribute('alive')       === 'true',
+    nationality: p.getAttribute('nationality') || null,
   }));
 }
 
@@ -24,14 +25,22 @@ async function loadPeople() {
 // HINT DEFINITIONS
 // ============================================================
 const HINT_DEFS = [
-  { key: "category",    label: "Occupation",   cost: 150,  extract: d => d.category },
-  { key: "nationality", label: "Nationality",      cost: 100,  extract: d => extractNationality(d) },
-  { key: "lifespan",    label: "Lifespan",          cost: 75, extract: d => {
-    const born = d.born || "?";
-    const died = d.died || (d.alive ? "present" : "?");
-    return `${born} – ${died}`;
-  }},
-  { key: "summary",     label: "First sentence on Wikipedia",  cost: 250, extract: d => d.firstSentence || "…" },
+  { key: "category",    label: "Occupation",   cost: 150,
+    extract: d => d.category,
+    hasData: d => !!d?.category },
+  { key: "nationality", label: "Nationality",  cost: 100,
+    extract: d => extractNationality(d),
+    hasData: d => d && extractNationality(d) !== 'Unknown' },
+  { key: "lifespan",    label: "Lifespan",     cost: 75,
+    extract: d => {
+      const born = d.born || "?";
+      const died = d.died || (d.alive ? "present" : "?");
+      return `${born} – ${died}`;
+    },
+    hasData: d => d && (d.born !== null || d.died !== null || d.alive) },
+  { key: "summary",     label: "First sentence on Wikipedia", cost: 250,
+    extract: d => d.firstSentence || "…",
+    hasData: d => d && d.firstSentence && d.firstSentence !== '…' && d.firstSentence !== 'No summary available.' },
 ];
 
 // ============================================================
@@ -172,9 +181,10 @@ async function fetchWikiData(person) {
     else if (yrMatch && yrMatch[2].toLowerCase() !== 'present') data.died = yrMatch[2];
     else if (yrMatch && yrMatch[2].toLowerCase() === 'present') data.alive = true;
     // people.xml overrides take precedence over Wikipedia-parsed values
-    if (person.born) data.born = person.born;
-    if (person.died) data.died = person.died;
-    if (person.alive) data.alive = true;
+    if (person.born)        data.born        = person.born;
+    if (person.died)        data.died        = person.died;
+    if (person.alive)       data.alive       = true;
+    if (person.nationality) data.nationality = person.nationality;
     data.nationality = extractNationalityFromText(json.extract || json.description || "");
     return data;
   } catch(e) {
@@ -362,9 +372,13 @@ function renderHints(data) {
     const unlocked = !!state.unlockedHints[hint.key];
     const wide = hint.key === 'summary' ? ' hint-chip-wide' : '';
     chip.className = `hint-chip ${unlocked ? 'unlocked' : 'locked'}${wide}`;
+    const dataReady = hint.hasData(data);
     if (unlocked && data) {
       const val = hint.extract(data);
       chip.innerHTML = `<span class="hint-cost">${hint.label}</span><span class="hint-value">${val}</span>`;
+    } else if (!dataReady) {
+      chip.className = `hint-chip hint-chip-unavailable${wide}`;
+      chip.innerHTML = `<span class="hint-cost">N/A</span><span class="hint-value">🚫 ${hint.label}</span>`;
     } else {
       chip.innerHTML = `<span class="hint-cost">−${hint.cost} pts</span><span class="hint-value">🔒 ${hint.label}</span>`;
       chip.onclick = () => unlockHint(hint);
@@ -483,16 +497,43 @@ function endGame() {
   ];
   document.getElementById('end-grade').textContent = (grades.find(g => pct >= g[0]) || grades[4])[1];
 
-  // Build results list
+  // Build results grid
   const list = document.getElementById('results-list');
   list.innerHTML = '';
+
+  const grid = document.createElement('div');
+  grid.className = 'results-grid';
   for (const r of state.results) {
-    const div = document.createElement('div');
-    div.className = `result-row ${r.correct ? 'r-correct' : 'r-wrong'}`;
-    div.innerHTML = `<div class="r-name">${r.correct ? '✅' : (r.skipped ? '⏭' : '❌')} ${r.name}</div>
-      <div class="r-detail">${r.correct ? `+${r.points} pts` : '0 pts'} &nbsp;|&nbsp; ${r.guesses} guess${r.guesses !== 1 ? 'es' : ''} &nbsp;|&nbsp; ${r.hintsUsed} hint${r.hintsUsed !== 1 ? 's' : ''} used</div>`;
-    list.appendChild(div);
+    const colorClass = r.correct ? (r.points >= 800 ? 'rc-gold' : 'rc-green') : (r.skipped ? 'rc-skip' : 'rc-wrong');
+    const icon = r.correct ? '✅' : (r.skipped ? '⏭' : '❌');
+    const pts = r.correct ? `+${r.points}` : '0';
+    const stats = r.skipped ? '—' : `${r.guesses} guess${r.guesses !== 1 ? 'es' : ''} · ${r.hintsUsed} hint${r.hintsUsed !== 1 ? 's' : ''}`;
+    const card = document.createElement('div');
+    card.className = `result-card ${colorClass}`;
+    card.innerHTML = `<div class="rc-icon">${icon}</div>
+      <div class="rc-pts">${pts}</div>
+      <div class="rc-stats">${stats}</div>`;
+    grid.appendChild(card);
   }
+  list.appendChild(grid);
+
+  const answerList = document.createElement('div');
+  answerList.id = 'end-answers';
+  answerList.style.display = 'none';
+  state.results.forEach((r, i) => {
+    const row = document.createElement('div');
+    row.className = 'end-answer-row';
+    row.innerHTML = `<span class="end-answer-num">${i + 1}</span><span class="end-answer-name">${r.name}</span><span class="end-answer-icon">${r.correct ? '✅' : (r.skipped ? '⏭' : '❌')}</span>`;
+    answerList.appendChild(row);
+  });
+  list.appendChild(answerList);
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'toggle-answers-btn';
+  toggleBtn.className = 'toggle-answers-btn';
+  toggleBtn.textContent = 'Show Answers ▼';
+  toggleBtn.onclick = toggleEndAnswers;
+  list.appendChild(toggleBtn);
 
   // Share URL — stashed on the copy button
   const shareData = buildShareData();
@@ -659,6 +700,14 @@ function goHome() {
   document.body.classList.remove('in-game');
   document.getElementById('scorebar').classList.remove('visible');
   showScreen('screen-welcome');
+}
+
+function toggleEndAnswers() {
+  const panel = document.getElementById('end-answers');
+  const btn = document.getElementById('toggle-answers-btn');
+  const showing = panel.style.display !== 'none';
+  panel.style.display = showing ? 'none' : 'block';
+  btn.textContent = showing ? 'Show Answers ▼' : 'Hide Answers ▲';
 }
 
 function updateScorebar() {
