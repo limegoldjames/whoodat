@@ -509,6 +509,7 @@ function endGame() {
     const card = document.createElement('div');
     card.className = `result-card ${colorClass}`;
     card.innerHTML = `<div class="rc-icon">${icon}</div>
+      <div class="rc-name">${r.name}</div>
       <div class="rc-pts">${pts}</div>
       <div class="rc-stats">${stats}</div>`;
     grid.appendChild(card);
@@ -529,7 +530,7 @@ function endGame() {
   const toggleBtn = document.createElement('button');
   toggleBtn.id = 'toggle-answers-btn';
   toggleBtn.className = 'toggle-answers-btn';
-  toggleBtn.textContent = 'Show Answers ▼';
+  toggleBtn.textContent = 'Show Names';
   toggleBtn.onclick = toggleEndAnswers;
   list.appendChild(toggleBtn);
 
@@ -703,9 +704,11 @@ function goHome() {
 function toggleEndAnswers() {
   const panel = document.getElementById('end-answers');
   const btn = document.getElementById('toggle-answers-btn');
+  const grid = document.querySelector('.results-grid');
   const showing = panel.style.display !== 'none';
   panel.style.display = showing ? 'none' : 'block';
-  btn.textContent = showing ? 'Show Answers ▼' : 'Hide Answers ▲';
+  if (grid) grid.classList.toggle('names-revealed', !showing);
+  btn.textContent = showing ? 'Show Names' : 'Hide Names';
 }
 
 function updateScorebar() {
