@@ -17,7 +17,9 @@ async function loadPeople() {
     born:        p.getAttribute('born')        || null,
     died:        p.getAttribute('died')        || null,
     alive:       p.getAttribute('alive')       === 'true',
-    nationality: p.getAttribute('nationality') || null,
+    nationality:  p.getAttribute('nationality')  || null,
+    imgOverride:  p.getAttribute('img')          || null,
+    fact:         p.querySelector('fact')?.textContent || null,
   }));
 }
 
@@ -41,9 +43,12 @@ const HINT_DEFS = [
       return `${born} – ${died}`;
     },
     hasData: d => d && (d.born !== null || d.died !== null || d.alive) },
-  { key: "summary",     label: "First sentence on Wikipedia", cost: 250,
+  { key: "summary",     label: "First sentence on Wikipedia", cost: 200,
     extract: d => d.firstSentence || "…",
     hasData: d => d && d.firstSentence && d.firstSentence !== '…' && d.firstSentence !== 'No summary available.' },
+  { key: "fact",        label: "Hint",                        cost: 250,
+    extract: d => d.fact || "…",
+    hasData: d => !!d?.fact },
 ];
 
 // ============================================================
@@ -165,13 +170,14 @@ async function fetchWikiData(person) {
     const data = {
       name: person.name,
       category: person.category,
-      imageUrl: json.thumbnail?.source || json.originalimage?.source || null,
+      imageUrl: person.imgOverride || json.thumbnail?.source || json.originalimage?.source || null,
       extract: json.extract || "",
       firstSentence: pickBioSnippet(json.extract || "", person.name, json.extract_html || ""),
       born: null,
       died: null,
       alive: false,
       nationality: null,
+      fact: person.fact || null,
     };
     // Parse birth/death from description or extract
     const desc = (json.description || "") + " " + (json.extract || "");
@@ -194,10 +200,11 @@ async function fetchWikiData(person) {
     return {
       name: person.name,
       category: person.category,
-      imageUrl: null,
+      imageUrl: person.imgOverride || null,
       extract: "",
       firstSentence: "No summary available.",
       born: null, died: null, alive: false, nationality: null,
+      fact: person.fact || null,
     };
   }
 }
@@ -392,7 +399,7 @@ function renderHints(data) {
   for (const hint of HINT_DEFS) {
     const chip = document.createElement('div');
     const unlocked = !!state.unlockedHints[hint.key];
-    const wide = hint.key === 'summary' ? ' hint-chip-wide' : '';
+    const wide = (hint.key === 'summary' || hint.key === 'fact') ? ' hint-chip-wide' : '';
     chip.className = `hint-chip ${unlocked ? 'unlocked' : 'locked'}${wide}`;
     const dataReady = hint.hasData(data);
     if (unlocked && data) {
