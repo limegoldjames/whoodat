@@ -353,22 +353,22 @@ body.in-game .compact-game-header {
 }
 .hints-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 6px;
   margin-bottom: 10px;
 }
 .hint-chip {
   border: 2px solid;
   border-radius: 4px;
-  padding: 5px 10px;
+  padding: 4px 7px;
   font-family: 'Barlow Condensed', sans-serif;
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.15s;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 1px;
 }
 .hint-chip.locked {
   border-color: var(--blue-light);
@@ -391,13 +391,13 @@ body.in-game .compact-game-header {
 }
 .hint-chip-wide { grid-column: 1 / -1; }
 .hint-cost {
-  font-size: 0.72rem;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 1px;
   opacity: 0.7;
 }
 .hint-value {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 700;
   word-break: break-word;
 }
@@ -787,8 +787,11 @@ body.in-game .compact-game-header {
 
   /* Slightly larger input and tap targets */
   #guess-input { font-size: 1rem; padding: 10px 12px; }
-  .hint-chip   { padding: 7px 10px; }
+  .hint-chip   { padding: 8px 10px; font-size: 0.95rem; }
+  .hint-cost   { font-size: 0.72rem; }
+  .hint-value  { font-size: 1rem; }
   .ac-item     { padding: 11px 14px; }
+  .hints-grid  { grid-template-columns: repeat(2, 1fr); }
 
   /* Next button subtitle */
   .next-btn-sub-desktop { display: none; }

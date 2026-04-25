@@ -4,7 +4,7 @@
 let PEOPLE = [];
 
 async function loadPeople() {
-  const res = await fetch('people.xml');
+  const res = await fetch('people2.xml');
   if (!res.ok) throw new Error('Failed to load people.xml');
   const xmlText = await res.text();
   const doc = new DOMParser().parseFromString(xmlText, 'application/xml');
@@ -28,6 +28,9 @@ const HINT_DEFS = [
   { key: "category",    label: "Occupation",   cost: 150,
     extract: d => d.category,
     hasData: d => !!d?.category },
+  { key: "initials",    label: "Initials",     cost: 150,
+    extract: d => extractInitials(d.name),
+    hasData: d => !!d?.name },
   { key: "nationality", label: "Nationality",  cost: 100,
     extract: d => extractNationality(d),
     hasData: d => d && extractNationality(d) !== 'Unknown' },
@@ -201,6 +204,25 @@ async function fetchWikiData(person) {
 
 function extractNationality(data) {
   return data.nationality || "Unknown";
+}
+
+function extractInitials(name) {
+  const skip = new Set(['da', 'de', 'van', 'von', 'of', 'el', 'al', 'le', 'la', 'bin', 'bint']);
+  const letters = [];
+  for (const word of name.split(/\s+/)) {
+    if (skip.has(word.toLowerCase())) continue;
+    const parts = word.split('.').filter(p => /[a-zA-Z]/.test(p));
+    if (parts.length > 1) {
+      for (const p of parts) {
+        const c = p.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+        if (c) letters.push(c);
+      }
+    } else {
+      const c = word.replace(/[^a-zA-Z]/g, '')[0]?.toUpperCase();
+      if (c) letters.push(c);
+    }
+  }
+  return letters.join('.');
 }
 
 // Pick the first sentence that survives redaction with enough info intact;
