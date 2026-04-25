@@ -266,7 +266,7 @@
 </head>
 <body>
 
-<div id="loading-screen">Loading people2.xml…</div>
+<div id="loading-screen">Loading…</div>
 
 <div class="topbar">
   <div class="topbar-title">WHOODAT — Catalogue</div>
@@ -400,20 +400,36 @@ function redactNames(sentence, personName, extractHtml) {
 
 // ── XML load ───────────────────────────────────────────────────────────────────
 async function loadPeople() {
-  const res  = await fetch('people2.xml');
-  const text = await res.text();
-  const doc  = new DOMParser().parseFromString(text, 'application/xml');
-  PEOPLE = Array.from(doc.querySelectorAll('person')).map(p => ({
-    name:        p.querySelector('name').textContent,
-    wiki:        p.querySelector('wiki').textContent,
-    category:    p.querySelector('category').textContent,
-    born:        p.getAttribute('born')        || null,
-    died:        p.getAttribute('died')        || null,
-    alive:       p.getAttribute('alive')       === 'true',
-    nationality:  p.getAttribute('nationality')  || null,
-    imgOverride:  p.getAttribute('img')          || null,
-    fact:         p.querySelector('fact')?.textContent || null,
-  }));
+  const [factsRes, hintsRes] = await Promise.all([
+    fetch('person-facts.xml'),
+    fetch('hints.xml'),
+  ]);
+  const [factsText, hintsText] = await Promise.all([factsRes.text(), hintsRes.text()]);
+  const parser = new DOMParser();
+  const factsDoc = parser.parseFromString(factsText, 'application/xml');
+  const hintsDoc = parser.parseFromString(hintsText, 'application/xml');
+
+  const hintByWiki = new Map();
+  for (const h of hintsDoc.querySelectorAll('hint')) {
+    hintByWiki.set(h.getAttribute('wiki'), h.textContent);
+  }
+
+  PEOPLE = Array.from(factsDoc.querySelectorAll('person')).map(p => {
+    const wiki = p.querySelector('wiki').textContent;
+    return {
+      name:        p.querySelector('name').textContent,
+      wiki,
+      category:    p.querySelector('category').textContent,
+      qid:         p.getAttribute('qid')         || null,
+      born:        p.getAttribute('born')        || null,
+      died:        p.getAttribute('died')        || null,
+      alive:       p.getAttribute('alive')       === 'true',
+      nationality: p.getAttribute('nationality') || null,
+      occupation:  p.getAttribute('occupation')  || null,
+      imgOverride: p.getAttribute('img')         || null,
+      fact:        hintByWiki.get(wiki)          || null,
+    };
+  });
   document.getElementById('loading-screen').style.display = 'none';
   document.getElementById('next-btn').disabled = false;
   const hashIdx = parseInt(location.hash.slice(1));
